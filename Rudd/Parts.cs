@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 
+//this is a class to get the costing price of parts
 namespace Rudd
 {
     class Parts
