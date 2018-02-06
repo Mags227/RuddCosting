@@ -1198,7 +1198,7 @@ namespace Rudd
             PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Rudd Costing - " + dateTime.ToString("dd-MM-yyyy") + ".pdf", FileMode.Create));
             doc.Open();
 
-            iTextSharp.text.Image Rudd = iTextSharp.text.Image.GetInstance("Rudd.jpg");
+            iTextSharp.text.Image Rudd = iTextSharp.text.Image.GetInstance("..\\..\\Resources\\Rudd.jpg");
             Rudd.ScalePercent(50);
             Rudd.Alignment = Element.ALIGN_LEFT;
             doc.Add(Rudd);
@@ -1249,6 +1249,12 @@ namespace Rudd
             table.AddCell(tbFeetBarQty.Text);
             table.AddCell(tbFeetBarUnitCost.Text);
             table.AddCell(tbFeetBarSetCost.Text);
+
+            table.AddCell("Loadcell Securer");
+            table.AddCell(tbLoadcell.Text);
+            table.AddCell(tbLoadcellQty.Text);
+            table.AddCell(tbLoadcellUnitCost.Text);
+            table.AddCell(tbLoadcellSetCost.Text);
 
             doc.Add(table);
             doc.Close();
