@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//A Class to get and set the attributes associated with flatbar
 namespace Rudd
 {
     class FlatBar
