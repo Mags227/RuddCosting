@@ -1161,6 +1161,7 @@ namespace Rudd
             clearTextbox(tbFlatC, tbFlatCMeter, tbFlatCCost);
             clearTextbox(tbFlatD, tbFlatDMeter, tbFlatDCost);
 
+            tbFlatBarMSTotal.Text = "";
             tbSundriesTotal.Text = "";
             dSundriesTotal = 0;
         }

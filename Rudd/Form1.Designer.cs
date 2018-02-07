@@ -367,7 +367,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(1040, 64);
+            this.label37.Location = new System.Drawing.Point(1045, 64);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(108, 25);
@@ -378,7 +378,7 @@
             // 
             this.tbMarkUpTotal.Enabled = false;
             this.tbMarkUpTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMarkUpTotal.Location = new System.Drawing.Point(1156, 13);
+            this.tbMarkUpTotal.Location = new System.Drawing.Point(1156, 34);
             this.tbMarkUpTotal.Margin = new System.Windows.Forms.Padding(4);
             this.tbMarkUpTotal.Name = "tbMarkUpTotal";
             this.tbMarkUpTotal.Size = new System.Drawing.Size(149, 24);
@@ -389,7 +389,7 @@
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(1074, 16);
+            this.label44.Location = new System.Drawing.Point(1079, 37);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(69, 18);
@@ -400,7 +400,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(760, 69);
+            this.label45.Location = new System.Drawing.Point(713, 12);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(136, 18);
@@ -411,7 +411,7 @@
             // 
             this.tbSubtotal.Enabled = false;
             this.tbSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubtotal.Location = new System.Drawing.Point(904, 66);
+            this.tbSubtotal.Location = new System.Drawing.Point(869, 9);
             this.tbSubtotal.Margin = new System.Windows.Forms.Padding(4);
             this.tbSubtotal.Name = "tbSubtotal";
             this.tbSubtotal.Size = new System.Drawing.Size(120, 24);
@@ -930,7 +930,7 @@
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(750, 39);
+            this.label84.Location = new System.Drawing.Point(1005, 12);
             this.label84.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(146, 17);
@@ -940,7 +940,7 @@
             // tbLoadCellSubtotal
             // 
             this.tbLoadCellSubtotal.Enabled = false;
-            this.tbLoadCellSubtotal.Location = new System.Drawing.Point(904, 36);
+            this.tbLoadCellSubtotal.Location = new System.Drawing.Point(1185, 9);
             this.tbLoadCellSubtotal.Margin = new System.Windows.Forms.Padding(4);
             this.tbLoadCellSubtotal.Name = "tbLoadCellSubtotal";
             this.tbLoadCellSubtotal.Size = new System.Drawing.Size(120, 22);
@@ -955,7 +955,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1344, 738);
+            this.tabPage1.Size = new System.Drawing.Size(1344, 729);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Workings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1583,8 +1583,6 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.tbFlatBarMSTotal);
-            this.groupBox9.Controls.Add(this.label48);
             this.groupBox9.Controls.Add(this.tbFlatCMeter);
             this.groupBox9.Controls.Add(this.label95);
             this.groupBox9.Controls.Add(this.label96);
@@ -1979,7 +1977,7 @@
             // tbSundriesTotal
             // 
             this.tbSundriesTotal.Enabled = false;
-            this.tbSundriesTotal.Location = new System.Drawing.Point(904, 8);
+            this.tbSundriesTotal.Location = new System.Drawing.Point(870, 69);
             this.tbSundriesTotal.Margin = new System.Windows.Forms.Padding(4);
             this.tbSundriesTotal.Name = "tbSundriesTotal";
             this.tbSundriesTotal.Size = new System.Drawing.Size(120, 22);
@@ -1989,7 +1987,7 @@
             // label102
             // 
             this.label102.AutoSize = true;
-            this.label102.Location = new System.Drawing.Point(792, 11);
+            this.label102.Location = new System.Drawing.Point(758, 72);
             this.label102.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label102.Name = "label102";
             this.label102.Size = new System.Drawing.Size(104, 17);
@@ -2011,7 +2009,7 @@
             this.tabA.Margin = new System.Windows.Forms.Padding(4);
             this.tabA.Name = "tabA";
             this.tabA.Padding = new System.Windows.Forms.Padding(4);
-            this.tabA.Size = new System.Drawing.Size(1344, 738);
+            this.tabA.Size = new System.Drawing.Size(1344, 729);
             this.tabA.TabIndex = 0;
             this.tabA.Text = "Steel Working";
             this.tabA.UseVisualStyleBackColor = true;
@@ -3589,17 +3587,17 @@
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabC);
             this.TabControl.Controls.Add(this.TabD);
-            this.TabControl.Location = new System.Drawing.Point(13, 84);
+            this.TabControl.Location = new System.Drawing.Point(13, 93);
             this.TabControl.Margin = new System.Windows.Forms.Padding(4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1352, 767);
+            this.TabControl.Size = new System.Drawing.Size(1352, 758);
             this.TabControl.TabIndex = 0;
             // 
             // tbFlatBarMSTotal
             // 
             this.tbFlatBarMSTotal.Enabled = false;
-            this.tbFlatBarMSTotal.Location = new System.Drawing.Point(640, 190);
+            this.tbFlatBarMSTotal.Location = new System.Drawing.Point(870, 39);
             this.tbFlatBarMSTotal.Margin = new System.Windows.Forms.Padding(4);
             this.tbFlatBarMSTotal.Name = "tbFlatBarMSTotal";
             this.tbFlatBarMSTotal.Size = new System.Drawing.Size(120, 22);
@@ -3609,7 +3607,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(499, 193);
+            this.label48.Location = new System.Drawing.Point(738, 42);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(121, 17);
@@ -3621,6 +3619,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1371, 921);
+            this.Controls.Add(this.tbFlatBarMSTotal);
+            this.Controls.Add(this.label48);
             this.Controls.Add(this.bSavePDF);
             this.Controls.Add(this.tbSubtotal);
             this.Controls.Add(this.label45);
