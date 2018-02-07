@@ -344,7 +344,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(13, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(585, 73);
@@ -438,7 +438,7 @@
             this.TabD.Location = new System.Drawing.Point(4, 25);
             this.TabD.Margin = new System.Windows.Forms.Padding(4);
             this.TabD.Name = "TabD";
-            this.TabD.Size = new System.Drawing.Size(1344, 738);
+            this.TabD.Size = new System.Drawing.Size(1344, 729);
             this.TabD.TabIndex = 3;
             this.TabD.Text = "Notes";
             this.TabD.UseVisualStyleBackColor = true;
@@ -528,7 +528,7 @@
             this.tabC.Location = new System.Drawing.Point(4, 25);
             this.tabC.Margin = new System.Windows.Forms.Padding(4);
             this.tabC.Name = "tabC";
-            this.tabC.Size = new System.Drawing.Size(1344, 738);
+            this.tabC.Size = new System.Drawing.Size(1344, 729);
             this.tabC.TabIndex = 2;
             this.tabC.Text = "Loadcell Kit";
             this.tabC.UseVisualStyleBackColor = true;
@@ -3132,7 +3132,7 @@
             this.tbMarkupAmount.Name = "tbMarkupAmount";
             this.tbMarkupAmount.Size = new System.Drawing.Size(49, 22);
             this.tbMarkupAmount.TabIndex = 17;
-            this.tbMarkupAmount.Text = "120";
+            this.tbMarkupAmount.Text = "90";
             this.tbMarkupAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label43

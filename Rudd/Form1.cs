@@ -18,7 +18,7 @@ namespace Rudd
 {
     public partial class Rudd : Form
     {
-        private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal,dLoadCellMarkUp, dLoadCellTotal, dSundriesTotal, dFlatBarMSTotal;
+        private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
 
         public Rudd()
         {
@@ -1141,8 +1141,6 @@ namespace Rudd
 
             tbLoadCellSubtotal.Text = "";
             dLoadCellSubTotal = 0;
-            dLoadCellMarkUp = 0;
-            dLoadCellTotal = 0;
         }
 
         private void bClearWorkings_Click(object sender, EventArgs e)
@@ -1163,6 +1161,7 @@ namespace Rudd
 
             tbFlatBarMSTotal.Text = "";
             tbSundriesTotal.Text = "";
+            dFlatBarMSTotal = 0;
             dSundriesTotal = 0;
         }
 
@@ -1394,7 +1393,7 @@ namespace Rudd
             table1.AddCell("Unit Size");
             table1.AddCell("Meter / Unit");
             table1.AddCell("Cost per Set");
-
+     
             table1.AddCell("25 x 3mm");
             table1.AddCell(tbFlatA.Text);
             table1.AddCell(tbFlatAQty.Text);
