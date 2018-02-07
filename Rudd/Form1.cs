@@ -1201,8 +1201,8 @@ namespace Rudd
             Rudd.Alignment = Element.ALIGN_LEFT;
             doc.Add(Rudd);
 
-            Paragraph paragraph = new Paragraph("\n\n");
-            doc.Add(paragraph);
+            Paragraph Space = new Paragraph("\n\n");
+            doc.Add(Space);
 
             //Chunk chunk = new Chunk("This is from chunk. ");
             //doc.Add(chunk);
@@ -1333,6 +1333,66 @@ namespace Rudd
             table.AddCell(tbLabourCost.Text);
 
             doc.Add(table);
+
+
+            Paragraph Steelwork = new Paragraph("Steelwork Subtotal: "+ tbSubtotal.Text);
+            Steelwork.SpacingBefore = 10;
+            Steelwork.SpacingAfter = 10;
+            Steelwork.Alignment = Element.ALIGN_RIGHT;
+            Steelwork.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(Steelwork);
+
+            Paragraph Space1 = new Paragraph("\n\n");
+            doc.Add(Space1);
+
+
+            PdfPTable table1 = new PdfPTable(6);
+            table1.WidthPercentage = 100f;
+            float[] widths = new float[] { 10f, 10f, 5f, 10f, 20f, 10f };
+            table1.SetWidths(widths);
+
+            PdfPCell cell1 = new PdfPCell(new Phrase("Flat bar MS"));
+            cell1.Colspan = 6;
+            cell1.HorizontalAlignment = Element.ALIGN_CENTER;
+            table1.AddCell(cell1);
+
+            table1.AddCell("Size");
+            table1.AddCell("Price");
+            table1.AddCell("QTY");
+            table1.AddCell("Unit Size");
+            table1.AddCell("Meter / Unit");
+            table1.AddCell("Cost per Set");
+
+            table1.AddCell("25 x 3mm");
+            table1.AddCell(tbFlatA.Text);
+            table1.AddCell(tbFlatAQty.Text);
+            table1.AddCell(tbFlatAUnit.Text);
+            table1.AddCell(tbFlatAMeter.Text);
+            table1.AddCell(tbFlatACost.Text);
+
+            table1.AddCell("60 x 16mm");
+            table1.AddCell(tbFlatB.Text);
+            table1.AddCell(tbFlatBQty.Text);
+            table1.AddCell(tbFlatBUnit.Text);
+            table1.AddCell(tbFlatBMeter.Text);
+            table1.AddCell(tbFlatBCost.Text);
+
+            table1.AddCell("40 x 4,5mm");
+            table1.AddCell(tbFlatC.Text);
+            table1.AddCell(tbFlatCQty.Text);
+            table1.AddCell(tbFlatCUnit.Text);
+            table1.AddCell(tbFlatCMeter.Text);
+            table1.AddCell(tbFlatCCost.Text);
+
+            table1.AddCell("50 x 12mm");
+            table1.AddCell(tbFlatD.Text);
+            table1.AddCell(tbFlatDQty.Text);
+            table1.AddCell(tbFlatDUnit.Text);
+            table1.AddCell(tbFlatDMeter.Text);
+            table1.AddCell(tbFlatDCost.Text);
+
+            doc.Add(table1);
+
             doc.Close();
             MessageBox.Show("File has been saved as PDF.", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
