@@ -48,10 +48,6 @@
             this.tbCapsQBooks = new System.Windows.Forms.TextBox();
             this.tbPlugsQBooks = new System.Windows.Forms.TextBox();
             this.tbCableQBooks = new System.Windows.Forms.TextBox();
-            this.tbSundriesCost = new System.Windows.Forms.TextBox();
-            this.tbSundriesUnitCost = new System.Windows.Forms.TextBox();
-            this.tbSundries = new System.Windows.Forms.TextBox();
-            this.tbSundriesQty = new System.Windows.Forms.TextBox();
             this.tbSpring = new System.Windows.Forms.TextBox();
             this.tbSpringCost = new System.Windows.Forms.TextBox();
             this.tbSpringQty = new System.Windows.Forms.TextBox();
@@ -74,7 +70,6 @@
             this.tbCable100AUnitCost = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label83 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
@@ -497,10 +492,6 @@
             this.tabC.Controls.Add(this.tbCapsQBooks);
             this.tabC.Controls.Add(this.tbPlugsQBooks);
             this.tabC.Controls.Add(this.tbCableQBooks);
-            this.tabC.Controls.Add(this.tbSundriesCost);
-            this.tabC.Controls.Add(this.tbSundriesUnitCost);
-            this.tabC.Controls.Add(this.tbSundries);
-            this.tabC.Controls.Add(this.tbSundriesQty);
             this.tabC.Controls.Add(this.tbSpring);
             this.tabC.Controls.Add(this.tbSpringCost);
             this.tabC.Controls.Add(this.tbSpringQty);
@@ -523,7 +514,6 @@
             this.tabC.Controls.Add(this.tbCable100AUnitCost);
             this.tabC.Controls.Add(this.label85);
             this.tabC.Controls.Add(this.button1);
-            this.tabC.Controls.Add(this.label83);
             this.tabC.Controls.Add(this.label81);
             this.tabC.Controls.Add(this.label72);
             this.tabC.Controls.Add(this.label73);
@@ -597,47 +587,6 @@
             this.tbCableQBooks.Text = "R0,00";
             this.tbCableQBooks.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbCableQBooks.Leave += new System.EventHandler(this.tbCableQBooks_Leave);
-            // 
-            // tbSundriesCost
-            // 
-            this.tbSundriesCost.Enabled = false;
-            this.tbSundriesCost.Location = new System.Drawing.Point(795, 240);
-            this.tbSundriesCost.Margin = new System.Windows.Forms.Padding(4);
-            this.tbSundriesCost.Name = "tbSundriesCost";
-            this.tbSundriesCost.Size = new System.Drawing.Size(101, 22);
-            this.tbSundriesCost.TabIndex = 145;
-            this.tbSundriesCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbSundriesUnitCost
-            // 
-            this.tbSundriesUnitCost.Enabled = false;
-            this.tbSundriesUnitCost.Location = new System.Drawing.Point(684, 240);
-            this.tbSundriesUnitCost.Margin = new System.Windows.Forms.Padding(4);
-            this.tbSundriesUnitCost.Name = "tbSundriesUnitCost";
-            this.tbSundriesUnitCost.Size = new System.Drawing.Size(101, 22);
-            this.tbSundriesUnitCost.TabIndex = 146;
-            this.tbSundriesUnitCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tbSundries
-            // 
-            this.tbSundries.Location = new System.Drawing.Point(573, 240);
-            this.tbSundries.Margin = new System.Windows.Forms.Padding(4);
-            this.tbSundries.Name = "tbSundries";
-            this.tbSundries.Size = new System.Drawing.Size(101, 22);
-            this.tbSundries.TabIndex = 7;
-            this.tbSundries.Text = "R0,00";
-            this.tbSundries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbSundries.Leave += new System.EventHandler(this.tbSundries_Leave);
-            // 
-            // tbSundriesQty
-            // 
-            this.tbSundriesQty.Enabled = false;
-            this.tbSundriesQty.Location = new System.Drawing.Point(499, 240);
-            this.tbSundriesQty.Margin = new System.Windows.Forms.Padding(4);
-            this.tbSundriesQty.Name = "tbSundriesQty";
-            this.tbSundriesQty.Size = new System.Drawing.Size(36, 22);
-            this.tbSundriesQty.TabIndex = 148;
-            this.tbSundriesQty.Text = "1";
             // 
             // tbSpring
             // 
@@ -864,16 +813,6 @@
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(309, 244);
-            this.label83.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(64, 17);
-            this.label83.TabIndex = 147;
-            this.label83.Text = "Sundries";
             // 
             // label81
             // 
@@ -3760,10 +3699,6 @@
         private System.Windows.Forms.TextBox tbPlugsQBooks;
         private System.Windows.Forms.TextBox tbCableQBooks;
         private System.Windows.Forms.TextBox tbLoadCellSubtotal;
-        private System.Windows.Forms.TextBox tbSundriesCost;
-        private System.Windows.Forms.TextBox tbSundriesUnitCost;
-        private System.Windows.Forms.TextBox tbSundries;
-        private System.Windows.Forms.TextBox tbSundriesQty;
         private System.Windows.Forms.TextBox tbSpring;
         private System.Windows.Forms.TextBox tbSpringCost;
         private System.Windows.Forms.TextBox tbSpringQty;
@@ -3787,7 +3722,6 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label73;

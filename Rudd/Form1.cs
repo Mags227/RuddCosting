@@ -721,31 +721,6 @@ namespace Rudd
             }
         }
 
-        private void tbSundries_Leave(object sender, EventArgs e)
-        {
-            if (tbSundries.Text.StartsWith("R"))
-            {
-                tbSundries.Text = tbSundries.Text.Replace("R", "");
-            }
-
-            try
-            {
-                Parts pSundries = new Parts(cbxLoadCellKit.SelectedIndex, tbSundriesQty.Text, tbSundries.Text, "single");
-                populateFields(pSundries, cbxLoadCellKit.SelectedIndex, tbSundriesQty.Text, tbSundries.Text,
-                                "single", tbSundries, tbSundriesUnitCost, tbSundriesCost);
-                addLoadCellKitTotal(pSundries.getSetPrice());
-            }
-            catch (FormatException)
-            {
-                tbSundries.Text = "";
-                tbSundriesUnitCost.Text = "";
-                tbSundriesCost.Text = "";
-                tbSundries.Focus();
-                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private void tbCellQBooks_Leave(object sender, EventArgs e)
         {
             try
@@ -1156,7 +1131,6 @@ namespace Rudd
             clearTextbox(tbSpring, tbSpringUnitCost, tbSpringCost);
             clearTextbox(tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
             clearTextbox(tbAmphenolCaps, tbAmphenolCapsUnitCost, tbAmphenolCapsCost);
-            clearTextbox(tbSundries, tbSundriesUnitCost, tbSundriesCost);
 
             //QBooks
             clearTextbox(tbCellQBooks, tbCellQBooks, tbCellQBooks);
@@ -1234,6 +1208,9 @@ namespace Rudd
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(cell);
 
+            PdfPCell cellspace = new PdfPCell(new Phrase(" "));
+            cellspace.Colspan = 5;
+
             table.AddCell("");
             table.AddCell("Price");
             table.AddCell("QTY");
@@ -1282,11 +1259,7 @@ namespace Rudd
             table.AddCell("");
             table.AddCell(tbFeetCost.Text);
 
-            table.AddCell("");
-            table.AddCell("");
-            table.AddCell("");
-            table.AddCell("");
-            table.AddCell("");
+            table.AddCell(cellspace);
 
             table.AddCell("M8 x 40 cap screws S/S");
             table.AddCell(tbScrews.Text);
@@ -1491,6 +1464,74 @@ namespace Rudd
 
             doc.Add(Space);
 
+            PdfPTable table3 = new PdfPTable(5);
+            table3.WidthPercentage = 100f;
+
+            PdfPCell cell3 = new PdfPCell(new Phrase("Loadcell Kit"));
+            cell3.Colspan = 5;
+            cell3.HorizontalAlignment = Element.ALIGN_CENTER;
+            table3.AddCell(cell3);
+
+            table3.AddCell("");
+            table3.AddCell("Price");
+            table3.AddCell("QTY");
+            table3.AddCell("Price per Unit");
+            table3.AddCell("Price per Set");
+
+            table3.AddCell("Single Load Cell");
+            table3.AddCell(tbSingleLoadCell.Text);
+            table3.AddCell(tbSingleLoadCellQty.Text);
+            table3.AddCell(tbSingleLoadCellUnitCost.Text);
+            table3.AddCell(tbSingleLoadCellCost.Text);
+
+            table3.AddCell("Cable (100m)");
+            table3.AddCell(tbCable100A.Text);
+            table3.AddCell(tbCable100AQty.Text);
+            table3.AddCell(tbCable100AUnitCost.Text);
+            table3.AddCell(tbCable100ACost.Text);
+
+            table3.AddCell("Spring Protector");
+            table3.AddCell(tbSpring.Text);
+            table3.AddCell(tbSpringQty.Text);
+            table3.AddCell(tbSpringUnitCost.Text);
+            table3.AddCell(tbSpringCost.Text);
+
+            table3.AddCell("Amphenol Plugs");
+            table3.AddCell(tbAmphenolPlugs.Text);
+            table3.AddCell(tbAmphenolPlugsQty.Text);
+            table3.AddCell(tbAmphenolPlugsUnitCost.Text);
+            table3.AddCell(tbAmphenolPlugsCost.Text);
+
+            table3.AddCell("Amphenol Caps");
+            table3.AddCell(tbAmphenolCaps.Text);
+            table3.AddCell(tbAmphenolCapsQty.Text);
+            table3.AddCell(tbAmphenolCapsUnitCost.Text);
+            table3.AddCell(tbAmphenolCapsCost.Text);
+
+            doc.Add(table3);
+
+            Paragraph LoadcellKit = new Paragraph("Loadcell Kit total: " + tbLoadCellSubtotal.Text);
+            LoadcellKit.SpacingBefore = 10;
+            LoadcellKit.SpacingAfter = 10;
+            LoadcellKit.Alignment = Element.ALIGN_RIGHT;
+            LoadcellKit.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(LoadcellKit);
+
+            doc.Add(Space);
+
+            Paragraph MarkUp = new Paragraph("MarkUp total: " + tbMarkUpTotal.Text);
+            MarkUp.SpacingBefore = 10;
+            MarkUp.SpacingAfter = 10;
+            MarkUp.Alignment = Element.ALIGN_RIGHT;
+            MarkUp.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(MarkUp);
+
+            Paragraph TotalCost = new Paragraph("Total Cost: " + tbTotalCost.Text);
+            TotalCost.SpacingBefore = 10;
+            TotalCost.SpacingAfter = 10;
+            TotalCost.Alignment = Element.ALIGN_RIGHT;
+            TotalCost.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(TotalCost);
 
             doc.Close();
             MessageBox.Show("File has been saved as PDF.", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
