@@ -276,7 +276,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbMarkupAmount = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tbStickersQty = new System.Windows.Forms.TextBox();
@@ -3106,7 +3106,7 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label42);
-            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.tbMarkupAmount);
             this.groupBox7.Controls.Add(this.label43);
             this.groupBox7.Location = new System.Drawing.Point(671, 612);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
@@ -3127,16 +3127,15 @@
             this.label42.TabIndex = 50;
             this.label42.Text = "%";
             // 
-            // textBox1
+            // tbMarkupAmount
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(285, 16);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 22);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.Text = "120";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbMarkupAmount.Location = new System.Drawing.Point(285, 16);
+            this.tbMarkupAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.tbMarkupAmount.Name = "tbMarkupAmount";
+            this.tbMarkupAmount.Size = new System.Drawing.Size(49, 22);
+            this.tbMarkupAmount.TabIndex = 17;
+            this.tbMarkupAmount.Text = "120";
+            this.tbMarkupAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label43
             // 
@@ -3926,7 +3925,7 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbMarkupAmount;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox tbStickersQty;

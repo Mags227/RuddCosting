@@ -1610,8 +1610,6 @@ namespace Rudd
         private void addLoadCellKitTotal(Double price)
         {
             dLoadCellSubTotal = dLoadCellSubTotal + price;
-            dLoadCellMarkUp = dLoadCellSubTotal*1.2;
-            dLoadCellTotal = dLoadCellSubTotal + dLoadCellMarkUp;
             tbLoadCellSubtotal.Text = setText(dLoadCellSubTotal.ToString());
             addTotalCost(dLoadCellSubTotal);
         }
@@ -1632,8 +1630,8 @@ namespace Rudd
 
         private void addTotalCost(Double price)
         {
-            dMarkUp = (dSubtotal + dLoadCellSubTotal + dSundriesTotal) * 1.2;
-            dTotal = (dSubtotal + dLoadCellSubTotal + dSundriesTotal) + dMarkUp;
+            dMarkUp = (dSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
+            dTotal = (dSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
             tbMarkUpTotal.Text = setText(dMarkUp.ToString());
             tbTotalCost.Text = setText(dTotal.ToString());
         }
