@@ -1162,8 +1162,6 @@ namespace Rudd
             clearTextbox(tbCapsQBooks, tbCapsQBooks, tbCapsQBooks);
 
             tbLoadCellSubtotal.Text = "";
-            tbLoadcellMarkUp.Text = "";
-            tbLoadCellKitTotal.Text = "";
             dLoadCellSubTotal = 0;
             dLoadCellMarkUp = 0;
             dLoadCellTotal = 0;
@@ -1337,8 +1335,6 @@ namespace Rudd
             dLoadCellMarkUp = dLoadCellSubTotal*1.2;
             dLoadCellTotal = dLoadCellSubTotal + dLoadCellMarkUp;
             tbLoadCellSubtotal.Text = setText(dLoadCellSubTotal.ToString());
-            tbLoadcellMarkUp.Text = setText(dLoadCellMarkUp.ToString());
-            tbLoadCellKitTotal.Text = setText(dLoadCellTotal.ToString());
             addTotalCost(dLoadCellSubTotal);
         }
 
