@@ -323,6 +323,8 @@
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.TabControl = new System.Windows.Forms.TabControl();
+            this.tbFlatBarMSTotal = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TabD.SuspendLayout();
             this.tabC.SuspendLayout();
@@ -1642,6 +1644,8 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.tbFlatBarMSTotal);
+            this.groupBox9.Controls.Add(this.label48);
             this.groupBox9.Controls.Add(this.tbFlatCMeter);
             this.groupBox9.Controls.Add(this.label95);
             this.groupBox9.Controls.Add(this.label96);
@@ -1680,7 +1684,7 @@
             this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox9.Size = new System.Drawing.Size(768, 197);
+            this.groupBox9.Size = new System.Drawing.Size(768, 231);
             this.groupBox9.TabIndex = 136;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Workings-Steel Costing Calculations Based on MNF Pricing";
@@ -3654,6 +3658,26 @@
             this.TabControl.Size = new System.Drawing.Size(1352, 767);
             this.TabControl.TabIndex = 0;
             // 
+            // tbFlatBarMSTotal
+            // 
+            this.tbFlatBarMSTotal.Enabled = false;
+            this.tbFlatBarMSTotal.Location = new System.Drawing.Point(640, 190);
+            this.tbFlatBarMSTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.tbFlatBarMSTotal.Name = "tbFlatBarMSTotal";
+            this.tbFlatBarMSTotal.Size = new System.Drawing.Size(120, 22);
+            this.tbFlatBarMSTotal.TabIndex = 155;
+            this.tbFlatBarMSTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(499, 193);
+            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(121, 17);
+            this.label48.TabIndex = 156;
+            this.label48.Text = "Flat Bar MS Total:";
+            // 
             // Rudd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -4010,6 +4034,8 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TextBox tbFlatBarMSTotal;
+        private System.Windows.Forms.Label label48;
     }
 }
 

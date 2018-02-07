@@ -18,7 +18,7 @@ namespace Rudd
 {
     public partial class Rudd : Form
     {
-        private Double dSubtotal, dTotal, dMarkUp, dLoadBarTotal, dLoadCellSubTotal,dLoadCellMarkUp, dLoadCellTotal, dSundriesTotal;
+        private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal,dLoadCellMarkUp, dLoadCellTotal, dSundriesTotal, dFlatBarMSTotal;
 
         public Rudd()
         {
@@ -832,6 +832,7 @@ namespace Rudd
             {
                 FlatBar pFlatA = new FlatBar(tbFlatA.Text, tbFlatAQty.Text, tbFlatAUnit.Text);
                 populateFlatBarFields(pFlatA, tbFlatA, tbFlatAMeter, tbFlatACost);
+                addFlatBarMSTotal(pFlatA.getCostperUnit());
             }
             catch (FormatException)
             {
@@ -855,6 +856,7 @@ namespace Rudd
             {
                 FlatBar pFlatB = new FlatBar(tbFlatB.Text, tbFlatBQty.Text, tbFlatBUnit.Text);
                 populateFlatBarFields(pFlatB, tbFlatB, tbFlatBMeter, tbFlatBCost);
+                addFlatBarMSTotal(pFlatB.getCostperUnit());
             }
             catch (FormatException)
             {
@@ -878,6 +880,7 @@ namespace Rudd
             {
                 FlatBar pFlatC = new FlatBar(tbFlatC.Text, tbFlatCQty.Text, tbFlatCUnit.Text);
                 populateFlatBarFields(pFlatC, tbFlatC, tbFlatCMeter, tbFlatCCost);
+                addFlatBarMSTotal(pFlatC.getCostperUnit());
             }
             catch (FormatException)
             {
@@ -901,6 +904,7 @@ namespace Rudd
             {
                 FlatBar pFlatD = new FlatBar(tbFlatD.Text, tbFlatDQty.Text, tbFlatDUnit.Text);
                 populateFlatBarFields(pFlatD, tbFlatD, tbFlatDMeter, tbFlatDCost);
+                addFlatBarMSTotal(pFlatD.getCostperUnit());
             }
             catch (FormatException)
             {
@@ -1198,7 +1202,7 @@ namespace Rudd
 
             iTextSharp.text.Image Rudd = iTextSharp.text.Image.GetInstance("..\\..\\Resources\\Rudd.jpg");
             Rudd.ScalePercent(50);
-            Rudd.Alignment = Element.ALIGN_LEFT;
+            Rudd.Alignment = Element.ALIGN_RIGHT;
             doc.Add(Rudd);
 
             Paragraph Space = new Paragraph("\n\n");
@@ -1342,8 +1346,7 @@ namespace Rudd
             Steelwork.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
             doc.Add(Steelwork);
 
-            Paragraph Space1 = new Paragraph("\n\n");
-            doc.Add(Space1);
+            doc.Add(Space);
 
 
             PdfPTable table1 = new PdfPTable(6);
@@ -1392,6 +1395,102 @@ namespace Rudd
             table1.AddCell(tbFlatDCost.Text);
 
             doc.Add(table1);
+
+            Paragraph FlatBarMS = new Paragraph("Flat Bar MS total: " + tbFlatBarMSTotal.Text);
+            FlatBarMS.SpacingBefore = 10;
+            FlatBarMS.SpacingAfter = 10;
+            FlatBarMS.Alignment = Element.ALIGN_RIGHT;
+            FlatBarMS.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(FlatBarMS);
+
+            doc.NewPage();
+
+            doc.Add(Rudd);
+
+            doc.Add(Space);
+
+            PdfPTable table2 = new PdfPTable(6);
+            table2.WidthPercentage = 100f;
+
+            PdfPCell cell2 = new PdfPCell(new Phrase("Sundries"));
+            cell2.Colspan = 6;
+            cell2.HorizontalAlignment = Element.ALIGN_CENTER;
+            table2.AddCell(cell2);
+
+            table2.AddCell("");
+            table2.AddCell("Used/Month");
+            table2.AddCell("Price per Sundary");
+            table2.AddCell("Sub Value");
+            table2.AddCell("Units Made / Month");
+            table2.AddCell("Cost per Set");
+
+            table2.AddCell("Cutting Discs");
+            table2.AddCell(tbCuttingDiscsQty.Text);
+            table2.AddCell(tbCuttingDiscs.Text);
+            table2.AddCell(tbCuttingDiscsValue.Text);
+            table2.AddCell(tbCuttingDiscsUnits.Text);
+            table2.AddCell(tbCuttingDiscsCost.Text);
+
+            table2.AddCell("Sanding Discs");
+            table2.AddCell(tbSandingQty.Text);
+            table2.AddCell(tbSanding.Text);
+            table2.AddCell(tbSandingValue.Text);
+            table2.AddCell(tbSandingUnits.Text);
+            table2.AddCell(tbSandingCost.Text);
+
+            table2.AddCell("Drill Bits");
+            table2.AddCell(tbDrillQty.Text);
+            table2.AddCell(tbDrill.Text);
+            table2.AddCell(tbDrillValue.Text);
+            table2.AddCell(tbDrillUnits.Text);
+            table2.AddCell(tbDrillCost.Text);
+
+            table2.AddCell("Tap (for threading)");
+            table2.AddCell(tbTapQty.Text);
+            table2.AddCell(tbTap.Text);
+            table2.AddCell(tbTapValue.Text);
+            table2.AddCell(tbTapUnits.Text);
+            table2.AddCell(tbTapCost.Text);
+
+            table2.AddCell("Glue Sticks");
+            table2.AddCell(tbGlueQty.Text);
+            table2.AddCell(tbGlue.Text);
+            table2.AddCell(tbGlueValue.Text);
+            table2.AddCell(tbGlueUnits.Text);
+            table2.AddCell(tbGlueCost.Text);
+
+            table2.AddCell("Potting Boxes");
+            table2.AddCell(tbPottingBoxQty.Text);
+            table2.AddCell(tbPottingBox.Text);
+            table2.AddCell(tbPottingBoxValue.Text);
+            table2.AddCell(tbPottingBoxUnits.Text);
+            table2.AddCell(tbPottingBoxCost.Text);
+
+            table2.AddCell("Wire Leaders");
+            table2.AddCell(tbWireLeadQty.Text);
+            table2.AddCell(tbWireLead.Text);
+            table2.AddCell(tbWireLeadValue.Text);
+            table2.AddCell(tbWireLeadUnits.Text);
+            table2.AddCell(tbWireLeadCost.Text);
+
+            table2.AddCell("Tapmatic");
+            table2.AddCell(tbTapmaticQty.Text);
+            table2.AddCell(tbTapmatic.Text);
+            table2.AddCell(tbTapmaticValue.Text);
+            table2.AddCell(tbTapmaticUnits.Text);
+            table2.AddCell(tbTapmaticCost.Text);
+
+            doc.Add(table2);
+
+            Paragraph Sundries = new Paragraph("Sundries total: " + tbSundriesTotal.Text);
+            Sundries.SpacingBefore = 10;
+            Sundries.SpacingAfter = 10;
+            Sundries.Alignment = Element.ALIGN_RIGHT;
+            Sundries.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(Sundries);
+
+            doc.Add(Space);
+
 
             doc.Close();
             MessageBox.Show("File has been saved as PDF.", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1474,6 +1573,13 @@ namespace Rudd
             dLoadCellTotal = dLoadCellSubTotal + dLoadCellMarkUp;
             tbLoadCellSubtotal.Text = setText(dLoadCellSubTotal.ToString());
             addTotalCost(dLoadCellSubTotal);
+        }
+
+        private void addFlatBarMSTotal(Double price)
+        {
+            dFlatBarMSTotal = dFlatBarMSTotal + price;
+            tbFlatBarMSTotal.Text = setText(dFlatBarMSTotal.ToString());
+            addTotalCost(dFlatBarMSTotal);
         }
 
         private void addSundriesTotal(Double price)
