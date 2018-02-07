@@ -1211,54 +1211,109 @@ namespace Rudd
             PdfPCell cellspace = new PdfPCell(new Phrase(" "));
             cellspace.Colspan = 5;
 
-            table.AddCell("");
-            table.AddCell("Price");
-            table.AddCell("QTY");
-            table.AddCell("Cost per Unit");
-            table.AddCell("Cost per Set");
+            int TabPage = tabControl1.SelectedIndex;
 
-            table.AddCell("Steel Braces");
-            table.AddCell(tbBraces.Text);
-            table.AddCell(tbBracesQty.Text);
-            table.AddCell(tbBracesUnitCost.Text);
-            table.AddCell(tbBracesSetCost.Text);
+            
+                table.AddCell("");
+                table.AddCell("Price");
+                table.AddCell("QTY");
+                table.AddCell("Cost per Unit");
+                table.AddCell("Cost per Set");
 
-            table.AddCell("Feet Bar Connectors");
-            table.AddCell(tbFeetBar.Text);
-            table.AddCell(tbFeetBarQty.Text);
-            table.AddCell(tbFeetBarUnitCost.Text);
-            table.AddCell(tbFeetBarSetCost.Text);
+            if (TabPage == 0)
+            {
+                table.AddCell("Steel Braces");
+                table.AddCell(tbBraces.Text);
+                table.AddCell(tbBracesQty.Text);
+                table.AddCell(tbBracesUnitCost.Text);
+                table.AddCell(tbBracesSetCost.Text);
 
-            table.AddCell("Loadcell Securer");
-            table.AddCell(tbLoadcell.Text);
-            table.AddCell(tbLoadcellQty.Text);
-            table.AddCell(tbLoadcellUnitCost.Text);
-            table.AddCell(tbLoadcellSetCost.Text);
+                table.AddCell("Feet Bar Connectors");
+                table.AddCell(tbFeetBar.Text);
+                table.AddCell(tbFeetBarQty.Text);
+                table.AddCell(tbFeetBarUnitCost.Text);
+                table.AddCell(tbFeetBarSetCost.Text);
 
-            table.AddCell("Potting Box Securer");
-            table.AddCell(tbPotting.Text);
-            table.AddCell(tbPottingQty.Text);
-            table.AddCell(tbPottingUnitCost.Text);
-            table.AddCell(tbPottingSetCost.Text);
+                table.AddCell("Loadcell Securer");
+                table.AddCell(tbLoadcell.Text);
+                table.AddCell(tbLoadcellQty.Text);
+                table.AddCell(tbLoadcellUnitCost.Text);
+                table.AddCell(tbLoadcellSetCost.Text);
 
-            table.AddCell("Cable Securer");
-            table.AddCell(tbCable.Text);
-            table.AddCell(tbCableQty.Text);
-            table.AddCell(tbCableUnitCost.Text);
-            table.AddCell(tbCableSetCost.Text);
+                table.AddCell("Potting Box Securer");
+                table.AddCell(tbPotting.Text);
+                table.AddCell(tbPottingQty.Text);
+                table.AddCell(tbPottingUnitCost.Text);
+                table.AddCell(tbPottingSetCost.Text);
 
-            table.AddCell("Cutting and Bending");
-            table.AddCell(tbCutting.Text);
-            table.AddCell("");
-            table.AddCell("");
-            table.AddCell(tbCuttingCost.Text);
+                table.AddCell("Cable Securer");
+                table.AddCell(tbCable.Text);
+                table.AddCell(tbCableQty.Text);
+                table.AddCell(tbCableUnitCost.Text);
+                table.AddCell(tbCableSetCost.Text);
 
-            table.AddCell("Feet");
-            table.AddCell(tbFeet.Text);
-            table.AddCell("");
-            table.AddCell("");
-            table.AddCell(tbFeetCost.Text);
+                table.AddCell("Cutting and Bending");
+                table.AddCell(tbCutting.Text);
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell(tbCuttingCost.Text);
 
+                table.AddCell("Feet");
+                table.AddCell(tbFeet.Text);
+                table.AddCell("");
+                table.AddCell("");
+                table.AddCell(tbFeetCost.Text);
+            }
+            else if (TabPage == 1)
+            {
+                table.AddCell("Top Load Plate (650mm)");
+                table.AddCell(tbLoadPlate.Text);
+                table.AddCell(tbLoadPlateQty.Text);
+                table.AddCell("");
+                table.AddCell(tbLoadPlateCost.Text);
+
+                table.AddCell("Foot Plate");
+                table.AddCell(tbFootPlate.Text);
+                table.AddCell(tbFootPlateQty.Text);
+                table.AddCell("");
+                table.AddCell(tbFootPlateCost.Text);
+
+                table.AddCell("Load Cell Housing");
+                table.AddCell(tbCellHousing.Text);
+                table.AddCell(tbCellHousingQty.Text);
+                table.AddCell("");
+                table.AddCell(tbCellHousingCost.Text);
+
+                table.AddCell("Load Bar Top Cover Channel");
+                table.AddCell(tbLoadBar.Text);
+                table.AddCell(tbLoadBarQty.Text);
+                table.AddCell("");
+                table.AddCell(tbLoadBarCost.Text);
+
+                table.AddCell("Cable Cover Angle");
+                table.AddCell(tbCableCover.Text);
+                table.AddCell(tbCableCoverQty.Text);
+                table.AddCell("");
+                table.AddCell(tbCableCoverCost.Text);
+
+                table.AddCell("Brackets Top Hat");
+                table.AddCell(tbBrackets.Text);
+                table.AddCell(tbBracketsQty.Text);
+                table.AddCell("");
+                table.AddCell(tbBracketsCost.Text);
+
+                table.AddCell("Top Load Plate Securing Block");
+                table.AddCell(tbLoadPlateSecu.Text);
+                table.AddCell(tbLoadPlateSecuQty.Text);
+                table.AddCell(tbLoadPlateSecuUnitCost.Text);
+                table.AddCell(tbLoadPlateSecuCost.Text);
+
+                table.AddCell("Foot Plate Securing Block");
+                table.AddCell(tbFootPlateSecu.Text);
+                table.AddCell(tbFootPlateSecuQty.Text);
+                table.AddCell(tbFootPlateSecuUnitCost.Text);
+                table.AddCell(tbFootPlateSecuCost.Text);
+            }
             table.AddCell(cellspace);
 
             table.AddCell("M8 x 40 cap screws S/S");
