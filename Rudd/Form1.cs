@@ -19,7 +19,9 @@ namespace Rudd
     public partial class Rudd : Form
     {
         private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
-
+        private Parts pBraces = null;
+        private Parts pFeetBar = null;
+        
         public Rudd()
         {
             InitializeComponent();
@@ -56,12 +58,24 @@ namespace Rudd
         {
             removeR(tbBraces);
             
-
             try
             {
-                Parts pBraces = new Parts(cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace");
-                populateFields(pBraces, cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace", tbBraces, tbBracesUnitCost, tbBracesSetCost);
-                addSubtotal(pBraces.getSetPrice());
+                if (pBraces == null)
+                {
+                    pBraces = new Parts(cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace");
+                    populateFields(pBraces, cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace", tbBraces, tbBracesUnitCost, tbBracesSetCost);
+                    addSubtotal(pBraces.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pBraces.getSetPrice());
+                    pBraces.setPrice(tbBraces.Text);
+                    populateFields(pBraces, cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace", tbBraces, tbBracesUnitCost, tbBracesSetCost);                   
+                    addSubtotal(pBraces.getSetPrice());
+                }
+
+                
+
             }
             catch (FormatException)
             {
@@ -76,16 +90,24 @@ namespace Rudd
 
         private void tbFeetBar_Leave(object sender, EventArgs e)
         {
-            if (tbFeetBar.Text.StartsWith("R"))
-            {
-                tbFeetBar.Text = tbFeetBar.Text.Replace("R", "");
-            }
+            removeR(tbFeetBar);
 
             try
             {
-                Parts pFeetBar = new Parts(cbxSteelType.SelectedIndex, tbFeetBarQty.Text, tbFeetBar.Text, "feetbar");
-                populateFields(pFeetBar, cbxSteelType.SelectedIndex, tbFeetBarQty.Text, tbFeetBar.Text, "feetbar", tbFeetBar, tbFeetBarUnitCost, tbFeetBarSetCost);
-                addSubtotal(pFeetBar.getSetPrice());
+                if (pFeetBar == null)
+                {
+                    pFeetBar = new Parts(cbxSteelType.SelectedIndex, tbFeetBarQty.Text, tbFeetBar.Text, "feetbar");
+                    populateFields(pFeetBar, cbxSteelType.SelectedIndex, tbFeetBarQty.Text, tbFeetBar.Text, "feetbar", tbFeetBar, tbFeetBarUnitCost, tbFeetBarSetCost);
+                    addSubtotal(pFeetBar.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pFeetBar.getSetPrice());
+                    pFeetBar.setPrice(tbFeetBar.Text);
+                    populateFields(pFeetBar, cbxSteelType.SelectedIndex, tbFeetBarQty.Text, tbFeetBar.Text, "feetbar", tbFeetBar, tbFeetBarUnitCost, tbFeetBarSetCost);
+                    addSubtotal(pFeetBar.getSetPrice());
+                }
+                
             }
             catch (FormatException)
             {
@@ -96,9 +118,6 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-           
-        
         }
 
         private void tbLoadcell_Leave(object sender, EventArgs e)
@@ -1662,6 +1681,12 @@ namespace Rudd
             addTotalCost(dSubtotal);
         }
 
+        private void subtractSubTotal(Double price)
+        {
+            dSubtotal = dSubtotal - price;
+            tbSubtotal.Text = setText(dSubtotal.ToString());
+        }
+        
         private void addLoadCellKitTotal(Double price)
         {
             dLoadCellSubTotal = dLoadCellSubTotal + price;

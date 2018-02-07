@@ -16,7 +16,7 @@ namespace Rudd
         private Double price;
         private Double unitSize;
         private Double unitPrice;
-
+        
         public Parts(int cbxIdx, String qty, String price, String type)
         {
             this.cbxIdx = cbxIdx;
@@ -35,7 +35,10 @@ namespace Rudd
             return this.price;
         }
 
-        
+        public void setPrice(String price)
+        {
+            this.price = Double.Parse(price.Replace(".", ","));
+        }
 
         public Double getUnitSize()
         {
@@ -134,6 +137,6 @@ namespace Rudd
         {
             return this.unitPrice * this.qty;
         }
-
+        
     }
 }
