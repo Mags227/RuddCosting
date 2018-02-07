@@ -403,12 +403,12 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(826, 69);
+            this.label45.Location = new System.Drawing.Point(760, 69);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(66, 18);
+            this.label45.Size = new System.Drawing.Size(136, 18);
             this.label45.TabIndex = 17;
-            this.label45.Text = "Subtotal:";
+            this.label45.Text = "Steelwork Subtotal:";
             // 
             // tbSubtotal
             // 
@@ -989,7 +989,7 @@
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(748, 40);
+            this.label84.Location = new System.Drawing.Point(750, 39);
             this.label84.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(146, 17);

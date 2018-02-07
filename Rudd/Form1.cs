@@ -1254,6 +1254,84 @@ namespace Rudd
             table.AddCell(tbLoadcellUnitCost.Text);
             table.AddCell(tbLoadcellSetCost.Text);
 
+            table.AddCell("Potting Box Securer");
+            table.AddCell(tbPotting.Text);
+            table.AddCell(tbPottingQty.Text);
+            table.AddCell(tbPottingUnitCost.Text);
+            table.AddCell(tbPottingSetCost.Text);
+
+            table.AddCell("Cable Securer");
+            table.AddCell(tbCable.Text);
+            table.AddCell(tbCableQty.Text);
+            table.AddCell(tbCableUnitCost.Text);
+            table.AddCell(tbCableSetCost.Text);
+
+            table.AddCell("Cutting and Bending");
+            table.AddCell(tbCutting.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbCuttingCost.Text);
+
+            table.AddCell("Feet");
+            table.AddCell(tbFeet.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbFeetCost.Text);
+
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell("");
+
+            table.AddCell("M8 x 40 cap screws S/S");
+            table.AddCell(tbScrews.Text);
+            table.AddCell(tbScrewsQty.Text);
+            table.AddCell("");
+            table.AddCell(tbScrewsCost.Text);
+
+            table.AddCell("Ash 5 - Weilding gas");
+            table.AddCell(tbWeildingGas.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbWeildingGasCost.Text);
+
+            table.AddCell("Weilding Wire");
+            table.AddCell(tbWeildingWire.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbWeildingWireCost.Text);
+
+            table.AddCell("Galvanising");
+            table.AddCell(tbGalvanising.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbGalvanisingCost.Text);
+
+            table.AddCell("Petrol");
+            table.AddCell(tbPetrol.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbPetrolCost.Text);
+
+            table.AddCell("Electricity, Gloves, Goggles");
+            table.AddCell(tbElecGlovGog.Text);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(tbElecGlovGogCost.Text);
+
+            table.AddCell("Rudd Promotional Stickers");
+            table.AddCell(tbStickers.Text);
+            table.AddCell(tbStickersQty.Text);
+            table.AddCell("");
+            table.AddCell(tbStickersCost.Text);
+
+            table.AddCell("Labour Cost");
+            table.AddCell(tbLabour.Text);
+            table.AddCell(tbLabourQty.Text);
+            table.AddCell("");
+            table.AddCell(tbLabourCost.Text);
+
             doc.Add(table);
             doc.Close();
             MessageBox.Show("File has been saved as PDF.", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
