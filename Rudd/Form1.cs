@@ -19,10 +19,11 @@ namespace Rudd
     public partial class Rudd : Form
     {
         private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
-        private Parts pBraces = null;
-        private Parts pFeetBar, pPetrol, pElecGlovGog, pStickers, pLabour = null;
-        private Parts pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
-        private Parts pLoadPlate, pFootPlate, pCellHousing, pLoadBar, pCableCover, pBrackets, pLoadPlateSecu, pFootPlateSecu = null;
+        private Parts pLoadPlate, pFootPlate, pCellHousing, pLoadBar, pCableCover, pBrackets, pLoadPlateSecu, pFootPlateSecu,
+                      pSingleLoadCell, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers, pLabour,
+                      pBraces, pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
+        private FlatBar pFlatA, pFlatB, pFlatC, pFlatD = null;
+        private Sundries pCuttingDiscs, pSanding, pDrill, pTap, pGlue, pPottingBox, pWireLead, pTapmatic = null;
 
 
 
@@ -769,17 +770,25 @@ namespace Rudd
 
         private void tbSingleLoadCell_Leave(object sender, EventArgs e)
         {
-            if (tbSingleLoadCell.Text.StartsWith("R"))
-            {
-                tbSingleLoadCell.Text = tbSingleLoadCell.Text.Replace("R", "");
-            }
+            removeR(tbSingleLoadCell);
 
             try
             {
-                Parts pSingleLoadCell = new Parts(cbxLoadCellKit.SelectedIndex, tbSingleLoadCellQty.Text, tbSingleLoadCell.Text, "single");
-                populateFields(pSingleLoadCell, cbxLoadCellKit.SelectedIndex, tbSingleLoadCellQty.Text, tbSingleLoadCell.Text, 
-                                "single", tbSingleLoadCell, tbSingleLoadCellUnitCost, tbSingleLoadCellCost);
-                addLoadCellKitTotal(pSingleLoadCell.getSetPrice());
+                if (pSingleLoadCell == null)
+                {
+                    pSingleLoadCell = new Parts(cbxLoadCellKit.SelectedIndex, tbSingleLoadCellQty.Text, tbSingleLoadCell.Text, "single");
+                    populateFields(pSingleLoadCell, cbxLoadCellKit.SelectedIndex, tbSingleLoadCellQty.Text, tbSingleLoadCell.Text,
+                                    "single", tbSingleLoadCell, tbSingleLoadCellUnitCost, tbSingleLoadCellCost);
+                    addLoadCellKitTotal(pSingleLoadCell.getSetPrice());
+                }
+                else
+                {
+                    subtractLoadCellKitTotal(pSingleLoadCell.getSetPrice());
+                    pSingleLoadCell.setPrice(tbSingleLoadCell.Text);
+                    populateFields(pSingleLoadCell, cbxLoadCellKit.SelectedIndex, tbSingleLoadCellQty.Text, tbSingleLoadCell.Text,
+                                    "single", tbSingleLoadCell, tbSingleLoadCellUnitCost, tbSingleLoadCellCost);
+                    addLoadCellKitTotal(pSingleLoadCell.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -794,17 +803,25 @@ namespace Rudd
 
         private void tbCable100A_Leave(object sender, EventArgs e)
         {
-            if (tbCable100A.Text.StartsWith("R"))
-            {
-                tbCable100A.Text = tbCable100A.Text.Replace("R", "");
-            }
+            removeR(tbCable100A);
 
             try
             {
-                Parts pCable100A = new Parts(cbxLoadCellKit.SelectedIndex, tbCable100AQty.Text, tbCable100A.Text, "single");
-                populateFields(pCable100A, cbxLoadCellKit.SelectedIndex, tbCable100AQty.Text, tbCable100A.Text,
-                                "single", tbCable100A, tbCable100AUnitCost, tbCable100ACost);
-                addLoadCellKitTotal(pCable100A.getSetPrice());
+                if (pCable100A == null)
+                {
+                    pCable100A = new Parts(cbxLoadCellKit.SelectedIndex, tbCable100AQty.Text, tbCable100A.Text, "single");
+                    populateFields(pCable100A, cbxLoadCellKit.SelectedIndex, tbCable100AQty.Text, tbCable100A.Text,
+                                    "single", tbCable100A, tbCable100AUnitCost, tbCable100ACost);
+                    addLoadCellKitTotal(pCable100A.getSetPrice());
+                }
+                else
+                {
+                    subtractLoadCellKitTotal(pCable100A.getSetPrice());
+                    pCable100A.setPrice(tbCable100A.Text);
+                    populateFields(pCable100A, cbxLoadCellKit.SelectedIndex, tbCable100AQty.Text, tbCable100A.Text,
+                                    "single", tbCable100A, tbCable100AUnitCost, tbCable100ACost);
+                    addLoadCellKitTotal(pCable100A.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -819,17 +836,25 @@ namespace Rudd
 
         private void tbSpring_Leave(object sender, EventArgs e)
         {
-            if (tbSpring.Text.StartsWith("R"))
-            {
-                tbSpring.Text = tbSpring.Text.Replace("R", "");
-            }
+            removeR(tbSpring);
 
             try
             {
-                Parts pSpring = new Parts(cbxLoadCellKit.SelectedIndex, tbSpringQty.Text, tbSpring.Text, "single");
-                populateFields(pSpring, cbxLoadCellKit.SelectedIndex, tbSpringQty.Text, tbSpring.Text,
-                                "single", tbSpring, tbSpringUnitCost, tbSpringCost);
-                addLoadCellKitTotal(pSpring.getSetPrice());
+                if (pSpring == null)
+                {
+                    pSpring = new Parts(cbxLoadCellKit.SelectedIndex, tbSpringQty.Text, tbSpring.Text, "single");
+                    populateFields(pSpring, cbxLoadCellKit.SelectedIndex, tbSpringQty.Text, tbSpring.Text,
+                                    "single", tbSpring, tbSpringUnitCost, tbSpringCost);
+                    addLoadCellKitTotal(pSpring.getSetPrice());
+                }
+                else
+                {
+                    subtractLoadCellKitTotal(pSpring.getSetPrice());
+                    pSpring.setPrice(tbSpring.Text);
+                    populateFields(pSpring, cbxLoadCellKit.SelectedIndex, tbSpringQty.Text, tbSpring.Text,
+                                    "single", tbSpring, tbSpringUnitCost, tbSpringCost);
+                    addLoadCellKitTotal(pSpring.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -844,17 +869,25 @@ namespace Rudd
 
         private void tbAmphenolPlugs_Leave(object sender, EventArgs e)
         {
-            if (tbAmphenolPlugs.Text.StartsWith("R"))
-            {
-                tbAmphenolPlugs.Text = tbAmphenolPlugs.Text.Replace("R", "");
-            }
+            removeR(tbAmphenolPlugs);
 
             try
             {
-                Parts pAmphenolPlugs = new Parts(cbxLoadCellKit.SelectedIndex, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text, "single");
-                populateFields(pAmphenolPlugs, cbxLoadCellKit.SelectedIndex, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text,
-                                "single", tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
-                addLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                if (pAmphenolPlugs == null)
+                {
+                    pAmphenolPlugs = new Parts(cbxLoadCellKit.SelectedIndex, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text, "single");
+                    populateFields(pAmphenolPlugs, cbxLoadCellKit.SelectedIndex, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text,
+                                    "single", tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
+                    addLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                }
+                else
+                {
+                    subtractLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                    pAmphenolPlugs.setPrice(tbAmphenolPlugs.Text);
+                    populateFields(pAmphenolPlugs, cbxLoadCellKit.SelectedIndex, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text,
+                                   "single", tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
+                    addLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -869,17 +902,25 @@ namespace Rudd
 
         private void tbAmphenolCaps_Leave(object sender, EventArgs e)
         {
-            if (tbAmphenolCaps.Text.StartsWith("R"))
-            {
-                tbAmphenolCaps.Text = tbAmphenolCaps.Text.Replace("R", "");
-            }
+            removeR(tbAmphenolCaps);
 
             try
             {
-                Parts pAmphenolCaps = new Parts(cbxLoadCellKit.SelectedIndex, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text, "single");
-                populateFields(pAmphenolCaps, cbxLoadCellKit.SelectedIndex, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text,
-                                "single", tbAmphenolCaps, tbAmphenolCapsUnitCost, tbAmphenolCapsCost);
-                addLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                if (pAmphenolCaps == null)
+                {
+                    pAmphenolCaps = new Parts(cbxLoadCellKit.SelectedIndex, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text, "single");
+                    populateFields(pAmphenolCaps, cbxLoadCellKit.SelectedIndex, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text,
+                                    "single", tbAmphenolCaps, tbAmphenolCapsUnitCost, tbAmphenolCapsCost);
+                    addLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                }
+                else
+                {
+                    subtractLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                    pAmphenolCaps.setPrice(tbAmphenolCaps.Text);
+                    populateFields(pAmphenolCaps, cbxLoadCellKit.SelectedIndex, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text,
+                                    "single", tbAmphenolCaps, tbAmphenolCapsUnitCost, tbAmphenolCapsCost);
+                    addLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -969,16 +1010,24 @@ namespace Rudd
 
         private void tbFlatA_Leave(object sender, EventArgs e)
         {
-            if (tbFlatA.Text.StartsWith("R"))
-            {
-                tbFlatA.Text = tbFlatA.Text.Replace("R", "");
-            }
+            removeR(tbFlatA);
 
             try
             {
-                FlatBar pFlatA = new FlatBar(tbFlatA.Text, tbFlatAQty.Text, tbFlatAUnit.Text);
-                populateFlatBarFields(pFlatA, tbFlatA, tbFlatAMeter, tbFlatACost);
-                addFlatBarMSTotal(pFlatA.getCostperUnit());
+                if (pFlatA == null)
+                {
+                    pFlatA = new FlatBar(tbFlatA.Text, tbFlatAQty.Text, tbFlatAUnit.Text);
+                    populateFlatBarFields(pFlatA, tbFlatA, tbFlatAMeter, tbFlatACost);
+                    addFlatBarMSTotal(pFlatA.getCostperUnit());
+                }
+                else
+                {
+                    subtractFlatBarMSTotal(pFlatA.getCostperUnit());
+                    pFlatA = new FlatBar(tbFlatA.Text, tbFlatAQty.Text, tbFlatAUnit.Text);
+                    pFlatA.setPrice(tbFlatA.Text);
+                    populateFlatBarFields(pFlatA, tbFlatA, tbFlatAMeter, tbFlatACost);
+                    addFlatBarMSTotal(pFlatA.getCostperUnit());
+                }
             }
             catch (FormatException)
             {
@@ -993,16 +1042,24 @@ namespace Rudd
 
         private void tbFlatB_Leave(object sender, EventArgs e)
         {
-            if (tbFlatB.Text.StartsWith("R"))
-            {
-                tbFlatB.Text = tbFlatB.Text.Replace("R", "");
-            }
+            removeR(tbFlatB);
 
             try
             {
-                FlatBar pFlatB = new FlatBar(tbFlatB.Text, tbFlatBQty.Text, tbFlatBUnit.Text);
-                populateFlatBarFields(pFlatB, tbFlatB, tbFlatBMeter, tbFlatBCost);
-                addFlatBarMSTotal(pFlatB.getCostperUnit());
+                if (pFlatB == null)
+                {
+                    pFlatB = new FlatBar(tbFlatB.Text, tbFlatBQty.Text, tbFlatBUnit.Text);
+                    populateFlatBarFields(pFlatB, tbFlatB, tbFlatBMeter, tbFlatBCost);
+                    addFlatBarMSTotal(pFlatB.getCostperUnit());
+                }
+                else
+                {
+                    subtractFlatBarMSTotal(pFlatB.getCostperUnit());
+                    pFlatB = new FlatBar(tbFlatB.Text, tbFlatBQty.Text, tbFlatBUnit.Text);
+                    pFlatB.setPrice(tbFlatB.Text);
+                    populateFlatBarFields(pFlatB, tbFlatB, tbFlatBMeter, tbFlatBCost);
+                    addFlatBarMSTotal(pFlatB.getCostperUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1017,16 +1074,24 @@ namespace Rudd
 
         private void tbFlatC_Leave(object sender, EventArgs e)
         {
-            if (tbFlatC.Text.StartsWith("R"))
-            {
-                tbFlatC.Text = tbFlatC.Text.Replace("R", "");
-            }
+            removeR(tbFlatC);
 
             try
             {
-                FlatBar pFlatC = new FlatBar(tbFlatC.Text, tbFlatCQty.Text, tbFlatCUnit.Text);
-                populateFlatBarFields(pFlatC, tbFlatC, tbFlatCMeter, tbFlatCCost);
-                addFlatBarMSTotal(pFlatC.getCostperUnit());
+                if (pFlatC == null)
+                {
+                    pFlatC = new FlatBar(tbFlatC.Text, tbFlatCQty.Text, tbFlatCUnit.Text);
+                    populateFlatBarFields(pFlatC, tbFlatC, tbFlatCMeter, tbFlatCCost);
+                    addFlatBarMSTotal(pFlatC.getCostperUnit());
+                }
+                else
+                {
+                    subtractFlatBarMSTotal(pFlatC.getCostperUnit());
+                    pFlatC = new FlatBar(tbFlatC.Text, tbFlatCQty.Text, tbFlatCUnit.Text);
+                    pFlatC.setPrice(tbFlatC.Text);
+                    populateFlatBarFields(pFlatC, tbFlatC, tbFlatCMeter, tbFlatCCost);
+                    addFlatBarMSTotal(pFlatC.getCostperUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1041,16 +1106,24 @@ namespace Rudd
 
         private void tbFlatD_Leave(object sender, EventArgs e)
         {
-            if (tbFlatD.Text.StartsWith("R"))
-            {
-                tbFlatD.Text = tbFlatD.Text.Replace("R", "");
-            }
+            removeR(tbFlatD);
 
             try
             {
-                FlatBar pFlatD = new FlatBar(tbFlatD.Text, tbFlatDQty.Text, tbFlatDUnit.Text);
-                populateFlatBarFields(pFlatD, tbFlatD, tbFlatDMeter, tbFlatDCost);
-                addFlatBarMSTotal(pFlatD.getCostperUnit());
+                if (pFlatD == null)
+                {
+                    pFlatD = new FlatBar(tbFlatD.Text, tbFlatDQty.Text, tbFlatDUnit.Text);
+                    populateFlatBarFields(pFlatD, tbFlatD, tbFlatDMeter, tbFlatDCost);
+                    addFlatBarMSTotal(pFlatD.getCostperUnit());
+                }
+                else
+                {
+                    subtractFlatBarMSTotal(pFlatD.getCostperUnit());
+                    pFlatD = new FlatBar(tbFlatD.Text, tbFlatDQty.Text, tbFlatDUnit.Text);
+                    pFlatD.setPrice(tbFlatD.Text);
+                    populateFlatBarFields(pFlatD, tbFlatD, tbFlatDMeter, tbFlatDCost);
+                    addFlatBarMSTotal(pFlatD.getCostperUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1065,16 +1138,23 @@ namespace Rudd
 
         private void tbCuttingDiscs_Leave(object sender, EventArgs e)
         {
-            if (tbCuttingDiscs.Text.StartsWith("R"))
-            {
-                tbCuttingDiscs.Text = tbCuttingDiscs.Text.Replace("R", "");
-            }
-
+            removeR(tbCuttingDiscs);
+            
             try
             {
-                Sundries pCuttingDiscs = new Sundries(tbCuttingDiscsQty.Text, tbCuttingDiscs.Text, tbCuttingDiscsUnits.Text);
-                populateSundriesFields(pCuttingDiscs, tbCuttingDiscs,tbCuttingDiscsValue, tbCuttingDiscsCost);
-                addSundriesTotal(pCuttingDiscs.getCostPerUnit());
+                if (pCuttingDiscs == null)
+                {
+                    pCuttingDiscs = new Sundries(tbCuttingDiscsQty.Text, tbCuttingDiscs.Text, tbCuttingDiscsUnits.Text);
+                    populateSundriesFields(pCuttingDiscs, tbCuttingDiscs, tbCuttingDiscsValue, tbCuttingDiscsCost);
+                    addSundriesTotal(pCuttingDiscs.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pCuttingDiscs.getCostPerUnit());
+                    pCuttingDiscs.setPrice(tbCuttingDiscs.Text);
+                    populateSundriesFields(pCuttingDiscs, tbCuttingDiscs, tbCuttingDiscsValue, tbCuttingDiscsCost);
+                    addSundriesTotal(pCuttingDiscs.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1089,16 +1169,23 @@ namespace Rudd
 
         private void tbSanding_Leave(object sender, EventArgs e)
         {
-            if (tbSanding.Text.StartsWith("R"))
-            {
-                tbSanding.Text = tbSanding.Text.Replace("R", "");
-            }
+            removeR(tbSanding);
 
             try
             {
-                Sundries pSanding = new Sundries(tbSandingQty.Text, tbSanding.Text, tbSandingUnits.Text);
-                populateSundriesFields(pSanding, tbSanding, tbSandingValue, tbSandingCost);
-                addSundriesTotal(pSanding.getCostPerUnit());
+                if (pSanding == null)
+                {
+                    pSanding = new Sundries(tbSandingQty.Text, tbSanding.Text, tbSandingUnits.Text);
+                    populateSundriesFields(pSanding, tbSanding, tbSandingValue, tbSandingCost);
+                    addSundriesTotal(pSanding.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pSanding.getCostPerUnit());
+                    pSanding.setPrice(tbSanding.Text);
+                    populateSundriesFields(pSanding, tbSanding, tbSandingValue, tbSandingCost);
+                    addSundriesTotal(pSanding.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1113,16 +1200,24 @@ namespace Rudd
 
         private void tbDrill_Leave(object sender, EventArgs e)
         {
-            if (tbDrill.Text.StartsWith("R"))
-            {
-                tbDrill.Text = tbDrill.Text.Replace("R", "");
-            }
+            removeR(tbDrill);
 
             try
             {
-                Sundries pDrill = new Sundries(tbDrillQty.Text, tbDrill.Text, tbDrillUnits.Text);
-                populateSundriesFields(pDrill, tbDrill, tbDrillValue, tbDrillCost);
-                addSundriesTotal(pDrill.getCostPerUnit());
+                if (pDrill == null)
+                {
+                    pDrill = new Sundries(tbDrillQty.Text, tbDrill.Text, tbDrillUnits.Text);
+                    populateSundriesFields(pDrill, tbDrill, tbDrillValue, tbDrillCost);
+                    addSundriesTotal(pDrill.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pDrill.getCostPerUnit());
+                    pDrill.setPrice(tbDrill.Text);
+                    populateSundriesFields(pDrill, tbDrill, tbDrillValue, tbDrillCost);
+                    addSundriesTotal(pDrill.getCostPerUnit());
+                }
+
             }
             catch (FormatException)
             {
@@ -1137,16 +1232,23 @@ namespace Rudd
 
         private void tbTap_Leave(object sender, EventArgs e)
         {
-            if (tbTap.Text.StartsWith("R"))
-            {
-                tbTap.Text = tbTap.Text.Replace("R", "");
-            }
+            removeR(tbTap);
 
             try
             {
-                Sundries pTap = new Sundries(tbTapQty.Text, tbTap.Text, tbTapUnits.Text);
-                populateSundriesFields(pTap, tbTap, tbTapValue, tbTapCost);
-                addSundriesTotal(pTap.getCostPerUnit());
+                if (pTap == null)
+                {
+                    pTap = new Sundries(tbTapQty.Text, tbTap.Text, tbTapUnits.Text);
+                    populateSundriesFields(pTap, tbTap, tbTapValue, tbTapCost);
+                    addSundriesTotal(pTap.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pTap.getCostPerUnit());
+                    pTap.setPrice(tbTap.Text);
+                    populateSundriesFields(pTap, tbTap, tbTapValue, tbTapCost);
+                    addSundriesTotal(pTap.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1161,17 +1263,24 @@ namespace Rudd
 
         private void tbGlue_Leave(object sender, EventArgs e)
         {
-            if (tbGlue.Text.StartsWith("R"))
-            {
-                tbGlue.Text = tbGlue.Text.Replace("R", "");
-            }
+            removeR(tbGlue);
 
-           
+
             try
             {
-                Sundries pGlue = new Sundries(tbGlueQty.Text, tbGlue.Text, tbGlueUnits.Text);
-                populateSundriesFields(pGlue, tbGlue, tbGlueValue, tbGlueCost);
-                addSundriesTotal(pGlue.getCostPerUnit());
+                if (pGlue == null)
+                {
+                    pGlue = new Sundries(tbGlueQty.Text, tbGlue.Text, tbGlueUnits.Text);
+                    populateSundriesFields(pGlue, tbGlue, tbGlueValue, tbGlueCost);
+                    addSundriesTotal(pGlue.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pGlue.getCostPerUnit());
+                    pGlue.setPrice(tbGlue.Text);
+                    populateSundriesFields(pGlue, tbGlue, tbGlueValue, tbGlueCost);
+                    addSundriesTotal(pGlue.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1186,16 +1295,23 @@ namespace Rudd
 
         private void tbPottingBox_Leave(object sender, EventArgs e)
         {
-            if (tbPottingBox.Text.StartsWith("R"))
-            {
-                tbPottingBox.Text = tbPottingBox.Text.Replace("R", "");
-            }
+            removeR(tbPottingBox);
 
             try
             {
-                Sundries pPottingBox = new Sundries(tbPottingBoxQty.Text, tbPottingBox.Text, tbPottingBoxUnits.Text);
-                populateSundriesFields(pPottingBox, tbPottingBox, tbPottingBoxValue, tbPottingBoxCost);
-                addSundriesTotal(pPottingBox.getCostPerUnit());
+                if (pPottingBox == null)
+                {
+                    pPottingBox = new Sundries(tbPottingBoxQty.Text, tbPottingBox.Text, tbPottingBoxUnits.Text);
+                    populateSundriesFields(pPottingBox, tbPottingBox, tbPottingBoxValue, tbPottingBoxCost);
+                    addSundriesTotal(pPottingBox.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pPottingBox.getCostPerUnit());
+                    pPottingBox.setPrice(tbPottingBox.Text);
+                    populateSundriesFields(pPottingBox, tbPottingBox, tbPottingBoxValue, tbPottingBoxCost);
+                    addSundriesTotal(pPottingBox.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1210,16 +1326,23 @@ namespace Rudd
 
         private void tbWireLead_Leave(object sender, EventArgs e)
         {
-            if (tbWireLead.Text.StartsWith("R"))
-            {
-                tbWireLead.Text = tbWireLead.Text.Replace("R", "");
-            }
+            removeR(tbWireLead);
 
             try
             {
-                Sundries pWireLead = new Sundries(tbWireLeadQty.Text, tbWireLead.Text, tbWireLeadUnits.Text);
-                populateSundriesFields(pWireLead, tbWireLead, tbWireLeadValue, tbWireLeadCost);
-                addSundriesTotal(pWireLead.getCostPerUnit());
+                if (pWireLead == null)
+                {
+                    pWireLead = new Sundries(tbWireLeadQty.Text, tbWireLead.Text, tbWireLeadUnits.Text);
+                    populateSundriesFields(pWireLead, tbWireLead, tbWireLeadValue, tbWireLeadCost);
+                    addSundriesTotal(pWireLead.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pWireLead.getCostPerUnit());
+                    pWireLead.setPrice(tbWireLead.Text);
+                    populateSundriesFields(pWireLead, tbWireLead, tbWireLeadValue, tbWireLeadCost);
+                    addSundriesTotal(pWireLead.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1234,16 +1357,23 @@ namespace Rudd
 
         private void tbTapmatic_Leave(object sender, EventArgs e)
         {
-            if (tbTapmatic.Text.StartsWith("R"))
-            {
-                tbTapmatic.Text = tbTapmatic.Text.Replace("R", "");
-            }
+            removeR(tbTapmatic);
 
             try
             {
-                Sundries pTapmatic = new Sundries(tbTapmaticQty.Text, tbTapmatic.Text, tbTapmaticUnits.Text);
-                populateSundriesFields(pTapmatic, tbTapmatic, tbTapmaticValue, tbTapmaticCost);
-                addSundriesTotal(pTapmatic.getCostPerUnit());
+                if (pTapmatic == null)
+                {
+                    pTapmatic = new Sundries(tbTapmaticQty.Text, tbTapmatic.Text, tbTapmaticUnits.Text);
+                    populateSundriesFields(pTapmatic, tbTapmatic, tbTapmaticValue, tbTapmaticCost);
+                    addSundriesTotal(pTapmatic.getCostPerUnit());
+                }
+                else
+                {
+                    subtractSundriesTotal(pTapmatic.getCostPerUnit());
+                    pTapmatic.setPrice(tbTapmatic.Text);
+                    populateSundriesFields(pTapmatic, tbTapmatic, tbTapmaticValue, tbTapmaticCost);
+                    addSundriesTotal(pTapmatic.getCostPerUnit());
+                }
             }
             catch (FormatException)
             {
@@ -1286,16 +1416,6 @@ namespace Rudd
             clearTextbox(tbStickers, tbStickersCost, tbStickersCost);
             clearTextbox(tbLabour, tbLabourCost, tbLabourCost);
 
-            tbSubtotal.Text = "";
-            tbMarkUpTotal.Text = "";
-            tbTotalCost.Text = "";
-            dSubtotal = 0;
-            dMarkUp = 0;
-            dTotal = 0;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             //Loadcell Kit Costing
             clearTextbox(tbSingleLoadCell, tbSingleLoadCellUnitCost, tbSingleLoadCellCost);
             clearTextbox(tbCable100A, tbCable100AUnitCost, tbCable100ACost);
@@ -1310,12 +1430,6 @@ namespace Rudd
             clearTextbox(tbPlugsQBooks, tbPlugsQBooks, tbPlugsQBooks);
             clearTextbox(tbCapsQBooks, tbCapsQBooks, tbCapsQBooks);
 
-            tbLoadCellSubtotal.Text = "";
-            dLoadCellSubTotal = 0;
-        }
-
-        private void bClearWorkings_Click(object sender, EventArgs e)
-        {
             //Workings
             clearTextbox(tbCuttingDiscs, tbCuttingDiscsCost, tbCuttingDiscsCost);
             clearTextbox(tbSanding, tbSandingCost, tbSandingCost);
@@ -1334,7 +1448,21 @@ namespace Rudd
             tbSundriesTotal.Text = "";
             dFlatBarMSTotal = 0;
             dSundriesTotal = 0;
-        }
+
+            tbLoadCellSubtotal.Text = "";
+            dLoadCellSubTotal = 0;
+
+            tbSubtotal.Text = "";
+            tbMarkUpTotal.Text = "";
+            tbTotalCost.Text = "";
+            dSubtotal = 0;
+            dMarkUp = 0;
+            dTotal = 0;
+
+            
+
+
+    }
 
         private void bSavePDF_Click(object sender, EventArgs e)
         {
@@ -1846,6 +1974,12 @@ namespace Rudd
             addTotalCost(dLoadCellSubTotal);
         }
 
+        private void subtractLoadCellKitTotal(Double price)
+        {
+            dLoadCellSubTotal = dLoadCellSubTotal - price;
+            tbLoadCellSubtotal.Text = setText(dLoadCellSubTotal.ToString());
+        }
+
         private void addFlatBarMSTotal(Double price)
         {
             dFlatBarMSTotal = dFlatBarMSTotal + price;
@@ -1853,11 +1987,23 @@ namespace Rudd
             addTotalCost(dFlatBarMSTotal);
         }
 
+        private void subtractFlatBarMSTotal(Double price)
+        {
+            dFlatBarMSTotal = dFlatBarMSTotal - price;
+            tbFlatBarMSTotal.Text = setText(dFlatBarMSTotal.ToString());
+        }
+
         private void addSundriesTotal(Double price)
         {
             dSundriesTotal = dSundriesTotal + price;
             tbSundriesTotal.Text = setText(dSundriesTotal.ToString());
             addTotalCost(dSundriesTotal);
+        }
+
+        private void subtractSundriesTotal(Double price)
+        {
+            dSundriesTotal = dSundriesTotal - price;
+            tbSundriesTotal.Text = setText(dSundriesTotal.ToString());
         }
 
         private void addTotalCost(Double price)

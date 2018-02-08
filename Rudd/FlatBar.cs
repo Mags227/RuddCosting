@@ -33,5 +33,10 @@ namespace Rudd
             dCostperUnit = dPrice / dUnitSize;
             return dCostperUnit;
         }
+
+        public void setPrice(String price)
+        {
+            this.dPrice = Double.Parse(price.Replace(".", ","));
+        }
     }
 }

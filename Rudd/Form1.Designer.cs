@@ -69,7 +69,6 @@
             this.tbCable100AQty = new System.Windows.Forms.TextBox();
             this.tbCable100AUnitCost = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label81 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
@@ -84,7 +83,6 @@
             this.label84 = new System.Windows.Forms.Label();
             this.tbLoadCellSubtotal = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.bClearWorkings = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tbTapmaticCost = new System.Windows.Forms.TextBox();
             this.tbWireLeadCost = new System.Windows.Forms.TextBox();
@@ -178,7 +176,6 @@
             this.label102 = new System.Windows.Forms.Label();
             this.tabA = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.bRetry = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStan = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -317,6 +314,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.bRetry = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tbFlatBarMSTotal = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
@@ -513,7 +511,6 @@
             this.tabC.Controls.Add(this.tbCable100AQty);
             this.tabC.Controls.Add(this.tbCable100AUnitCost);
             this.tabC.Controls.Add(this.label85);
-            this.tabC.Controls.Add(this.button1);
             this.tabC.Controls.Add(this.label81);
             this.tabC.Controls.Add(this.label72);
             this.tabC.Controls.Add(this.label73);
@@ -803,17 +800,6 @@
             this.label85.TabIndex = 156;
             this.label85.Text = "QBooks";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 647);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 39);
-            this.button1.TabIndex = 152;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label81
             // 
             this.label81.AutoSize = true;
@@ -949,7 +935,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.bClearWorkings);
             this.tabPage1.Controls.Add(this.groupBox10);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -959,17 +944,6 @@
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Workings";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // bClearWorkings
-            // 
-            this.bClearWorkings.Location = new System.Drawing.Point(15, 671);
-            this.bClearWorkings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bClearWorkings.Name = "bClearWorkings";
-            this.bClearWorkings.Size = new System.Drawing.Size(163, 39);
-            this.bClearWorkings.TabIndex = 140;
-            this.bClearWorkings.Text = "Clear";
-            this.bClearWorkings.UseVisualStyleBackColor = true;
-            this.bClearWorkings.Click += new System.EventHandler(this.bClearWorkings_Click);
             // 
             // groupBox10
             // 
@@ -1997,7 +1971,6 @@
             // tabA
             // 
             this.tabA.Controls.Add(this.label1);
-            this.tabA.Controls.Add(this.bRetry);
             this.tabA.Controls.Add(this.tabControl1);
             this.tabA.Controls.Add(this.groupBox4);
             this.tabA.Controls.Add(this.groupBox7);
@@ -2024,17 +1997,6 @@
             this.label1.Size = new System.Drawing.Size(309, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Steelwork Costing";
-            // 
-            // bRetry
-            // 
-            this.bRetry.Location = new System.Drawing.Point(13, 670);
-            this.bRetry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bRetry.Name = "bRetry";
-            this.bRetry.Size = new System.Drawing.Size(163, 39);
-            this.bRetry.TabIndex = 107;
-            this.bRetry.Text = "Clear";
-            this.bRetry.UseVisualStyleBackColor = true;
-            this.bRetry.Click += new System.EventHandler(this.bRetry_Click);
             // 
             // tabControl1
             // 
@@ -3581,6 +3543,17 @@
             this.label40.TabIndex = 46;
             this.label40.Text = "Cost per set";
             // 
+            // bRetry
+            // 
+            this.bRetry.Location = new System.Drawing.Point(55, 867);
+            this.bRetry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bRetry.Name = "bRetry";
+            this.bRetry.Size = new System.Drawing.Size(163, 39);
+            this.bRetry.TabIndex = 107;
+            this.bRetry.Text = "Clear";
+            this.bRetry.UseVisualStyleBackColor = true;
+            this.bRetry.Click += new System.EventHandler(this.bRetry_Click);
+            // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.tabA);
@@ -3620,6 +3593,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1371, 921);
             this.Controls.Add(this.tbFlatBarMSTotal);
+            this.Controls.Add(this.bRetry);
             this.Controls.Add(this.label48);
             this.Controls.Add(this.bSavePDF);
             this.Controls.Add(this.tbSubtotal);
@@ -3720,7 +3694,6 @@
         private System.Windows.Forms.TextBox tbCable100AUnitCost;
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label73;
@@ -3733,7 +3706,6 @@
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button bClearWorkings;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox tbTapmaticCost;
         private System.Windows.Forms.TextBox tbWireLeadCost;

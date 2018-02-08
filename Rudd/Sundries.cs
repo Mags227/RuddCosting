@@ -32,5 +32,10 @@ namespace Rudd
             costPerUnit = sSubValue / unitsPerMonth;
             return costPerUnit;
         }
+
+        public void setPrice(String price)
+        {
+            this.sUnitPrice = Double.Parse(price.Replace(".", ","));
+        }
     }
 }
