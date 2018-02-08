@@ -20,8 +20,11 @@ namespace Rudd
     {
         private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
         private Parts pBraces = null;
-        private Parts pFeetBar = null;
-        
+        private Parts pFeetBar, pPetrol, pElecGlovGog, pStickers, pLabour = null;
+        private Parts pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
+
+
+
         public Rudd()
         {
             InitializeComponent();
@@ -122,16 +125,24 @@ namespace Rudd
 
         private void tbLoadcell_Leave(object sender, EventArgs e)
         {
-            if (tbLoadcell.Text.StartsWith("R"))
-            {
-                tbLoadcell.Text = tbLoadcell.Text.Replace("R", "");
-            }
+            removeR(tbLoadcell);
 
             try
             {
-                Parts pLoadcell = new Parts(cbxSteelType.SelectedIndex, tbLoadcellQty.Text, tbLoadcell.Text, "loadcell");
-                populateFields(pLoadcell, cbxSteelType.SelectedIndex, tbLoadcellQty.Text, tbLoadcell.Text, "loadcell", tbLoadcell, tbLoadcellUnitCost, tbLoadcellSetCost);
-                addSubtotal(pLoadcell.getSetPrice());
+                
+                if (pLoadcell == null)
+                {
+                    pLoadcell = new Parts(cbxSteelType.SelectedIndex, tbLoadcellQty.Text, tbLoadcell.Text, "loadcell");
+                    populateFields(pLoadcell, cbxSteelType.SelectedIndex, tbLoadcellQty.Text, tbLoadcell.Text, "loadcell", tbLoadcell, tbLoadcellUnitCost, tbLoadcellSetCost);
+                    addSubtotal(pLoadcell.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pLoadcell.getSetPrice());
+                    pLoadcell.setPrice(tbLoadcell.Text);
+                    populateFields(pLoadcell, cbxSteelType.SelectedIndex, tbLoadcellQty.Text, tbLoadcell.Text, "loadcell", tbLoadcell, tbLoadcellUnitCost, tbLoadcellSetCost);
+                    addSubtotal(pLoadcell.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -147,16 +158,23 @@ namespace Rudd
 
         private void tbPotting_Leave(object sender, EventArgs e)
         {
-            if (tbPotting.Text.StartsWith("R"))
-            {
-                tbPotting.Text = tbPotting.Text.Replace("R", "");
-            }
+            removeR(tbPotting);
 
             try
             {
-                Parts pPotting = new Parts(cbxSteelType.SelectedIndex, tbPottingQty.Text, tbPotting.Text, "potting");
-                populateFields(pPotting, cbxSteelType.SelectedIndex, tbPottingQty.Text, tbPotting.Text, "potting", tbPotting, tbPottingUnitCost, tbPottingSetCost);
-                addSubtotal(pPotting.getSetPrice());
+                if (pPotting == null)
+                {
+                    pPotting = new Parts(cbxSteelType.SelectedIndex, tbPottingQty.Text, tbPotting.Text, "potting");
+                    populateFields(pPotting, cbxSteelType.SelectedIndex, tbPottingQty.Text, tbPotting.Text, "potting", tbPotting, tbPottingUnitCost, tbPottingSetCost);
+                    addSubtotal(pPotting.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pPotting.getSetPrice());
+                    pPotting.setPrice(tbPotting.Text);
+                    populateFields(pPotting, cbxSteelType.SelectedIndex, tbPottingQty.Text, tbPotting.Text, "potting", tbPotting, tbPottingUnitCost, tbPottingSetCost);
+                    addSubtotal(pPotting.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -172,16 +190,23 @@ namespace Rudd
 
         private void tbCable_Leave(object sender, EventArgs e)
         {
-            if (tbCable.Text.StartsWith("R"))
-            {
-                tbCable.Text = tbCable.Text.Replace("R", "");
-            }
+            removeR(tbCable);
 
             try
             {
-                Parts pCable = new Parts(cbxSteelType.SelectedIndex, tbCableQty.Text, tbCable.Text, "cable");
-                populateFields(pCable, cbxSteelType.SelectedIndex, tbCableQty.Text, tbCable.Text, "cable", tbCable, tbCableUnitCost, tbCableSetCost);
-                addSubtotal(pCable.getSetPrice());
+                if (pCable == null)
+                {
+                    pCable = new Parts(cbxSteelType.SelectedIndex, tbCableQty.Text, tbCable.Text, "cable");
+                    populateFields(pCable, cbxSteelType.SelectedIndex, tbCableQty.Text, tbCable.Text, "cable", tbCable, tbCableUnitCost, tbCableSetCost);
+                    addSubtotal(pCable.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pCable.getSetPrice());
+                    pCable.setPrice(tbCable.Text);
+                    populateFields(pCable, cbxSteelType.SelectedIndex, tbCableQty.Text, tbCable.Text, "cable", tbCable, tbCableUnitCost, tbCableSetCost);
+                    addSubtotal(pCable.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -197,16 +222,23 @@ namespace Rudd
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            if (tbCutting.Text.StartsWith("R"))
-            {
-                tbCutting.Text = tbCutting.Text.Replace("R", "");
-            }
+            removeR(tbCutting);
 
             try
             {
-                Parts pCutting = new Parts(cbxSteelType.SelectedIndex, "1", tbCutting.Text, "single");
-                populateFields(pCutting, cbxSteelType.SelectedIndex, "1", tbCutting.Text, "single", tbCutting, tbCuttingCost, tbCuttingCost);
-                addSubtotal(pCutting.getSetPrice());
+                if (pCutting == null)
+                {
+                    pCutting = new Parts(cbxSteelType.SelectedIndex, "1", tbCutting.Text, "single");
+                    populateFields(pCutting, cbxSteelType.SelectedIndex, "1", tbCutting.Text, "single", tbCutting, tbCuttingCost, tbCuttingCost);
+                    addSubtotal(pCutting.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pCutting.getSetPrice());
+                    pCutting.setPrice(tbCutting.Text);
+                    populateFields(pCutting, cbxSteelType.SelectedIndex, "1", tbCutting.Text, "single", tbCutting, tbCuttingCost, tbCuttingCost);
+                    addSubtotal(pCutting.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -220,16 +252,23 @@ namespace Rudd
 
         private void tbFeet_Leave(object sender, EventArgs e)
         {
-            if (tbFeet.Text.StartsWith("R"))
-            {
-                tbFeet.Text = tbFeet.Text.Replace("R", "");
-            }
+            removeR(tbFeet);
 
             try
             {
-                Parts pFeet = new Parts(cbxSteelType.SelectedIndex, "1", tbFeet.Text, "single");
-                populateFields(pFeet, cbxSteelType.SelectedIndex, "1", tbFeet.Text, "single", tbFeet, tbFeetCost, tbFeetCost);
-                addSubtotal(pFeet.getSetPrice());
+                if (pFeet == null)
+                {
+                    pFeet = new Parts(cbxSteelType.SelectedIndex, "1", tbFeet.Text, "single");
+                    populateFields(pFeet, cbxSteelType.SelectedIndex, "1", tbFeet.Text, "single", tbFeet, tbFeetCost, tbFeetCost);
+                    addSubtotal(pFeet.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pFeet.getSetPrice());
+                    pFeet.setPrice(tbFeet.Text);
+                    populateFields(pFeet, cbxSteelType.SelectedIndex, "1", tbFeet.Text, "single", tbFeet, tbFeetCost, tbFeetCost);
+                    addSubtotal(pFeet.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -244,16 +283,23 @@ namespace Rudd
 
         private void tbScrews_Leave(object sender, EventArgs e)
         {
-            if (tbScrews.Text.StartsWith("R"))
-            {
-                tbScrews.Text = tbScrews.Text.Replace("R", "");
-            }
+            removeR(tbScrews);
 
             try
             {
-                Parts pScrews = new Parts(cbxSteelType.SelectedIndex, tbScrewsQty.Text, tbScrews.Text, "single");
-                populateFields(pScrews, cbxSteelType.SelectedIndex, tbScrewsQty.Text, tbScrews.Text, "single", tbScrews, tbScrewsCost, tbScrewsCost);
-                addSubtotal(pScrews.getSetPrice());
+                if (pScrews == null)
+                {
+                    pScrews = new Parts(cbxSteelType.SelectedIndex, tbScrewsQty.Text, tbScrews.Text, "single");
+                    populateFields(pScrews, cbxSteelType.SelectedIndex, tbScrewsQty.Text, tbScrews.Text, "single", tbScrews, tbScrewsCost, tbScrewsCost);
+                    addSubtotal(pScrews.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pScrews.getSetPrice());
+                    pScrews.setPrice(tbScrews.Text);
+                    populateFields(pScrews, cbxSteelType.SelectedIndex, tbScrewsQty.Text, tbScrews.Text, "single", tbScrews, tbScrewsCost, tbScrewsCost);
+                    addSubtotal(pScrews.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -268,16 +314,23 @@ namespace Rudd
 
         private void tbWeildingGas_Leave(object sender, EventArgs e)
         {
-            if (tbWeildingGas.Text.StartsWith("R"))
-            {
-                tbWeildingGas.Text = tbWeildingGas.Text.Replace("R", "");
-            }
+            removeR(tbWeildingGas);
 
             try
             {
-                Parts pWeildingGas = new Parts(cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas");
-                populateFields(pWeildingGas, cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas", tbWeildingGas, tbWeildingGasCost, tbWeildingGasCost);
-                addSubtotal(pWeildingGas.getSetPrice());
+                if (pWeildingGas == null)
+                {
+                    pWeildingGas = new Parts(cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas");
+                    populateFields(pWeildingGas, cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas", tbWeildingGas, tbWeildingGasCost, tbWeildingGasCost);
+                    addSubtotal(pWeildingGas.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pWeildingGas.getSetPrice());
+                    pWeildingGas.setPrice(tbWeildingGas.Text);
+                    populateFields(pWeildingGas, cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas", tbWeildingGas, tbWeildingGasCost, tbWeildingGasCost);
+                    addSubtotal(pWeildingGas.getSetPrice());
+                }
             }
 
             catch (FormatException)
@@ -293,16 +346,23 @@ namespace Rudd
 
         private void tbWeildingWire_Leave(object sender, EventArgs e)
         {
-            if (tbWeildingWire.Text.StartsWith("R"))
-            {
-                tbWeildingWire.Text = tbWeildingWire.Text.Replace("R", "");
-            }
+            removeR(tbWeildingWire);
 
             try
             {
-                Parts pWeildingWire = new Parts(cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire");
-                populateFields(pWeildingWire, cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire", tbWeildingWire, tbWeildingWireCost, tbWeildingWireCost);
-                addSubtotal(pWeildingWire.getSetPrice());
+                if (pWeildingWire == null)
+                {
+                    pWeildingWire = new Parts(cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire");
+                    populateFields(pWeildingWire, cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire", tbWeildingWire, tbWeildingWireCost, tbWeildingWireCost);
+                    addSubtotal(pWeildingWire.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pWeildingWire.getSetPrice());
+                    pWeildingWire.setPrice(tbWeildingWire.Text);
+                    populateFields(pWeildingWire, cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire", tbWeildingWire, tbWeildingWireCost, tbWeildingWireCost);
+                    addSubtotal(pWeildingWire.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -317,16 +377,23 @@ namespace Rudd
 
         private void tbGalvanising_Leave(object sender, EventArgs e)
         {
-            if (tbGalvanising.Text.StartsWith("R"))
-            {
-                tbGalvanising.Text = tbGalvanising.Text.Replace("R", "");
-            }
+            removeR(tbGalvanising);
 
             try
             {
-                Parts pGalvanising = new Parts(cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising");
-                populateFields(pGalvanising, cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising", tbGalvanising, tbGalvanisingCost, tbGalvanisingCost);
-                addSubtotal(pGalvanising.getSetPrice());
+                if (pGalvanising == null)
+                {
+                    pGalvanising = new Parts(cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising");
+                    populateFields(pGalvanising, cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising", tbGalvanising, tbGalvanisingCost, tbGalvanisingCost);
+                    addSubtotal(pGalvanising.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pGalvanising.getSetPrice());
+                    pGalvanising.setPrice(tbGalvanising.Text);
+                    populateFields(pGalvanising, cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising", tbGalvanising, tbGalvanisingCost, tbGalvanisingCost);
+                    addSubtotal(pGalvanising.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -340,17 +407,24 @@ namespace Rudd
 
         private void tbPetrol_Leave(object sender, EventArgs e)
         {
-            if (tbPetrol.Text.StartsWith("R"))
-            {
-                tbPetrol.Text = tbPetrol.Text.Replace("R", "");
-            }
+            removeR(tbPetrol);
 
             try
             {
-                Parts pPetrol = new Parts(cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol");
-                populateFields(pPetrol, cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
-                tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
-                addSubtotal(pPetrol.getSetPrice());
+                if (pPetrol == null)
+                {
+                    pPetrol = new Parts(cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol");
+                    populateFields(pPetrol, cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
+                    //tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
+                    addSubtotal(pPetrol.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pPetrol.getSetPrice());
+                    populateFields(pPetrol, cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
+                    //tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
+                    addSubtotal(pPetrol.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -364,16 +438,23 @@ namespace Rudd
 
         private void tbElecGlovGog_Leave(object sender, EventArgs e)
         {
-            if (tbElecGlovGog.Text.StartsWith("R"))
-            {
-                tbElecGlovGog.Text = tbElecGlovGog.Text.Replace("R", "");
-            }
+            removeR(tbElecGlovGog);
 
             try
             {
-                Parts pElecGlovGog = new Parts(cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single");
-                populateFields(pElecGlovGog, cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single", tbElecGlovGog, tbElecGlovGogCost, tbElecGlovGogCost);
-                addSubtotal(pElecGlovGog.getSetPrice());
+                if (pElecGlovGog == null)
+                {
+                    pElecGlovGog = new Parts(cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single");
+                    populateFields(pElecGlovGog, cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single", tbElecGlovGog, tbElecGlovGogCost, tbElecGlovGogCost);
+                    addSubtotal(pElecGlovGog.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pElecGlovGog.getSetPrice());
+                    pElecGlovGog.setPrice(tbElecGlovGog.Text);
+                    populateFields(pElecGlovGog, cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single", tbElecGlovGog, tbElecGlovGogCost, tbElecGlovGogCost);
+                    addSubtotal(pElecGlovGog.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -387,16 +468,23 @@ namespace Rudd
 
         private void tbStickers_Leave(object sender, EventArgs e)
         {
-            if (tbStickers.Text.StartsWith("R"))
-            {
-                tbStickers.Text = tbStickers.Text.Replace("R", "");
-            }
+            removeR(tbStickers);
 
             try
             {
-                Parts pStickers = new Parts(cbxSteelType.SelectedIndex, tbStickersQty.Text, tbStickers.Text, "single");
-                populateFields(pStickers, cbxSteelType.SelectedIndex, tbStickersQty.Text, tbStickers.Text, "single", tbStickers, tbStickersCost, tbStickersCost);
-                addSubtotal(pStickers.getSetPrice());
+                if (pStickers == null)
+                {
+                    pStickers = new Parts(cbxSteelType.SelectedIndex, tbStickersQty.Text, tbStickers.Text, "single");
+                    populateFields(pStickers, cbxSteelType.SelectedIndex, tbStickersQty.Text, tbStickers.Text, "single", tbStickers, tbStickersCost, tbStickersCost);
+                    addSubtotal(pStickers.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pStickers.getSetPrice());
+                    pStickers.setPrice(tbStickers.Text);
+                    populateFields(pStickers, cbxSteelType.SelectedIndex, tbStickersQty.Text, tbStickers.Text, "single", tbStickers, tbStickersCost, tbStickersCost);
+                    addSubtotal(pStickers.getSetPrice());
+                }
             }
             catch (FormatException)
             {
@@ -410,16 +498,23 @@ namespace Rudd
 
         private void tbLabour_Leave(object sender, EventArgs e)
         {
-            if (tbLabour.Text.StartsWith("R"))
-            {
-                tbLabour.Text = tbLabour.Text.Replace("R", "");
-            }
+            removeR(tbLabour);
 
             try
             {
-                Parts pLabour = new Parts(cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single");
-                populateFields(pLabour, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single", tbLabour, tbLabourCost, tbLabourCost);
-                addSubtotal(pLabour.getSetPrice());
+                if (pLabour == null)
+                {
+                    pLabour = new Parts(cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single");
+                    populateFields(pLabour, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single", tbLabour, tbLabourCost, tbLabourCost);
+                    addSubtotal(pLabour.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pLabour.getSetPrice());
+                    pLabour.setPrice(tbLabour.Text);
+                    populateFields(pLabour, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single", tbLabour, tbLabourCost, tbLabourCost);
+                    addSubtotal(pLabour.getSetPrice());
+                }
             }
             catch (FormatException)
             {
