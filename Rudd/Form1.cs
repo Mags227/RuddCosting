@@ -75,11 +75,9 @@ namespace Rudd
                 {
                     subtractSubTotal(pBraces.getSetPrice());
                     pBraces.setPrice(tbBraces.Text);
-                    populateFields(pBraces, cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace", tbBraces, tbBracesUnitCost, tbBracesSetCost);                   
+                    populateFields(pBraces, cbxSteelType.SelectedIndex, tbBracesQty.Text, tbBraces.Text, "brace", tbBraces, tbBracesUnitCost, tbBracesSetCost);
                     addSubtotal(pBraces.getSetPrice());
                 }
-
-                
 
             }
             catch (FormatException)
@@ -1388,6 +1386,10 @@ namespace Rudd
 
         private void bRetry_Click(object sender, EventArgs e)
         {
+            if (pBraces != null)
+            {
+                pBraces = null;
+            }
             //Standard Steelworking
             clearTextbox(tbBraces, tbBracesUnitCost, tbBracesSetCost);
             clearTextbox(tbFeetBar, tbFeetBarUnitCost, tbFeetBarSetCost);
@@ -1458,9 +1460,6 @@ namespace Rudd
             dSubtotal = 0;
             dMarkUp = 0;
             dTotal = 0;
-
-            
-
 
     }
 
