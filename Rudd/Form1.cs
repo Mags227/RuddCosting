@@ -1385,12 +1385,84 @@ namespace Rudd
         }
 
         private void bRetry_Click(object sender, EventArgs e)
-        {
+        { 
+            //Standard Steelworking
+
             if (pBraces != null)
             {
                 pBraces = null;
             }
-            //Standard Steelworking
+
+            if (pFeetBar != null)
+            {
+                pFeetBar = null;
+            }
+
+            if (pLoadcell != null)
+            {
+                pLoadcell = null;
+            }
+
+            if (pPotting != null)
+            {
+                pPotting = null;
+            }
+
+            if (pCable != null)
+            {
+                pCable = null;
+            }
+
+            if (pCutting != null)
+            {
+                pCutting = null;
+            }
+
+            if (pFeet != null)
+            {
+                pFeet = null;
+            }
+
+            if (pScrews != null)
+            {
+                pScrews = null;
+            }
+
+            if (pWeildingGas != null)
+            {
+                pWeildingGas = null;
+            }
+
+            if (pWeildingWire != null)
+            {
+                pWeildingWire = null;
+            }
+
+            if (pGalvanising != null)
+            {
+                pGalvanising = null;
+            }
+
+            if (pPetrol != null)
+            {
+                pPetrol = null;
+            }
+
+            if (pElecGlovGog != null)
+            {
+                pElecGlovGog = null;
+            }
+
+            if (pStickers != null)
+            {
+                pStickers = null;
+            }
+
+            if (pLabour != null)
+            {
+                pLabour = null;
+            }
+
             clearTextbox(tbBraces, tbBracesUnitCost, tbBracesSetCost);
             clearTextbox(tbFeetBar, tbFeetBarUnitCost, tbFeetBarSetCost);
             clearTextbox(tbLoadcell, tbLoadcellUnitCost, tbLoadcellSetCost);
@@ -1398,8 +1470,49 @@ namespace Rudd
             clearTextbox(tbCable, tbCableUnitCost, tbCableSetCost);
             clearTextbox(tbCutting, tbCuttingCost, tbCuttingCost);
             clearTextbox(tbFeet, tbFeetCost, tbFeetCost);
-            
+
             //HeavyDuty Steelworking
+
+            if (pLoadPlate != null)
+            {
+                pLoadPlate = null;
+            }
+
+            if (pFootPlate != null)
+            {
+                pFootPlate = null;
+            }
+
+            if (pCellHousing != null)
+            {
+                pCellHousing = null;
+            }
+
+            if (pLoadBar != null)
+            {
+                pLoadBar = null;
+            }
+
+            if (pCableCover != null)
+            {
+                pCableCover = null;
+            }
+
+            if (pBrackets != null)
+            {
+                pBrackets = null;
+            }
+
+            if (pLoadPlateSecu != null)
+            {
+                pLoadPlateSecu = null;
+            }
+
+            if (pFootPlateSecu != null)
+            {
+                pFootPlateSecu = null;
+            }
+
             clearTextbox(tbLoadPlate, tbLoadPlateCost, tbLoadPlateCost);
             clearTextbox(tbFootPlate, tbFootPlateCost, tbFootPlateCost);
             clearTextbox(tbCellHousing, tbCellHousingCost, tbCellHousingCost);
@@ -1419,6 +1532,32 @@ namespace Rudd
             clearTextbox(tbLabour, tbLabourCost, tbLabourCost);
 
             //Loadcell Kit Costing
+
+            if (pSingleLoadCell != null)
+            {
+                pSingleLoadCell = null;
+            }
+
+            if (pCable100A != null)
+            {
+                pCable100A = null;
+            }
+
+            if (pSpring != null)
+            {
+                pSpring = null;
+            }
+
+            if (pAmphenolPlugs != null)
+            {
+                pAmphenolPlugs = null;
+            }
+
+            if (pAmphenolCaps != null)
+            {
+                pAmphenolCaps = null;
+            }
+
             clearTextbox(tbSingleLoadCell, tbSingleLoadCellUnitCost, tbSingleLoadCellCost);
             clearTextbox(tbCable100A, tbCable100AUnitCost, tbCable100ACost);
             clearTextbox(tbSpring, tbSpringUnitCost, tbSpringCost);
@@ -1433,6 +1572,67 @@ namespace Rudd
             clearTextbox(tbCapsQBooks, tbCapsQBooks, tbCapsQBooks);
 
             //Workings
+
+            if (pFlatA != null)
+            {
+                pFlatA = null;
+            }
+
+            if (pFlatB != null)
+            {
+                pFlatB = null;
+            }
+
+            if (pFlatC != null)
+            {
+                pFlatC = null;
+            }
+
+            if (pFlatD != null)
+            {
+                pFlatD = null;
+            }
+
+            if (pCuttingDiscs != null)
+            {
+                pCuttingDiscs = null;
+            }
+
+            if (pSanding != null)
+            {
+                pSanding = null;
+            }
+
+            if (pDrill != null)
+            {
+                pDrill = null;
+            }
+
+            if (pTap != null)
+            {
+                pTap = null;
+            }
+
+            if (pGlue != null)
+            {
+                pGlue = null;
+            }
+
+            if (pPottingBox != null)
+            {
+                pPottingBox = null;
+            }
+
+            if (pWireLead != null)
+            {
+                pWireLead = null;
+            }
+
+            if (pTapmatic != null)
+            {
+                pTapmatic = null;
+            }
+
             clearTextbox(tbCuttingDiscs, tbCuttingDiscsCost, tbCuttingDiscsCost);
             clearTextbox(tbSanding, tbSandingCost, tbSandingCost);
             clearTextbox(tbDrill, tbDrillCost, tbDrillCost);
