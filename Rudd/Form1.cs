@@ -736,6 +736,36 @@ namespace Rudd
             }
         }
 
+        private void tbPottingQBooks_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                tbPottingQBooks.Text = setText(tbPottingQBooks.Text.Replace(".", ","));
+            }
+            catch (FormatException)
+            {
+                tbPottingQBooks.Text = "";
+                tbPottingQBooks.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tbScrewsQBooks_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                tbPottingQBooks.Text = setText(tbPottingQBooks.Text.Replace(".", ","));
+            }
+            catch (FormatException)
+            {
+                tbPottingQBooks.Text = "";
+                tbPottingQBooks.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void tbFootPlateSecu_Leave(object sender, EventArgs e)
         {
             removeR(tbFootPlateSecu);
