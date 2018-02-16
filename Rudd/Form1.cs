@@ -755,12 +755,12 @@ namespace Rudd
         {
             try
             {
-                tbPottingQBooks.Text = setText(tbPottingQBooks.Text.Replace(".", ","));
+                tbScrewsQBooks.Text = setText(tbScrewsQBooks.Text.Replace(".", ","));
             }
             catch (FormatException)
             {
-                tbPottingQBooks.Text = "";
-                tbPottingQBooks.Focus();
+                tbScrewsQBooks.Text = "";
+                tbScrewsQBooks.Focus();
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -1728,16 +1728,16 @@ namespace Rudd
             //paragraph1.Add(text);
             //doc.Add(paragraph);
 
-            PdfPTable table = new PdfPTable(5);
+            PdfPTable table = new PdfPTable(6);
             table.WidthPercentage = 100f;
 
-            PdfPCell cell = new PdfPCell(new Phrase("Steel Works"));
-            cell.Colspan = 5;
+            PdfPCell cell = new PdfPCell(new Phrase("Steel Works", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell.Colspan = 6;
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(cell);
 
             PdfPCell cellspace = new PdfPCell(new Phrase(" "));
-            cellspace.Colspan = 5;
+            cellspace.Colspan = 6;
 
             int TabPage = tabControl1.SelectedIndex;
 
@@ -1746,7 +1746,9 @@ namespace Rudd
                 table.AddCell("Price");
                 table.AddCell("QTY");
                 table.AddCell("Cost per Unit");
+                table.AddCell("QBooks");
                 table.AddCell("Cost per Set");
+                
 
             if (TabPage == 0)
             {
@@ -1754,42 +1756,50 @@ namespace Rudd
                 table.AddCell(tbBraces.Text);
                 table.AddCell(tbBracesQty.Text);
                 table.AddCell(tbBracesUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbBracesSetCost.Text);
+                
 
                 table.AddCell("Feet Bar Connectors");
                 table.AddCell(tbFeetBar.Text);
                 table.AddCell(tbFeetBarQty.Text);
                 table.AddCell(tbFeetBarUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbFeetBarSetCost.Text);
 
                 table.AddCell("Loadcell Securer");
                 table.AddCell(tbLoadcell.Text);
                 table.AddCell(tbLoadcellQty.Text);
                 table.AddCell(tbLoadcellUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbLoadcellSetCost.Text);
 
                 table.AddCell("Potting Box Securer");
                 table.AddCell(tbPotting.Text);
                 table.AddCell(tbPottingQty.Text);
                 table.AddCell(tbPottingUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbPottingSetCost.Text);
 
                 table.AddCell("Cable Securer");
                 table.AddCell(tbCable.Text);
                 table.AddCell(tbCableQty.Text);
                 table.AddCell(tbCableUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbCableSetCost.Text);
 
                 table.AddCell("Cutting and Bending");
                 table.AddCell(tbCutting.Text);
                 table.AddCell("");
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbCuttingCost.Text);
 
                 table.AddCell("Feet");
                 table.AddCell(tbFeet.Text);
                 table.AddCell("");
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbFeetCost.Text);
             }
             else if (TabPage == 1)
@@ -1798,48 +1808,56 @@ namespace Rudd
                 table.AddCell(tbLoadPlate.Text);
                 table.AddCell(tbLoadPlateQty.Text);
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbLoadPlateCost.Text);
 
                 table.AddCell("Foot Plate");
                 table.AddCell(tbFootPlate.Text);
                 table.AddCell(tbFootPlateQty.Text);
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbFootPlateCost.Text);
 
                 table.AddCell("Load Cell Housing");
                 table.AddCell(tbCellHousing.Text);
                 table.AddCell(tbCellHousingQty.Text);
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbCellHousingCost.Text);
 
                 table.AddCell("Load Bar Top Cover Channel");
                 table.AddCell(tbLoadBar.Text);
                 table.AddCell(tbLoadBarQty.Text);
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbLoadBarCost.Text);
 
                 table.AddCell("Cable Cover Angle");
                 table.AddCell(tbCableCover.Text);
                 table.AddCell(tbCableCoverQty.Text);
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbCableCoverCost.Text);
 
                 table.AddCell("Brackets Top Hat");
                 table.AddCell(tbBrackets.Text);
                 table.AddCell(tbBracketsQty.Text);
                 table.AddCell("");
+                table.AddCell(" ");
                 table.AddCell(tbBracketsCost.Text);
 
                 table.AddCell("Top Load Plate Securing Block");
                 table.AddCell(tbLoadPlateSecu.Text);
                 table.AddCell(tbLoadPlateSecuQty.Text);
                 table.AddCell(tbLoadPlateSecuUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbLoadPlateSecuCost.Text);
 
                 table.AddCell("Foot Plate Securing Block");
                 table.AddCell(tbFootPlateSecu.Text);
                 table.AddCell(tbFootPlateSecuQty.Text);
                 table.AddCell(tbFootPlateSecuUnitCost.Text);
+                table.AddCell(" ");
                 table.AddCell(tbFootPlateSecuCost.Text);
             }
             table.AddCell(cellspace);
@@ -1848,48 +1866,56 @@ namespace Rudd
             table.AddCell(tbScrews.Text);
             table.AddCell(tbScrewsQty.Text);
             table.AddCell("");
+            table.AddCell(tbScrewsQBooks.Text);
             table.AddCell(tbScrewsCost.Text);
 
             table.AddCell("Ash 5 - Weilding gas");
             table.AddCell(tbWeildingGas.Text);
             table.AddCell("");
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbWeildingGasCost.Text);
 
             table.AddCell("Weilding Wire");
             table.AddCell(tbWeildingWire.Text);
             table.AddCell("");
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbWeildingWireCost.Text);
 
             table.AddCell("Galvanising");
             table.AddCell(tbGalvanising.Text);
             table.AddCell("");
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbGalvanisingCost.Text);
 
             table.AddCell("Petrol");
             table.AddCell(tbPetrol.Text);
             table.AddCell("");
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbPetrolCost.Text);
 
             table.AddCell("Electricity, Gloves, Goggles");
             table.AddCell(tbElecGlovGog.Text);
             table.AddCell("");
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbElecGlovGogCost.Text);
 
             table.AddCell("Rudd Promotional Stickers");
             table.AddCell(tbStickers.Text);
             table.AddCell(tbStickersQty.Text);
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbStickersCost.Text);
 
             table.AddCell("Labour Cost");
             table.AddCell(tbLabour.Text);
             table.AddCell(tbLabourQty.Text);
             table.AddCell("");
+            table.AddCell(" ");
             table.AddCell(tbLabourCost.Text);
 
             doc.Add(table);
@@ -1910,7 +1936,7 @@ namespace Rudd
             float[] widths = new float[] { 10f, 10f, 5f, 10f, 20f, 10f };
             table1.SetWidths(widths);
 
-            PdfPCell cell1 = new PdfPCell(new Phrase("Flat bar MS"));
+            PdfPCell cell1 = new PdfPCell(new Phrase("Flat bar MS", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
             cell1.Colspan = 6;
             cell1.HorizontalAlignment = Element.ALIGN_CENTER;
             table1.AddCell(cell1);
@@ -1965,19 +1991,20 @@ namespace Rudd
 
             doc.Add(Space);
 
-            PdfPTable table2 = new PdfPTable(6);
+            PdfPTable table2 = new PdfPTable(7);
             table2.WidthPercentage = 100f;
 
-            PdfPCell cell2 = new PdfPCell(new Phrase("Sundries"));
-            cell2.Colspan = 6;
+            PdfPCell cell2 = new PdfPCell(new Phrase("Sundries", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell2.Colspan = 7;
             cell2.HorizontalAlignment = Element.ALIGN_CENTER;
             table2.AddCell(cell2);
 
-            table2.AddCell("");
+            table2.AddCell(" ");
             table2.AddCell("Used/Month");
             table2.AddCell("Price per Sundary");
             table2.AddCell("Sub Value");
             table2.AddCell("Units Made / Month");
+            table2.AddCell("QBooks");
             table2.AddCell("Cost per Set");
 
             table2.AddCell("Cutting Discs");
@@ -1985,6 +2012,7 @@ namespace Rudd
             table2.AddCell(tbCuttingDiscs.Text);
             table2.AddCell(tbCuttingDiscsValue.Text);
             table2.AddCell(tbCuttingDiscsUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbCuttingDiscsCost.Text);
 
             table2.AddCell("Sanding Discs");
@@ -1992,6 +2020,7 @@ namespace Rudd
             table2.AddCell(tbSanding.Text);
             table2.AddCell(tbSandingValue.Text);
             table2.AddCell(tbSandingUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbSandingCost.Text);
 
             table2.AddCell("Drill Bits");
@@ -1999,6 +2028,7 @@ namespace Rudd
             table2.AddCell(tbDrill.Text);
             table2.AddCell(tbDrillValue.Text);
             table2.AddCell(tbDrillUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbDrillCost.Text);
 
             table2.AddCell("Tap (for threading)");
@@ -2006,6 +2036,7 @@ namespace Rudd
             table2.AddCell(tbTap.Text);
             table2.AddCell(tbTapValue.Text);
             table2.AddCell(tbTapUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbTapCost.Text);
 
             table2.AddCell("Glue Sticks");
@@ -2013,6 +2044,7 @@ namespace Rudd
             table2.AddCell(tbGlue.Text);
             table2.AddCell(tbGlueValue.Text);
             table2.AddCell(tbGlueUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbGlueCost.Text);
 
             table2.AddCell("Potting Boxes");
@@ -2020,6 +2052,7 @@ namespace Rudd
             table2.AddCell(tbPottingBox.Text);
             table2.AddCell(tbPottingBoxValue.Text);
             table2.AddCell(tbPottingBoxUnits.Text);
+            table2.AddCell(tbPottingQBooks.Text);
             table2.AddCell(tbPottingBoxCost.Text);
 
             table2.AddCell("Wire Leaders");
@@ -2027,6 +2060,7 @@ namespace Rudd
             table2.AddCell(tbWireLead.Text);
             table2.AddCell(tbWireLeadValue.Text);
             table2.AddCell(tbWireLeadUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbWireLeadCost.Text);
 
             table2.AddCell("Tapmatic");
@@ -2034,6 +2068,7 @@ namespace Rudd
             table2.AddCell(tbTapmatic.Text);
             table2.AddCell(tbTapmaticValue.Text);
             table2.AddCell(tbTapmaticUnits.Text);
+            table2.AddCell(" ");
             table2.AddCell(tbTapmaticCost.Text);
 
             doc.Add(table2);
@@ -2047,48 +2082,54 @@ namespace Rudd
 
             doc.Add(Space);
 
-            PdfPTable table3 = new PdfPTable(5);
+            PdfPTable table3 = new PdfPTable(6);
             table3.WidthPercentage = 100f;
 
-            PdfPCell cell3 = new PdfPCell(new Phrase("Loadcell Kit"));
-            cell3.Colspan = 5;
+            PdfPCell cell3 = new PdfPCell(new Phrase("Loadcell Kit", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell3.Colspan = 6;
             cell3.HorizontalAlignment = Element.ALIGN_CENTER;
             table3.AddCell(cell3);
 
-            table3.AddCell("");
+            table3.AddCell(" ");
             table3.AddCell("Price");
             table3.AddCell("QTY");
             table3.AddCell("Price per Unit");
+            table3.AddCell("QBooks");
             table3.AddCell("Price per Set");
 
             table3.AddCell("Single Load Cell");
             table3.AddCell(tbSingleLoadCell.Text);
             table3.AddCell(tbSingleLoadCellQty.Text);
             table3.AddCell(tbSingleLoadCellUnitCost.Text);
+            table3.AddCell(tbCellQBooks.Text);
             table3.AddCell(tbSingleLoadCellCost.Text);
 
             table3.AddCell("Cable (100m)");
             table3.AddCell(tbCable100A.Text);
             table3.AddCell(tbCable100AQty.Text);
             table3.AddCell(tbCable100AUnitCost.Text);
+            table3.AddCell(tbCableQBooks.Text);
             table3.AddCell(tbCable100ACost.Text);
 
             table3.AddCell("Spring Protector");
             table3.AddCell(tbSpring.Text);
             table3.AddCell(tbSpringQty.Text);
             table3.AddCell(tbSpringUnitCost.Text);
+            table3.AddCell(tbSpringQBooks.Text);
             table3.AddCell(tbSpringCost.Text);
 
             table3.AddCell("Amphenol Plugs");
             table3.AddCell(tbAmphenolPlugs.Text);
             table3.AddCell(tbAmphenolPlugsQty.Text);
             table3.AddCell(tbAmphenolPlugsUnitCost.Text);
+            table3.AddCell(tbPlugsQBooks.Text);
             table3.AddCell(tbAmphenolPlugsCost.Text);
 
             table3.AddCell("Amphenol Caps");
             table3.AddCell(tbAmphenolCaps.Text);
             table3.AddCell(tbAmphenolCapsQty.Text);
             table3.AddCell(tbAmphenolCapsUnitCost.Text);
+            table3.AddCell(tbCapsQBooks.Text);
             table3.AddCell(tbAmphenolCapsCost.Text);
 
             doc.Add(table3);

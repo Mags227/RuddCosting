@@ -3002,9 +3002,9 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(17, 58);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(136, 13);
+            this.label29.Size = new System.Drawing.Size(85, 13);
             this.label29.TabIndex = 40;
-            this.label29.Text = "Electricity, Gloves, Goggles";
+            this.label29.Text = "Gloves, Goggles";
             // 
             // label33
             // 
