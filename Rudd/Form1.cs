@@ -1702,7 +1702,7 @@ namespace Rudd
             PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Rudd Costing - " + dateTime.ToString("dd-MM-yyyy") + ".pdf", FileMode.Create));
             doc.Open();
 
-            iTextSharp.text.Image Rudd = iTextSharp.text.Image.GetInstance("..\\..\\Resources\\Rudd.jpg");
+            iTextSharp.text.Image Rudd = iTextSharp.text.Image.GetInstance("resources\\Rudd.jpg");
             Rudd.ScalePercent(50);
             Rudd.Alignment = Element.ALIGN_RIGHT;
             doc.Add(Rudd);
