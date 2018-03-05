@@ -292,8 +292,6 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.tbScrewsQBooks = new System.Windows.Forms.TextBox();
             this.tbScrewsQty = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.tbScrewsCost = new System.Windows.Forms.TextBox();
@@ -322,6 +320,26 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tbFlatBarMSTotal = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.tbHDStickersCost = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.tbHDStickersQty = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.tbHDStickers = new System.Windows.Forms.TextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.tbHDScrewsQty = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.tbHDScrewsCost = new System.Windows.Forms.TextBox();
+            this.tbHDScrews = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TabD.SuspendLayout();
             this.tabC.SuspendLayout();
@@ -341,6 +359,9 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.TabControl.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -415,7 +436,7 @@
             // 
             // bSavePDF
             // 
-            this.bSavePDF.Location = new System.Drawing.Point(853, 705);
+            this.bSavePDF.Location = new System.Drawing.Point(874, 631);
             this.bSavePDF.Name = "bSavePDF";
             this.bSavePDF.Size = new System.Drawing.Size(121, 31);
             this.bSavePDF.TabIndex = 18;
@@ -431,14 +452,14 @@
             this.TabD.Controls.Add(this.rtbNotes);
             this.TabD.Location = new System.Drawing.Point(4, 22);
             this.TabD.Name = "TabD";
-            this.TabD.Size = new System.Drawing.Size(1006, 590);
+            this.TabD.Size = new System.Drawing.Size(1006, 523);
             this.TabD.TabIndex = 3;
             this.TabD.Text = "Notes";
             this.TabD.UseVisualStyleBackColor = true;
             // 
             // bNotesReload
             // 
-            this.bNotesReload.Location = new System.Drawing.Point(148, 546);
+            this.bNotesReload.Location = new System.Drawing.Point(148, 474);
             this.bNotesReload.Margin = new System.Windows.Forms.Padding(2);
             this.bNotesReload.Name = "bNotesReload";
             this.bNotesReload.Size = new System.Drawing.Size(108, 37);
@@ -449,7 +470,7 @@
             // 
             // bNotesSave
             // 
-            this.bNotesSave.Location = new System.Drawing.Point(18, 546);
+            this.bNotesSave.Location = new System.Drawing.Point(18, 474);
             this.bNotesSave.Margin = new System.Windows.Forms.Padding(2);
             this.bNotesSave.Name = "bNotesSave";
             this.bNotesSave.Size = new System.Drawing.Size(108, 37);
@@ -472,7 +493,7 @@
             // 
             this.rtbNotes.Location = new System.Drawing.Point(18, 53);
             this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.Size = new System.Drawing.Size(970, 480);
+            this.rtbNotes.Size = new System.Drawing.Size(970, 416);
             this.rtbNotes.TabIndex = 0;
             this.rtbNotes.Text = "";
             // 
@@ -517,7 +538,7 @@
             this.tabC.Controls.Add(this.label80);
             this.tabC.Location = new System.Drawing.Point(4, 22);
             this.tabC.Name = "tabC";
-            this.tabC.Size = new System.Drawing.Size(1006, 590);
+            this.tabC.Size = new System.Drawing.Size(1006, 523);
             this.tabC.TabIndex = 2;
             this.tabC.Text = "Loadcell Kit";
             this.tabC.UseVisualStyleBackColor = true;
@@ -892,7 +913,7 @@
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1006, 590);
+            this.tabPage1.Size = new System.Drawing.Size(1006, 523);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Workings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -956,7 +977,7 @@
             this.groupBox10.Controls.Add(this.tbSanding);
             this.groupBox10.Location = new System.Drawing.Point(13, 224);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(658, 306);
+            this.groupBox10.Size = new System.Drawing.Size(658, 265);
             this.groupBox10.TabIndex = 139;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Sundries(WORKSHOP)";
@@ -1855,13 +1876,12 @@
             this.tabA.Controls.Add(this.groupBox4);
             this.tabA.Controls.Add(this.groupBox7);
             this.tabA.Controls.Add(this.groupBox6);
-            this.tabA.Controls.Add(this.groupBox2);
             this.tabA.Controls.Add(this.groupBox3);
             this.tabA.Controls.Add(this.groupBox5);
             this.tabA.Location = new System.Drawing.Point(4, 22);
             this.tabA.Name = "tabA";
             this.tabA.Padding = new System.Windows.Forms.Padding(3);
-            this.tabA.Size = new System.Drawing.Size(1006, 590);
+            this.tabA.Size = new System.Drawing.Size(1006, 523);
             this.tabA.TabIndex = 0;
             this.tabA.Text = "Steel Working";
             this.tabA.UseVisualStyleBackColor = true;
@@ -1883,16 +1903,18 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 55);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(975, 226);
+            this.tabControl1.Size = new System.Drawing.Size(975, 284);
             this.tabControl1.TabIndex = 8;
             // 
             // tabStan
             // 
+            this.tabStan.Controls.Add(this.groupBox11);
             this.tabStan.Controls.Add(this.groupBox1);
             this.tabStan.Controls.Add(this.label12);
             this.tabStan.Controls.Add(this.label13);
             this.tabStan.Controls.Add(this.label14);
             this.tabStan.Controls.Add(this.label15);
+            this.tabStan.Controls.Add(this.groupBox2);
             this.tabStan.Controls.Add(this.tbCableQty);
             this.tabStan.Controls.Add(this.label11);
             this.tabStan.Controls.Add(this.tbCable);
@@ -1927,7 +1949,7 @@
             this.tabStan.Location = new System.Drawing.Point(4, 22);
             this.tabStan.Name = "tabStan";
             this.tabStan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStan.Size = new System.Drawing.Size(967, 200);
+            this.tabStan.Size = new System.Drawing.Size(967, 258);
             this.tabStan.TabIndex = 0;
             this.tabStan.Text = "Standard";
             this.tabStan.UseVisualStyleBackColor = true;
@@ -2319,8 +2341,8 @@
             // 
             this.cbxSteelType.FormattingEnabled = true;
             this.cbxSteelType.Items.AddRange(new object[] {
-            "6000mm",
-            "10000mm"});
+            "600mm",
+            "1000mm"});
             this.cbxSteelType.Location = new System.Drawing.Point(101, 14);
             this.cbxSteelType.Name = "cbxSteelType";
             this.cbxSteelType.Size = new System.Drawing.Size(107, 21);
@@ -2347,6 +2369,8 @@
             // 
             // tabHeavy
             // 
+            this.tabHeavy.Controls.Add(this.groupBox12);
+            this.tabHeavy.Controls.Add(this.groupBox13);
             this.tabHeavy.Controls.Add(this.tbCableCoverQty);
             this.tabHeavy.Controls.Add(this.label63);
             this.tabHeavy.Controls.Add(this.tbCableCover);
@@ -2382,7 +2406,7 @@
             this.tabHeavy.Location = new System.Drawing.Point(4, 22);
             this.tabHeavy.Name = "tabHeavy";
             this.tabHeavy.Padding = new System.Windows.Forms.Padding(3);
-            this.tabHeavy.Size = new System.Drawing.Size(967, 200);
+            this.tabHeavy.Size = new System.Drawing.Size(967, 258);
             this.tabHeavy.TabIndex = 1;
             this.tabHeavy.Text = "Heavy Duty";
             this.tabHeavy.UseVisualStyleBackColor = true;
@@ -2790,7 +2814,7 @@
             this.groupBox4.Controls.Add(this.label30);
             this.groupBox4.Controls.Add(this.label31);
             this.groupBox4.Controls.Add(this.label32);
-            this.groupBox4.Location = new System.Drawing.Point(10, 466);
+            this.groupBox4.Location = new System.Drawing.Point(18, 438);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(481, 69);
             this.groupBox4.TabIndex = 103;
@@ -2870,7 +2894,7 @@
             this.tbMarkupAmount.Name = "tbMarkupAmount";
             this.tbMarkupAmount.Size = new System.Drawing.Size(38, 20);
             this.tbMarkupAmount.TabIndex = 17;
-            this.tbMarkupAmount.Text = "90";
+            this.tbMarkupAmount.Text = "85";
             this.tbMarkupAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label43
@@ -2884,11 +2908,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.tbStickersQty);
-            this.groupBox6.Controls.Add(this.tbStickers);
             this.groupBox6.Controls.Add(this.label36);
-            this.groupBox6.Controls.Add(this.tbStickersCost);
-            this.groupBox6.Controls.Add(this.label35);
             this.groupBox6.Controls.Add(this.tbElecGlovGog);
             this.groupBox6.Controls.Add(this.tbElecGlovGogCost);
             this.groupBox6.Controls.Add(this.tbPetrol);
@@ -2897,9 +2917,9 @@
             this.groupBox6.Controls.Add(this.label29);
             this.groupBox6.Controls.Add(this.label33);
             this.groupBox6.Controls.Add(this.label34);
-            this.groupBox6.Location = new System.Drawing.Point(501, 298);
+            this.groupBox6.Location = new System.Drawing.Point(504, 345);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(480, 120);
+            this.groupBox6.Size = new System.Drawing.Size(480, 87);
             this.groupBox6.TabIndex = 104;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sudries/Workshop Expenses";
@@ -2907,7 +2927,7 @@
             // tbStickersQty
             // 
             this.tbStickersQty.Enabled = false;
-            this.tbStickersQty.Location = new System.Drawing.Point(171, 81);
+            this.tbStickersQty.Location = new System.Drawing.Point(140, 27);
             this.tbStickersQty.Name = "tbStickersQty";
             this.tbStickersQty.Size = new System.Drawing.Size(28, 20);
             this.tbStickersQty.TabIndex = 49;
@@ -2915,7 +2935,7 @@
             // 
             // tbStickers
             // 
-            this.tbStickers.Location = new System.Drawing.Point(215, 81);
+            this.tbStickers.Location = new System.Drawing.Point(196, 27);
             this.tbStickers.Name = "tbStickers";
             this.tbStickers.Size = new System.Drawing.Size(77, 20);
             this.tbStickers.TabIndex = 15;
@@ -2935,7 +2955,7 @@
             // tbStickersCost
             // 
             this.tbStickersCost.Enabled = false;
-            this.tbStickersCost.Location = new System.Drawing.Point(381, 81);
+            this.tbStickersCost.Location = new System.Drawing.Point(362, 27);
             this.tbStickersCost.Name = "tbStickersCost";
             this.tbStickersCost.Size = new System.Drawing.Size(77, 20);
             this.tbStickersCost.TabIndex = 44;
@@ -2944,7 +2964,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(17, 84);
+            this.label35.Location = new System.Drawing.Point(6, 30);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(132, 13);
             this.label35.TabIndex = 42;
@@ -3026,8 +3046,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label58);
-            this.groupBox2.Controls.Add(this.tbScrewsQBooks);
             this.groupBox2.Controls.Add(this.tbScrewsQty);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.tbScrewsCost);
@@ -3035,31 +3053,12 @@
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Location = new System.Drawing.Point(9, 298);
+            this.groupBox2.Location = new System.Drawing.Point(17, 173);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(481, 69);
+            this.groupBox2.Size = new System.Drawing.Size(453, 69);
             this.groupBox2.TabIndex = 101;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Northern Bolt & Tool";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(297, 16);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(45, 13);
-            this.label58.TabIndex = 158;
-            this.label58.Text = "QBooks";
-            // 
-            // tbScrewsQBooks
-            // 
-            this.tbScrewsQBooks.Location = new System.Drawing.Point(300, 37);
-            this.tbScrewsQBooks.Name = "tbScrewsQBooks";
-            this.tbScrewsQBooks.Size = new System.Drawing.Size(77, 20);
-            this.tbScrewsQBooks.TabIndex = 48;
-            this.tbScrewsQBooks.Text = "R0,00";
-            this.tbScrewsQBooks.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbScrewsQBooks.Leave += new System.EventHandler(this.tbScrewsQBooks_Leave);
             // 
             // tbScrewsQty
             // 
@@ -3082,7 +3081,7 @@
             // tbScrewsCost
             // 
             this.tbScrewsCost.Enabled = false;
-            this.tbScrewsCost.Location = new System.Drawing.Point(382, 37);
+            this.tbScrewsCost.Location = new System.Drawing.Point(364, 37);
             this.tbScrewsCost.Name = "tbScrewsCost";
             this.tbScrewsCost.Size = new System.Drawing.Size(77, 20);
             this.tbScrewsCost.TabIndex = 43;
@@ -3119,7 +3118,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(379, 16);
+            this.label20.Location = new System.Drawing.Point(361, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(63, 13);
             this.label20.TabIndex = 46;
@@ -3135,7 +3134,7 @@
             this.groupBox3.Controls.Add(this.label25);
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Location = new System.Drawing.Point(10, 373);
+            this.groupBox3.Location = new System.Drawing.Point(18, 345);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(480, 87);
             this.groupBox3.TabIndex = 102;
@@ -3225,7 +3224,7 @@
             this.groupBox5.Controls.Add(this.label38);
             this.groupBox5.Controls.Add(this.label39);
             this.groupBox5.Controls.Add(this.label40);
-            this.groupBox5.Location = new System.Drawing.Point(501, 424);
+            this.groupBox5.Location = new System.Drawing.Point(505, 438);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(480, 69);
             this.groupBox5.TabIndex = 105;
@@ -3298,7 +3297,7 @@
             // 
             // bRetry
             // 
-            this.bRetry.Location = new System.Drawing.Point(41, 704);
+            this.bRetry.Location = new System.Drawing.Point(26, 630);
             this.bRetry.Margin = new System.Windows.Forms.Padding(2);
             this.bRetry.Name = "bRetry";
             this.bRetry.Size = new System.Drawing.Size(122, 32);
@@ -3316,7 +3315,7 @@
             this.TabControl.Location = new System.Drawing.Point(10, 76);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1014, 616);
+            this.TabControl.Size = new System.Drawing.Size(1014, 549);
             this.TabControl.TabIndex = 0;
             // 
             // tbFlatBarMSTotal
@@ -3337,11 +3336,213 @@
             this.label48.TabIndex = 156;
             this.label48.Text = "Flat Bar MS Total:";
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label58);
+            this.groupBox11.Controls.Add(this.tbStickersCost);
+            this.groupBox11.Controls.Add(this.label64);
+            this.groupBox11.Controls.Add(this.tbStickersQty);
+            this.groupBox11.Controls.Add(this.label65);
+            this.groupBox11.Controls.Add(this.label35);
+            this.groupBox11.Controls.Add(this.tbStickers);
+            this.groupBox11.Location = new System.Drawing.Point(508, 188);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(453, 54);
+            this.groupBox11.TabIndex = 102;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Sundries";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(137, 11);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(23, 13);
+            this.label58.TabIndex = 48;
+            this.label58.Text = "Qty";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(193, 11);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(31, 13);
+            this.label64.TabIndex = 49;
+            this.label64.Text = "Price";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(359, 11);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(63, 13);
+            this.label65.TabIndex = 50;
+            this.label65.Text = "Cost per set";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label66);
+            this.groupBox12.Controls.Add(this.tbHDStickersCost);
+            this.groupBox12.Controls.Add(this.label67);
+            this.groupBox12.Controls.Add(this.tbHDStickersQty);
+            this.groupBox12.Controls.Add(this.label68);
+            this.groupBox12.Controls.Add(this.label69);
+            this.groupBox12.Controls.Add(this.tbHDStickers);
+            this.groupBox12.Location = new System.Drawing.Point(478, 173);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(478, 54);
+            this.groupBox12.TabIndex = 141;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Sundries";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(161, 11);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(23, 13);
+            this.label66.TabIndex = 48;
+            this.label66.Text = "Qty";
+            // 
+            // tbHDStickersCost
+            // 
+            this.tbHDStickersCost.Enabled = false;
+            this.tbHDStickersCost.Location = new System.Drawing.Point(386, 28);
+            this.tbHDStickersCost.Name = "tbHDStickersCost";
+            this.tbHDStickersCost.Size = new System.Drawing.Size(77, 20);
+            this.tbHDStickersCost.TabIndex = 44;
+            this.tbHDStickersCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(217, 11);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(31, 13);
+            this.label67.TabIndex = 49;
+            this.label67.Text = "Price";
+            // 
+            // tbHDStickersQty
+            // 
+            this.tbHDStickersQty.Enabled = false;
+            this.tbHDStickersQty.Location = new System.Drawing.Point(164, 27);
+            this.tbHDStickersQty.Name = "tbHDStickersQty";
+            this.tbHDStickersQty.Size = new System.Drawing.Size(28, 20);
+            this.tbHDStickersQty.TabIndex = 49;
+            this.tbHDStickersQty.Text = "2";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(383, 12);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(63, 13);
+            this.label68.TabIndex = 50;
+            this.label68.Text = "Cost per set";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(6, 30);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(132, 13);
+            this.label69.TabIndex = 42;
+            this.label69.Text = "Rudd Promotional Stickers";
+            // 
+            // tbHDStickers
+            // 
+            this.tbHDStickers.Location = new System.Drawing.Point(220, 27);
+            this.tbHDStickers.Name = "tbHDStickers";
+            this.tbHDStickers.Size = new System.Drawing.Size(77, 20);
+            this.tbHDStickers.TabIndex = 15;
+            this.tbHDStickers.Text = "R0,00";
+            this.tbHDStickers.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.tbHDScrewsQty);
+            this.groupBox13.Controls.Add(this.label70);
+            this.groupBox13.Controls.Add(this.tbHDScrewsCost);
+            this.groupBox13.Controls.Add(this.tbHDScrews);
+            this.groupBox13.Controls.Add(this.label71);
+            this.groupBox13.Controls.Add(this.label82);
+            this.groupBox13.Controls.Add(this.label83);
+            this.groupBox13.Location = new System.Drawing.Point(7, 180);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(450, 69);
+            this.groupBox13.TabIndex = 140;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Northern Bolt & Tool";
+            // 
+            // tbHDScrewsQty
+            // 
+            this.tbHDScrewsQty.Enabled = false;
+            this.tbHDScrewsQty.Location = new System.Drawing.Point(160, 37);
+            this.tbHDScrewsQty.Name = "tbHDScrewsQty";
+            this.tbHDScrewsQty.Size = new System.Drawing.Size(28, 20);
+            this.tbHDScrewsQty.TabIndex = 38;
+            this.tbHDScrewsQty.Text = "32";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(157, 16);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(23, 13);
+            this.label70.TabIndex = 37;
+            this.label70.Text = "Qty";
+            // 
+            // tbHDScrewsCost
+            // 
+            this.tbHDScrewsCost.Enabled = false;
+            this.tbHDScrewsCost.Location = new System.Drawing.Point(364, 37);
+            this.tbHDScrewsCost.Name = "tbHDScrewsCost";
+            this.tbHDScrewsCost.Size = new System.Drawing.Size(77, 20);
+            this.tbHDScrewsCost.TabIndex = 43;
+            this.tbHDScrewsCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // tbHDScrews
+            // 
+            this.tbHDScrews.Location = new System.Drawing.Point(217, 37);
+            this.tbHDScrews.Name = "tbHDScrews";
+            this.tbHDScrews.Size = new System.Drawing.Size(77, 20);
+            this.tbHDScrews.TabIndex = 9;
+            this.tbHDScrews.Text = "R0,00";
+            this.tbHDScrews.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbHDScrews.Leave += new System.EventHandler(this.tbHDScrews_Leave);
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(19, 40);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(124, 13);
+            this.label71.TabIndex = 47;
+            this.label71.Text = "M8 x 40 cap screws S/S";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(213, 16);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(31, 13);
+            this.label82.TabIndex = 44;
+            this.label82.Text = "Price";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(361, 16);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(63, 13);
+            this.label83.TabIndex = 46;
+            this.label83.Text = "Cost per set";
+            // 
             // Rudd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 748);
+            this.ClientSize = new System.Drawing.Size(1028, 668);
             this.Controls.Add(this.tbFlatBarMSTotal);
             this.Controls.Add(this.bRetry);
             this.Controls.Add(this.label48);
@@ -3395,6 +3596,12 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.TabControl.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3692,8 +3899,26 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.TextBox tbPottingQBooks;
+        private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.TextBox tbScrewsQBooks;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox tbHDStickersCost;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.TextBox tbHDStickersQty;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TextBox tbHDStickers;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.TextBox tbHDScrewsQty;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox tbHDScrewsCost;
+        private System.Windows.Forms.TextBox tbHDScrews;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label83;
     }
 }
 

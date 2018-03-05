@@ -21,7 +21,7 @@ namespace Rudd
         private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
         private Parts pLoadPlate, pFootPlate, pCellHousing, pLoadBar, pCableCover, pBrackets, pLoadPlateSecu, pFootPlateSecu,
                       pSingleLoadCell, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers, pLabour,
-                      pBraces, pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
+                      pBraces, pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pHDScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
         private FlatBar pFlatA, pFlatB, pFlatC, pFlatD = null;
         private Sundries pCuttingDiscs, pSanding, pDrill, pTap, pGlue, pPottingBox, pWireLead, pTapmatic = null;
 
@@ -310,6 +310,36 @@ namespace Rudd
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
            
+        }
+
+        private void tbHDScrews_Leave(object sender, EventArgs e)
+        {
+            removeR(tbHDScrews);
+
+            try
+            {
+                if (pHDScrews == null)
+                {
+                    pHDScrews = new Parts(cbxSteelType.SelectedIndex, tbHDScrewsQty.Text, tbHDScrews.Text, "single");
+                    populateFields(pHDScrews, cbxSteelType.SelectedIndex, tbHDScrewsQty.Text, tbHDScrews.Text, "single", tbHDScrews, tbHDScrewsCost, tbHDScrewsCost);
+                    addSubtotal(pHDScrews.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pHDScrews.getSetPrice());
+                    pHDScrews.setPrice(tbHDScrews.Text);
+                    populateFields(pHDScrews, cbxSteelType.SelectedIndex, tbHDScrewsQty.Text, tbHDScrews.Text, "single", tbHDScrews, tbHDScrewsCost, tbHDScrewsCost);
+                    addSubtotal(pHDScrews.getSetPrice());
+                }
+            }
+            catch (FormatException)
+            {
+                tbHDScrews.Text = "";
+                tbHDScrewsCost.Text = "";
+                tbHDScrews.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void tbWeildingGas_Leave(object sender, EventArgs e)
@@ -746,21 +776,6 @@ namespace Rudd
             {
                 tbPottingQBooks.Text = "";
                 tbPottingQBooks.Focus();
-                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void tbScrewsQBooks_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                tbScrewsQBooks.Text = setText(tbScrewsQBooks.Text.Replace(".", ","));
-            }
-            catch (FormatException)
-            {
-                tbScrewsQBooks.Text = "";
-                tbScrewsQBooks.Focus();
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -1866,7 +1881,6 @@ namespace Rudd
             table.AddCell(tbScrews.Text);
             table.AddCell(tbScrewsQty.Text);
             table.AddCell("");
-            table.AddCell(tbScrewsQBooks.Text);
             table.AddCell(tbScrewsCost.Text);
 
             table.AddCell("Ash 5 - Weilding gas");
