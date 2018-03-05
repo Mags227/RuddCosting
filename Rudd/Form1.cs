@@ -555,7 +555,7 @@ namespace Rudd
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        
         private void tbLabour_Leave(object sender, EventArgs e)
         {
             removeR(tbLabour);
