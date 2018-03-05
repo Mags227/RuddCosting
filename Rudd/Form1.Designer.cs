@@ -3457,6 +3457,7 @@
             this.tbHDStickers.TabIndex = 15;
             this.tbHDStickers.Text = "R0,00";
             this.tbHDStickers.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbHDStickers.Leave += new System.EventHandler(this.tbHDStickers_Leave);
             // 
             // groupBox13
             // 

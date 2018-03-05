@@ -20,7 +20,7 @@ namespace Rudd
     {
         private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
         private Parts pLoadPlate, pFootPlate, pCellHousing, pLoadBar, pCableCover, pBrackets, pLoadPlateSecu, pFootPlateSecu,
-                      pSingleLoadCell, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers, pLabour,
+                      pSingleLoadCell, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers,pHDStickers, pLabour,
                       pBraces, pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pHDScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
         private FlatBar pFlatA, pFlatB, pFlatC, pFlatD = null;
         private Sundries pCuttingDiscs, pSanding, pDrill, pTap, pGlue, pPottingBox, pWireLead, pTapmatic = null;
@@ -521,6 +521,36 @@ namespace Rudd
                 tbStickers.Text = "";
                 tbStickersCost.Text = "";
                 tbStickers.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tbHDStickers_Leave(object sender, EventArgs e)
+        {
+            removeR(tbHDStickers);
+
+            try
+            {
+                if (pHDStickers == null)
+                {
+                    pHDStickers = new Parts(cbxSteelType.SelectedIndex, tbHDStickersQty.Text, tbHDStickers.Text, "single");
+                    populateFields(pHDStickers, cbxSteelType.SelectedIndex, tbHDStickersQty.Text, tbHDStickers.Text, "single", tbHDStickers, tbHDStickersCost, tbHDStickersCost);
+                    addSubtotal(pHDStickers.getSetPrice());
+                }
+                else
+                {
+                    subtractSubTotal(pHDStickers.getSetPrice());
+                    pHDStickers.setPrice(tbHDStickers.Text);
+                    populateFields(pHDStickers, cbxSteelType.SelectedIndex, tbHDStickersQty.Text, tbHDStickers.Text, "single", tbHDStickers, tbHDStickersCost, tbHDStickersCost);
+                    addSubtotal(pHDStickers.getSetPrice());
+                }
+            }
+            catch (FormatException)
+            {
+                tbHDStickers.Text = "";
+                tbHDStickersCost.Text = "";
+                tbHDStickers.Focus();
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
