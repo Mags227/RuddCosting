@@ -9,7 +9,7 @@ namespace Rudd
 {
     class FlatBar
     {
-
+        
         private Double dPrice;
         private Double dSize;
         private Double dUnitSize;
