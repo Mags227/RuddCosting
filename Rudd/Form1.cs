@@ -18,7 +18,7 @@ namespace Rudd
 {
     public partial class Rudd : Form
     {
-        private Double dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
+        private Double dHDSubtotal, dSubtotal, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
         private Parts pLoadPlate, pFootPlate, pCellHousing, pLoadBar, pCableCover, pBrackets, pLoadPlateSecu, pFootPlateSecu,
                       pSingleLoadCell, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers,pHDStickers, pLabour,
                       pBraces, pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pHDScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
@@ -322,14 +322,14 @@ namespace Rudd
                 {
                     pHDScrews = new Parts(cbxSteelType.SelectedIndex, tbHDScrewsQty.Text, tbHDScrews.Text, "single");
                     populateFields(pHDScrews, cbxSteelType.SelectedIndex, tbHDScrewsQty.Text, tbHDScrews.Text, "single", tbHDScrews, tbHDScrewsCost, tbHDScrewsCost);
-                    addSubtotal(pHDScrews.getSetPrice());
+                    addHDSubtotal(pHDScrews.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pHDScrews.getSetPrice());
+                    subtractHDSubTotal(pHDScrews.getSetPrice());
                     pHDScrews.setPrice(tbHDScrews.Text);
                     populateFields(pHDScrews, cbxSteelType.SelectedIndex, tbHDScrewsQty.Text, tbHDScrews.Text, "single", tbHDScrews, tbHDScrewsCost, tbHDScrewsCost);
-                    addSubtotal(pHDScrews.getSetPrice());
+                    addHDSubtotal(pHDScrews.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -353,13 +353,16 @@ namespace Rudd
                     pWeildingGas = new Parts(cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas");
                     populateFields(pWeildingGas, cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas", tbWeildingGas, tbWeildingGasCost, tbWeildingGasCost);
                     addSubtotal(pWeildingGas.getSetPrice());
+                    addHDSubtotal(pWeildingGas.getSetPrice());
                 }
                 else
                 {
+                    subtractHDSubTotal(pWeildingGas.getSetPrice());
                     subtractSubTotal(pWeildingGas.getSetPrice());
                     pWeildingGas.setPrice(tbWeildingGas.Text);
                     populateFields(pWeildingGas, cbxSteelType.SelectedIndex, "1", tbWeildingGas.Text, "gas", tbWeildingGas, tbWeildingGasCost, tbWeildingGasCost);
                     addSubtotal(pWeildingGas.getSetPrice());
+                    addHDSubtotal(pWeildingGas.getSetPrice());
                 }
             }
 
@@ -385,13 +388,16 @@ namespace Rudd
                     pWeildingWire = new Parts(cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire");
                     populateFields(pWeildingWire, cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire", tbWeildingWire, tbWeildingWireCost, tbWeildingWireCost);
                     addSubtotal(pWeildingWire.getSetPrice());
+                    addHDSubtotal(pWeildingWire.getSetPrice());
                 }
                 else
                 {
                     subtractSubTotal(pWeildingWire.getSetPrice());
+                    subtractHDSubTotal(pWeildingWire.getSetPrice());
                     pWeildingWire.setPrice(tbWeildingWire.Text);
                     populateFields(pWeildingWire, cbxSteelType.SelectedIndex, "1", tbWeildingWire.Text, "wire", tbWeildingWire, tbWeildingWireCost, tbWeildingWireCost);
                     addSubtotal(pWeildingWire.getSetPrice());
+                    addHDSubtotal(pWeildingWire.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -416,13 +422,16 @@ namespace Rudd
                     pGalvanising = new Parts(cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising");
                     populateFields(pGalvanising, cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising", tbGalvanising, tbGalvanisingCost, tbGalvanisingCost);
                     addSubtotal(pGalvanising.getSetPrice());
+                    addHDSubtotal(pGalvanising.getSetPrice());
                 }
                 else
                 {
                     subtractSubTotal(pGalvanising.getSetPrice());
+                    subtractHDSubTotal(pGalvanising.getSetPrice());
                     pGalvanising.setPrice(tbGalvanising.Text);
                     populateFields(pGalvanising, cbxSteelType.SelectedIndex, "1", tbGalvanising.Text, "galvanising", tbGalvanising, tbGalvanisingCost, tbGalvanisingCost);
                     addSubtotal(pGalvanising.getSetPrice());
+                    addHDSubtotal(pGalvanising.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -445,15 +454,18 @@ namespace Rudd
                 {
                     pPetrol = new Parts(cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol");
                     populateFields(pPetrol, cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
-                    //tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
+                    tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
                     addSubtotal(pPetrol.getSetPrice());
+                    addHDSubtotal(pPetrol.getSetPrice());
                 }
                 else
                 {
                     subtractSubTotal(pPetrol.getSetPrice());
+                    subtractHDSubTotal(pPetrol.getSetPrice());
                     populateFields(pPetrol, cbxSteelType.SelectedIndex, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
-                    //tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
+                    tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
                     addSubtotal(pPetrol.getSetPrice());
+                    addHDSubtotal(pPetrol.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -477,13 +489,16 @@ namespace Rudd
                     pElecGlovGog = new Parts(cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single");
                     populateFields(pElecGlovGog, cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single", tbElecGlovGog, tbElecGlovGogCost, tbElecGlovGogCost);
                     addSubtotal(pElecGlovGog.getSetPrice());
+                    addHDSubtotal(pElecGlovGog.getSetPrice());
                 }
                 else
                 {
                     subtractSubTotal(pElecGlovGog.getSetPrice());
+                    subtractHDSubTotal(pElecGlovGog.getSetPrice());
                     pElecGlovGog.setPrice(tbElecGlovGog.Text);
                     populateFields(pElecGlovGog, cbxSteelType.SelectedIndex, "1", tbElecGlovGog.Text, "single", tbElecGlovGog, tbElecGlovGogCost, tbElecGlovGogCost);
                     addSubtotal(pElecGlovGog.getSetPrice());
+                    addHDSubtotal(pElecGlovGog.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -536,14 +551,14 @@ namespace Rudd
                 {
                     pHDStickers = new Parts(cbxSteelType.SelectedIndex, tbHDStickersQty.Text, tbHDStickers.Text, "single");
                     populateFields(pHDStickers, cbxSteelType.SelectedIndex, tbHDStickersQty.Text, tbHDStickers.Text, "single", tbHDStickers, tbHDStickersCost, tbHDStickersCost);
-                    addSubtotal(pHDStickers.getSetPrice());
+                    addHDSubtotal(pHDStickers.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pHDStickers.getSetPrice());
+                    subtractHDSubTotal(pHDStickers.getSetPrice());
                     pHDStickers.setPrice(tbHDStickers.Text);
                     populateFields(pHDStickers, cbxSteelType.SelectedIndex, tbHDStickersQty.Text, tbHDStickers.Text, "single", tbHDStickers, tbHDStickersCost, tbHDStickersCost);
-                    addSubtotal(pHDStickers.getSetPrice());
+                    addHDSubtotal(pHDStickers.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -567,13 +582,16 @@ namespace Rudd
                     pLabour = new Parts(cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single");
                     populateFields(pLabour, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single", tbLabour, tbLabourCost, tbLabourCost);
                     addSubtotal(pLabour.getSetPrice());
+                    addHDSubtotal(pLabour.getSetPrice());
                 }
                 else
                 {
                     subtractSubTotal(pLabour.getSetPrice());
+                    subtractHDSubTotal(pLabour.getSetPrice());
                     pLabour.setPrice(tbLabour.Text);
                     populateFields(pLabour, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLabour.Text, "single", tbLabour, tbLabourCost, tbLabourCost);
                     addSubtotal(pLabour.getSetPrice());
+                    addHDSubtotal(pLabour.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -596,14 +614,14 @@ namespace Rudd
                 {
                     pLoadPlate = new Parts(cbxSteelType.SelectedIndex, tbLoadPlateQty.Text, tbLoadPlate.Text, "single");
                     populateFields(pLoadPlate, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLoadPlate.Text, "single", tbLoadPlate, tbLoadPlateCost, tbLoadPlateCost);
-                    addSubtotal(pLoadPlate.getSetPrice());
+                    addHDSubtotal(pLoadPlate.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pLoadPlate.getSetPrice());
+                    subtractHDSubTotal(pLoadPlate.getSetPrice());
                     pLoadPlate.setPrice(tbLoadPlate.Text);
                     populateFields(pLoadPlate, cbxSteelType.SelectedIndex, tbLabourQty.Text, tbLoadPlate.Text, "single", tbLoadPlate, tbLoadPlateCost, tbLoadPlateCost);
-                    addSubtotal(pLoadPlate.getSetPrice());
+                    addHDSubtotal(pLoadPlate.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -626,14 +644,14 @@ namespace Rudd
                 {
                     pFootPlate = new Parts(cbxSteelType.SelectedIndex, tbFootPlateQty.Text, tbFootPlate.Text, "single");
                     populateFields(pFootPlate, cbxSteelType.SelectedIndex, tbFootPlateQty.Text, tbFootPlate.Text, "single", tbFootPlate, tbFootPlateCost, tbFootPlateCost);
-                    addSubtotal(pFootPlate.getSetPrice());
+                    addHDSubtotal(pFootPlate.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pFootPlate.getSetPrice());
+                    subtractHDSubTotal(pFootPlate.getSetPrice());
                     pFootPlate.setPrice(tbFootPlate.Text);
                     populateFields(pFootPlate, cbxSteelType.SelectedIndex, tbFootPlateQty.Text, tbFootPlate.Text, "single", tbFootPlate, tbFootPlateCost, tbFootPlateCost);
-                    addSubtotal(pFootPlate.getSetPrice());
+                    addHDSubtotal(pFootPlate.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -656,14 +674,14 @@ namespace Rudd
                 {
                     pCellHousing = new Parts(cbxSteelType.SelectedIndex, tbCellHousingQty.Text, tbCellHousing.Text, "single");
                     populateFields(pCellHousing, cbxSteelType.SelectedIndex, tbCellHousingQty.Text, tbCellHousing.Text, "single", tbCellHousing, tbCellHousingCost, tbCellHousingCost);
-                    addSubtotal(pCellHousing.getSetPrice());
+                    addHDSubtotal(pCellHousing.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pCellHousing.getSetPrice());
+                    subtractHDSubTotal(pCellHousing.getSetPrice());
                     pCellHousing.setPrice(tbCellHousing.Text);
                     populateFields(pCellHousing, cbxSteelType.SelectedIndex, tbCellHousingQty.Text, tbCellHousing.Text, "single", tbCellHousing, tbCellHousingCost, tbCellHousingCost);
-                    addSubtotal(pCellHousing.getSetPrice());
+                    addHDSubtotal(pCellHousing.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -686,14 +704,14 @@ namespace Rudd
                 {
                     pLoadBar = new Parts(cbxSteelType.SelectedIndex, tbLoadBarQty.Text, tbLoadBar.Text, "single");
                     populateFields(pLoadBar, cbxSteelType.SelectedIndex, tbLoadBarQty.Text, tbLoadBar.Text, "single", tbLoadBar, tbLoadBarCost, tbLoadBarCost);
-                    addSubtotal(pLoadBar.getSetPrice());
+                    addHDSubtotal(pLoadBar.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pLoadBar.getSetPrice());
+                    subtractHDSubTotal(pLoadBar.getSetPrice());
                     pLoadBar.setPrice(tbLoadBar.Text);
                     populateFields(pLoadBar, cbxSteelType.SelectedIndex, tbLoadBarQty.Text, tbLoadBar.Text, "single", tbLoadBar, tbLoadBarCost, tbLoadBarCost);
-                    addSubtotal(pLoadBar.getSetPrice());
+                    addHDSubtotal(pLoadBar.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -716,14 +734,14 @@ namespace Rudd
                 {
                     pCableCover = new Parts(cbxSteelType.SelectedIndex, tbCableCoverQty.Text, tbCableCover.Text, "single");
                     populateFields(pCableCover, cbxSteelType.SelectedIndex, tbCableCoverQty.Text, tbCableCover.Text, "single", tbCableCover, tbCableCoverCost, tbCableCoverCost);
-                    addSubtotal(pCableCover.getSetPrice());
+                    addHDSubtotal(pCableCover.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pCableCover.getSetPrice());
+                    subtractHDSubTotal(pCableCover.getSetPrice());
                     pCableCover.setPrice(tbCableCover.Text);
                     populateFields(pCableCover, cbxSteelType.SelectedIndex, tbCableCoverQty.Text, tbCableCover.Text, "single", tbCableCover, tbCableCoverCost, tbCableCoverCost);
-                    addSubtotal(pCableCover.getSetPrice());
+                    addHDSubtotal(pCableCover.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -746,14 +764,14 @@ namespace Rudd
                 {
                     pBrackets = new Parts(cbxSteelType.SelectedIndex, tbBracketsQty.Text, tbBrackets.Text, "single");
                     populateFields(pBrackets, cbxSteelType.SelectedIndex, tbBracketsQty.Text, tbBrackets.Text, "single", tbBrackets, tbBracketsCost, tbBracketsCost);
-                    addSubtotal(pBrackets.getSetPrice());
+                    addHDSubtotal(pBrackets.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pBrackets.getSetPrice());
+                    subtractHDSubTotal(pBrackets.getSetPrice());
                     pBrackets.setPrice(tbBrackets.Text);
                     populateFields(pBrackets, cbxSteelType.SelectedIndex, tbBracketsQty.Text, tbBrackets.Text, "single", tbBrackets, tbBracketsCost, tbBracketsCost);
-                    addSubtotal(pBrackets.getSetPrice());
+                    addHDSubtotal(pBrackets.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -776,14 +794,14 @@ namespace Rudd
                 {
                     pLoadPlateSecu = new Parts(cbxSteelType.SelectedIndex, tbLoadPlateSecuQty.Text, tbLoadPlateSecu.Text, "plateSecu");
                     populateFields(pLoadPlateSecu, cbxSteelType.SelectedIndex, tbLoadPlateSecuQty.Text, tbLoadPlateSecu.Text, "plateSecu", tbLoadPlateSecu, tbLoadPlateSecuUnitCost, tbLoadPlateSecuCost);
-                    addSubtotal(pLoadPlateSecu.getSetPrice());
+                    addHDSubtotal(pLoadPlateSecu.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pLoadPlateSecu.getSetPrice());
+                    subtractHDSubTotal(pLoadPlateSecu.getSetPrice());
                     pLoadPlateSecu.setPrice(tbLoadPlateSecu.Text);
                     populateFields(pLoadPlateSecu, cbxSteelType.SelectedIndex, tbLoadPlateSecuQty.Text, tbLoadPlateSecu.Text, "plateSecu", tbLoadPlateSecu, tbLoadPlateSecuUnitCost, tbLoadPlateSecuCost);
-                    addSubtotal(pLoadPlateSecu.getSetPrice());
+                    addHDSubtotal(pLoadPlateSecu.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -821,14 +839,14 @@ namespace Rudd
                 {
                     pFootPlateSecu = new Parts(cbxSteelType.SelectedIndex, tbFootPlateSecuQty.Text, tbFootPlateSecu.Text, "plateSecu");
                     populateFields(pFootPlateSecu, cbxSteelType.SelectedIndex, tbFootPlateSecuQty.Text, tbFootPlateSecu.Text, "plateSecu", tbFootPlateSecu, tbFootPlateSecuUnitCost, tbFootPlateSecuCost);
-                    addSubtotal(pFootPlateSecu.getSetPrice());
+                    addHDSubtotal(pFootPlateSecu.getSetPrice());
                 }
                 else
                 {
-                    subtractSubTotal(pFootPlateSecu.getSetPrice());
+                    subtractHDSubTotal(pFootPlateSecu.getSetPrice());
                     pFootPlateSecu.setPrice(tbFootPlateSecu.Text);
                     populateFields(pFootPlateSecu, cbxSteelType.SelectedIndex, tbFootPlateSecuQty.Text, tbFootPlateSecu.Text, "plateSecu", tbFootPlateSecu, tbFootPlateSecuUnitCost, tbFootPlateSecuCost);
-                    addSubtotal(pFootPlateSecu.getSetPrice());
+                    addHDSubtotal(pFootPlateSecu.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -1588,6 +1606,16 @@ namespace Rudd
                 pFootPlateSecu = null;
             }
 
+            if (pHDScrews != null)
+            {
+                pHDScrews = null;
+            }
+
+            if (pHDStickers != null)
+            {
+                pHDStickers = null;
+            }
+
             clearTextbox(tbLoadPlate, tbLoadPlateCost, tbLoadPlateCost);
             clearTextbox(tbFootPlate, tbFootPlateCost, tbFootPlateCost);
             clearTextbox(tbCellHousing, tbCellHousingCost, tbCellHousingCost);
@@ -1596,7 +1624,9 @@ namespace Rudd
             clearTextbox(tbBrackets, tbBracketsCost, tbBracketsCost);
             clearTextbox(tbLoadPlateSecu, tbLoadPlateSecuUnitCost, tbLoadPlateSecuCost);
             clearTextbox(tbFootPlateSecu, tbFootPlateSecuUnitCost, tbFootPlateSecuCost);
-            
+            clearTextbox(tbHDScrews, tbHDScrewsCost, tbHDScrewsCost);
+            clearTextbox(tbHDStickers, tbHDStickersCost, tbHDStickersCost);
+
             clearTextbox(tbScrews, tbScrewsCost, tbScrewsCost);
             clearTextbox(tbWeildingGas, tbWeildingGasCost, tbWeildingGasCost);
             clearTextbox(tbWeildingWire, tbWeildingWireCost, tbWeildingWireCost);
@@ -1729,9 +1759,11 @@ namespace Rudd
             tbLoadCellSubtotal.Text = "";
             dLoadCellSubTotal = 0;
 
+            tbHDSubtotal.Text = "";
             tbSubtotal.Text = "";
             tbMarkUpTotal.Text = "";
             tbTotalCost.Text = "";
+            dHDSubtotal = 0;
             dSubtotal = 0;
             dMarkUp = 0;
             dTotal = 0;
@@ -1913,14 +1945,14 @@ namespace Rudd
             table.AddCell("");
             table.AddCell(tbScrewsCost.Text);
 
-            table.AddCell("Ash 5 - Weilding gas");
+            table.AddCell("Ash 5 - Welding gas");
             table.AddCell(tbWeildingGas.Text);
             table.AddCell("");
             table.AddCell("");
             table.AddCell(" ");
             table.AddCell(tbWeildingGasCost.Text);
 
-            table.AddCell("Weilding Wire");
+            table.AddCell("Welding Wire");
             table.AddCell(tbWeildingWire.Text);
             table.AddCell("");
             table.AddCell("");
@@ -2275,12 +2307,25 @@ namespace Rudd
             addTotalCost(dSubtotal);
         }
 
+        private void addHDSubtotal(Double price)
+        {
+            dHDSubtotal = dHDSubtotal + price;
+            tbHDSubtotal.Text = setText(dHDSubtotal.ToString());
+            addTotalCost(dHDSubtotal);
+        }
+
         private void subtractSubTotal(Double price)
         {
             dSubtotal = dSubtotal - price;
             tbSubtotal.Text = setText(dSubtotal.ToString());
         }
-        
+
+        private void subtractHDSubTotal(Double price)
+        {
+            dHDSubtotal = dHDSubtotal - price;
+            tbHDSubtotal.Text = setText(dHDSubtotal.ToString());
+        }
+
         private void addLoadCellKitTotal(Double price)
         {
             dLoadCellSubTotal = dLoadCellSubTotal + price;
@@ -2322,8 +2367,8 @@ namespace Rudd
 
         private void addTotalCost(Double price)
         {
-            dMarkUp = (dSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
-            dTotal = (dSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
+            dMarkUp = (dSubtotal +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
+            dTotal = (dSubtotal +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
             tbMarkUpTotal.Text = setText(dMarkUp.ToString());
             tbTotalCost.Text = setText(dTotal.ToString());
         }
