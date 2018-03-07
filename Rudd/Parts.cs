@@ -17,9 +17,8 @@ namespace Rudd
         private Double unitSize;
         private Double unitPrice;
         
-        public Parts(int cbxIdx, String qty, String price, String type)
+        public Parts(String qty, String price, String type)
         {
-            this.cbxIdx = cbxIdx;
             this.type = type;
             this.qty = Double.Parse(qty);
             this.price = Double.Parse(price.Replace(".", ","));
@@ -44,18 +43,12 @@ namespace Rudd
         {
             if (type.Equals("brace"))
             {
-                switch (this.cbxIdx)
-                {
-                    case 0:
                         this.unitSize = 60;
-                        break;
-                    case 1:
-                        this.unitSize = 100;
-                        break;
-                    default:
-                        this.unitSize = 60;
-                        break;
-                }
+            }
+
+            if (type.Equals("brace1000"))
+            {
+                this.unitSize = 100;
             }
 
             if (type.Equals("feetbar"))
