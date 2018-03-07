@@ -2032,12 +2032,139 @@ namespace Rudd
 
             doc.Add(table);
 
-            Paragraph Steelwork = new Paragraph("Standard Subtotal: " + tbSubtotal.Text);
+            Paragraph Steelwork = new Paragraph("600mm Subtotal: " + tbSubtotal.Text);
             Steelwork.SpacingBefore = 10;
             Steelwork.SpacingAfter = 10;
             Steelwork.Alignment = Element.ALIGN_RIGHT;
             Steelwork.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
             doc.Add(Steelwork);
+
+            doc.NewPage();
+
+            doc.Add(Rudd);
+
+            doc.Add(Space);
+
+            PdfPTable tableB = new PdfPTable(5);
+            tableB.WidthPercentage = 100f;
+
+            PdfPCell cellB = new PdfPCell(new Phrase("1000mm Steel Works", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cellB.Colspan = 5;
+            cellB.HorizontalAlignment = Element.ALIGN_CENTER;
+            tableB.AddCell(cellB);
+
+            PdfPCell cellspaceB = new PdfPCell(new Phrase(" "));
+            cellspaceB.Colspan = 5;
+
+            int TabPageB = tabControl1.SelectedIndex;
+
+
+            tableB.AddCell("");
+            tableB.AddCell("Price");
+            tableB.AddCell("QTY");
+            tableB.AddCell("Cost per Unit");
+            tableB.AddCell("Cost per Set");
+
+            tableB.AddCell("Steel Braces 1000mm");
+            tableB.AddCell(tbBraces1000.Text);
+            tableB.AddCell(tbBraces1000Qty.Text);
+            tableB.AddCell(tbBraces1000UnitCost.Text);
+            tableB.AddCell(tbBraces1000SetCost.Text);
+
+            tableB.AddCell("Feet Bar Connectors");
+            tableB.AddCell(tbFeetBar.Text);
+            tableB.AddCell(tbFeetBarQty.Text);
+            tableB.AddCell(tbFeetBarUnitCost.Text);
+            tableB.AddCell(tbFeetBarSetCost.Text);
+
+            tableB.AddCell("Loadcell Securer");
+            tableB.AddCell(tbLoadcell.Text);
+            tableB.AddCell(tbLoadcellQty.Text);
+            tableB.AddCell(tbLoadcellUnitCost.Text);
+            tableB.AddCell(tbLoadcellSetCost.Text);
+
+            tableB.AddCell("Potting Box Securer");
+            tableB.AddCell(tbPotting.Text);
+            tableB.AddCell(tbPottingQty.Text);
+            tableB.AddCell(tbPottingUnitCost.Text);
+            tableB.AddCell(tbPottingSetCost.Text);
+
+            tableB.AddCell("Cable Securer");
+            tableB.AddCell(tbCable.Text);
+            tableB.AddCell(tbCableQty.Text);
+            tableB.AddCell(tbCableUnitCost.Text);
+            tableB.AddCell(tbCableSetCost.Text);
+
+            tableB.AddCell("Cutting and Bending");
+            tableB.AddCell(tbCutting.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbCuttingCost.Text);
+
+            tableB.AddCell("Feet");
+            tableB.AddCell(tbFeet.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbFeetCost.Text);
+
+            tableB.AddCell("M8 x 40 cap screws S/S");
+            tableB.AddCell(tbScrews.Text);
+            tableB.AddCell(tbScrewsQty.Text);
+            tableB.AddCell("");
+            tableB.AddCell(tbScrewsCost.Text);
+
+            tableB.AddCell("1000mm Rudd Promotional Stickers");
+            tableB.AddCell(tbStickers1000.Text);
+            tableB.AddCell(tbStickers1000Qty.Text);
+            tableB.AddCell("");
+            tableB.AddCell(tbStickers1000Cost.Text);
+
+            tableB.AddCell("Ash 5 - Welding gas");
+            tableB.AddCell(tbWeildingGas.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbWeildingGasCost.Text);
+
+            tableB.AddCell("Welding Wire");
+            tableB.AddCell(tbWeildingWire.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbWeildingWireCost.Text);
+
+            tableB.AddCell("Galvanising");
+            tableB.AddCell(tbGalvanising.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbGalvanisingCost.Text);
+
+            tableB.AddCell("Petrol");
+            tableB.AddCell(tbPetrol.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbPetrolCost.Text);
+
+            tableB.AddCell("Electricity, Gloves, Goggles");
+            tableB.AddCell(tbElecGlovGog.Text);
+            tableB.AddCell("");
+            tableB.AddCell("");
+            tableB.AddCell(tbElecGlovGogCost.Text);
+
+            tableB.AddCell("Labour Cost");
+            tableB.AddCell(tbLabour.Text);
+            tableB.AddCell(tbLabourQty.Text);
+            tableB.AddCell("");
+            tableB.AddCell(tbLabourCost.Text);
+
+            tableB.AddCell(cellspaceB);
+
+            doc.Add(tableB);
+
+            Paragraph Steelwork1000 = new Paragraph("1000mm Subtotal: " + tbSubtotal1000.Text);
+            Steelwork1000.SpacingBefore = 10;
+            Steelwork1000.SpacingAfter = 10;
+            Steelwork1000.Alignment = Element.ALIGN_RIGHT;
+            Steelwork1000.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(Steelwork1000);
 
             doc.NewPage();
             
@@ -2542,8 +2669,8 @@ namespace Rudd
 
         private void addTotalCost(Double price)
         {
-            dMarkUp = (dSubtotal +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
-            dTotal = (dSubtotal +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
+            dMarkUp = (dSubtotal+ dSubtotal1000 +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
+            dTotal = (dSubtotal+ dSubtotal1000 +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
             tbMarkUpTotal.Text = setText(dMarkUp.ToString());
             tbTotalCost.Text = setText(dTotal.ToString());
         }
