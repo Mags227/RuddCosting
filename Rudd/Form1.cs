@@ -57,6 +57,10 @@ namespace Rudd
             }
         }
 
+        private void tbBraces_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
 
         private void tbBraces_Leave_1(object sender, EventArgs e)
         {
@@ -90,6 +94,11 @@ namespace Rudd
             }
         }
 
+        private void tbBraces1000_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbBraces1000_Leave(object sender, EventArgs e)
         {
             removeR(tbBraces1000);
@@ -120,6 +129,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbFeetBar_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbFeetBar_Leave(object sender, EventArgs e)
@@ -155,6 +169,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbLoadcell_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbLoadcell_Leave(object sender, EventArgs e)
@@ -193,6 +212,11 @@ namespace Rudd
             
         }
 
+        private void tbPotting_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbPotting_Leave(object sender, EventArgs e)
         {
             removeR(tbPotting);
@@ -226,6 +250,11 @@ namespace Rudd
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void tbCable_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbCable_Leave(object sender, EventArgs e)
@@ -263,6 +292,11 @@ namespace Rudd
             
         }
 
+        private void tbCutting_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void textBox1_Leave(object sender, EventArgs e)
         {
             removeR(tbCutting);
@@ -294,6 +328,12 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+
+        private void tbFeet_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbFeet_Leave(object sender, EventArgs e)
@@ -330,6 +370,11 @@ namespace Rudd
             
         }
 
+        private void tbScrews_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbScrews_Leave(object sender, EventArgs e)
         {
             removeR(tbScrews);
@@ -364,6 +409,11 @@ namespace Rudd
            
         }
 
+        private void tbHDScrews_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbHDScrews_Leave(object sender, EventArgs e)
         {
             removeR(tbHDScrews);
@@ -392,6 +442,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbWieldingGas_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbWeildingGas_Leave(object sender, EventArgs e)
@@ -432,6 +487,11 @@ namespace Rudd
             
         }
 
+        private void tbWildingWire_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbWeildingWire_Leave(object sender, EventArgs e)
         {
             removeR(tbWeildingWire);
@@ -467,6 +527,11 @@ namespace Rudd
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
            
+        }
+
+        private void tbGalvanising_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbGalvanising_Leave(object sender, EventArgs e)
@@ -505,6 +570,11 @@ namespace Rudd
             }
         }
 
+        private void tbPetrol_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbPetrol_Leave(object sender, EventArgs e)
         {
             removeR(tbPetrol);
@@ -539,6 +609,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbElecGlovGog_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbElecGlovGog_Leave(object sender, EventArgs e)
@@ -577,6 +652,11 @@ namespace Rudd
             }
         }
 
+        private void tbStickers_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbStickers_Leave(object sender, EventArgs e)
         {
             removeR(tbStickers);
@@ -605,6 +685,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbStickers1000_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbStickers1000_Leave(object sender, EventArgs e)
@@ -637,6 +722,11 @@ namespace Rudd
             }
         }
 
+        private void tbHDStickers_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbHDStickers_Leave(object sender, EventArgs e)
         {
             removeR(tbHDStickers);
@@ -666,7 +756,12 @@ namespace Rudd
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
+
+        private void tbLabour_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbLabour_Leave(object sender, EventArgs e)
         {
             removeR(tbLabour);
@@ -703,6 +798,11 @@ namespace Rudd
             }
         }
 
+        private void tbLoadPlate_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbLoadPlate_Leave(object sender, EventArgs e)
         {
             removeR(tbLoadPlate);
@@ -731,6 +831,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbFootPlate_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbFootPlate_Leave(object sender, EventArgs e)
@@ -763,6 +868,11 @@ namespace Rudd
             }
         }
 
+        private void tbCellHousing_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbCellHousing_Leave(object sender, EventArgs e)
         {
             removeR(tbCellHousing);
@@ -791,6 +901,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbLoadBar_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbLoadBar_Leave(object sender, EventArgs e)
@@ -823,6 +938,11 @@ namespace Rudd
             }
         }
 
+        private void tbCableCover_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbCableCover_Leave(object sender, EventArgs e)
         {
             removeR(tbCableCover);
@@ -851,6 +971,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbBrackets_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbBrackets_Leave(object sender, EventArgs e)
@@ -883,6 +1008,11 @@ namespace Rudd
             }
         }
 
+        private void tbLoadPlateSecu_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbLoadPlateSecu_Leave(object sender, EventArgs e)
         {
             removeR(tbLoadPlateSecu);
@@ -913,6 +1043,11 @@ namespace Rudd
             }
         }
 
+        private void tbPottingQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbPottingQBooks_Leave(object sender, EventArgs e)
         {
             try
@@ -926,6 +1061,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbFootPlateSecu_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbFootPlateSecu_Leave(object sender, EventArgs e)
@@ -956,6 +1096,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbSingleLoadCell_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbSingleLoadCell_Leave(object sender, EventArgs e)
@@ -991,6 +1136,11 @@ namespace Rudd
             }
         }
 
+        private void tbCable100A_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbCable100A_Leave(object sender, EventArgs e)
         {
             removeR(tbCable100A);
@@ -1022,6 +1172,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbSpring_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbSpring_Leave(object sender, EventArgs e)
@@ -1057,6 +1212,11 @@ namespace Rudd
             }
         }
 
+        private void tbAmphenolPlugs_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbAmphenolPlugs_Leave(object sender, EventArgs e)
         {
             removeR(tbAmphenolPlugs);
@@ -1088,6 +1248,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbAmphenolCaps_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbAmphenolCaps_Leave(object sender, EventArgs e)
@@ -1123,6 +1288,11 @@ namespace Rudd
             }
         }
 
+        private void tbCellQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbCellQBooks_Leave(object sender, EventArgs e)
         {
             try
@@ -1136,6 +1306,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbCableQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbCableQBooks_Leave(object sender, EventArgs e)
@@ -1153,6 +1328,11 @@ namespace Rudd
             }
         }
 
+        private void tbSpringQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbSpringQBooks_Leave(object sender, EventArgs e)
         {
             try
@@ -1166,6 +1346,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbPlugsQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbPlugsQBooks_Leave(object sender, EventArgs e)
@@ -1183,6 +1368,11 @@ namespace Rudd
             }
         }
 
+        private void tbCapsQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbCapsQBooks_Leave(object sender, EventArgs e)
         {
             try
@@ -1196,6 +1386,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbFlatA_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbFlatA_Leave(object sender, EventArgs e)
@@ -1230,6 +1425,11 @@ namespace Rudd
             }
         }
 
+        private void tbFlatB_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbFlatB_Leave(object sender, EventArgs e)
         {
             removeR(tbFlatB);
@@ -1260,6 +1460,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbFlatC_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbFlatC_Leave(object sender, EventArgs e)
@@ -1294,6 +1499,11 @@ namespace Rudd
             }
         }
 
+        private void tbFlatD_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbFlatD_Leave(object sender, EventArgs e)
         {
             removeR(tbFlatD);
@@ -1324,6 +1534,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbCuttingDiscs_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbCuttingDiscs_Leave(object sender, EventArgs e)
@@ -1357,6 +1572,11 @@ namespace Rudd
             }
         }
 
+        private void tbSanding_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbSanding_Leave(object sender, EventArgs e)
         {
             removeR(tbSanding);
@@ -1386,6 +1606,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbDrill_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbDrill_Leave(object sender, EventArgs e)
@@ -1420,6 +1645,11 @@ namespace Rudd
             }
         }
 
+        private void tbTap_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbTap_Leave(object sender, EventArgs e)
         {
             removeR(tbTap);
@@ -1449,6 +1679,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbGlue_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbGlue_Leave(object sender, EventArgs e)
@@ -1483,6 +1718,11 @@ namespace Rudd
             }
         }
 
+        private void tbPottingBox_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbPottingBox_Leave(object sender, EventArgs e)
         {
             removeR(tbPottingBox);
@@ -1514,6 +1754,11 @@ namespace Rudd
             }
         }
 
+        private void tbWireLead_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
         private void tbWireLead_Leave(object sender, EventArgs e)
         {
             removeR(tbWireLead);
@@ -1543,6 +1788,11 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tbTapmatic_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
         }
 
         private void tbTapmatic_Leave(object sender, EventArgs e)
@@ -1877,6 +2127,7 @@ namespace Rudd
             tbTotalCost.Text = "";
             dHDSubtotal = 0;
             dSubtotal = 0;
+            dSubtotal1000 = 0;
             dMarkUp = 0;
             dTotal = 0;
 
@@ -2682,5 +2933,13 @@ namespace Rudd
             }
         }
 
+        private void sendTabWhenEnter(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

@@ -10,7 +10,6 @@ namespace Rudd
 {
     class Parts
     {
-        private int cbxIdx;
         private String type;
         private Double qty;
         private Double price;
