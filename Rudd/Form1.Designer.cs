@@ -351,6 +351,8 @@
             this.label115 = new System.Windows.Forms.Label();
             this.tbSubtotal1000 = new System.Windows.Forms.TextBox();
             this.label117 = new System.Windows.Forms.Label();
+            this.bSaveDefaultPrices = new System.Windows.Forms.Button();
+            this.bReloadDefaults = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.TabD.SuspendLayout();
             this.tabC.SuspendLayout();
@@ -2207,7 +2209,7 @@
             this.tbCutting.Text = "R0,00";
             this.tbCutting.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbCutting.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCutting_KeyDown);
-            this.tbCutting.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.tbCutting.Leave += new System.EventHandler(this.tbCutting_Leave);
             // 
             // label17
             // 
@@ -3710,11 +3712,34 @@
             this.label117.TabIndex = 160;
             this.label117.Text = "1000mm Subtotal:";
             // 
+            // bSaveDefaultPrices
+            // 
+            this.bSaveDefaultPrices.Location = new System.Drawing.Point(735, 631);
+            this.bSaveDefaultPrices.Name = "bSaveDefaultPrices";
+            this.bSaveDefaultPrices.Size = new System.Drawing.Size(121, 31);
+            this.bSaveDefaultPrices.TabIndex = 161;
+            this.bSaveDefaultPrices.Text = "Save Default Prices";
+            this.bSaveDefaultPrices.UseVisualStyleBackColor = true;
+            this.bSaveDefaultPrices.Click += new System.EventHandler(this.bSaveDefaultPrices_Click);
+            // 
+            // bReloadDefaults
+            // 
+            this.bReloadDefaults.Location = new System.Drawing.Point(162, 630);
+            this.bReloadDefaults.Margin = new System.Windows.Forms.Padding(2);
+            this.bReloadDefaults.Name = "bReloadDefaults";
+            this.bReloadDefaults.Size = new System.Drawing.Size(122, 32);
+            this.bReloadDefaults.TabIndex = 162;
+            this.bReloadDefaults.Text = "Reload Default Prices";
+            this.bReloadDefaults.UseVisualStyleBackColor = true;
+            this.bReloadDefaults.Click += new System.EventHandler(this.bReloadDefaults_Click);
+            // 
             // Rudd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 668);
+            this.Controls.Add(this.bReloadDefaults);
+            this.Controls.Add(this.bSaveDefaultPrices);
             this.Controls.Add(this.tbSubtotal1000);
             this.Controls.Add(this.label117);
             this.Controls.Add(this.tbHDSubtotal);
@@ -4106,6 +4131,8 @@
         private System.Windows.Forms.TextBox tbStickers1000;
         private System.Windows.Forms.TextBox tbSubtotal1000;
         private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.Button bSaveDefaultPrices;
+        private System.Windows.Forms.Button bReloadDefaults;
     }
 }
 

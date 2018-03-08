@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ using System.Drawing.Printing;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using System.Collections.Specialized;
 
 namespace Rudd
 {
@@ -25,12 +27,175 @@ namespace Rudd
         private FlatBar pFlatA, pFlatB, pFlatC, pFlatD = null;
         private Sundries pCuttingDiscs, pSanding, pDrill, pTap, pGlue, pPottingBox, pWireLead, pTapmatic = null;
 
-
+        private Dictionary<string, string> listPrices = new Dictionary<string, string>();
 
         public Rudd()
         {
+            //Build form to display
             InitializeComponent();
             cbxLoadCellKit.SelectedIndex = 0;
+
+            //Read in last values from prices data file
+            InitializePrices();
+
+            ImportDefaultPrices();
+
+        }
+
+        private void ImportDefaultPrices()
+        {
+
+            //Ternary Operation  variable = test         then set to this otherwise use this default
+            //                    tbxxx   = listPrice  ?    listprice         :         default
+            tbBraces.Text = listPrices.ContainsKey("braces600") ? setText(listPrices["braces600"]) : "R0.00";
+            calc_tbBraces();
+
+            tbBraces1000.Text = listPrices.ContainsKey("braces1000") ? setText(listPrices["braces1000"]) : "R0.00";
+            calc_tbBraces1000();
+
+            tbFeetBar.Text = listPrices.ContainsKey("feetbar") ? setText(listPrices["feetbar"]) : "R0.00";
+            calc_tbFeetBar();
+
+            tbLoadcell.Text = listPrices.ContainsKey("loadcell") ? setText(listPrices["loadcell"]) : "R0.00";
+            calc_tbLoadcell();
+
+            tbPotting.Text = listPrices.ContainsKey("Potting") ? setText(listPrices["Potting"]) : "R0.00";
+            calc_tbPotting();
+
+            tbCable.Text = listPrices.ContainsKey("Cable") ? setText(listPrices["Cable"]) : "R0.00";
+            calc_tbCable();
+
+            tbCutting.Text = listPrices.ContainsKey("Cutting") ? setText(listPrices["Cutting"]) : "R0.00";
+            calc_tbCutting();
+
+            tbFeet.Text = listPrices.ContainsKey("Feet") ? setText(listPrices["Feet"]) : "R0.00";
+            calc_tbFeet();
+
+            tbScrews.Text = listPrices.ContainsKey("Screws") ? setText(listPrices["Screws"]) : "R0.00";
+            calc_tbScrews();
+
+            tbHDScrews.Text = listPrices.ContainsKey("HDScrews") ? setText(listPrices["HDScrews"]) : "R0.00";
+            calc_tbHDScrews();
+
+            tbWeildingGas.Text = listPrices.ContainsKey("WeldingGas") ? setText(listPrices["WeldingGas"]) : "R0.00";
+            calc_tbWeildingGas();
+
+            tbWeildingWire.Text = listPrices.ContainsKey("WeldingWire") ? setText(listPrices["WeldingWire"]) : "R0.00";
+            calc_tbWeildingWire();
+
+            tbGalvanising.Text = listPrices.ContainsKey("Galvanising") ? setText(listPrices["Galvanising"]) : "R0.00";
+            calc_tbGalvanising();
+
+            tbPetrol.Text = listPrices.ContainsKey("Petrol") ? setText(listPrices["Petrol"]) : "R0.00";
+            calc_tbPetrol();
+
+            tbElecGlovGog.Text = listPrices.ContainsKey("GlovGog") ? setText(listPrices["GlovGog"]) : "R0.00";
+            calc_tbElecGlovGog();
+
+            tbStickers.Text = listPrices.ContainsKey("Stickers600") ? setText(listPrices["Stickers600"]) : "R0.00";
+            calc_tbStickers();
+
+            tbStickers1000.Text = listPrices.ContainsKey("Stickers1000") ? setText(listPrices["Stickers1000"]) : "R0.00";
+            calc_tbStickers1000();
+
+            tbHDStickers.Text = listPrices.ContainsKey("HDStickers") ? setText(listPrices["HDStickers"]) : "R0.00";
+            calc_tbHDStickers();
+
+            tbLabour.Text = listPrices.ContainsKey("Labour") ? setText(listPrices["Labour"]) : "R0.00";
+            calc_tbLabour();
+
+            tbLoadPlate.Text = listPrices.ContainsKey("LoadPlate") ? setText(listPrices["LoadPlate"]) : "R0.00";
+            calc_tbLoadPlate();
+
+            tbFootPlate.Text = listPrices.ContainsKey("FootPlate") ? setText(listPrices["FootPlate"]) : "R0.00";
+            calc_tbFootPlate();
+
+            tbCellHousing.Text = listPrices.ContainsKey("CellHousing") ? setText(listPrices["CellHousing"]) : "R0.00";
+            calc_tbCellHousing();
+
+            tbLoadBar.Text = listPrices.ContainsKey("LoadBar") ? setText(listPrices["LoadBar"]) : "R0.00";
+            calc_tbLoadBar();
+
+            tbCableCover.Text = listPrices.ContainsKey("CableCover") ? setText(listPrices["CableCover"]) : "R0.00";
+            calc_tbCableCover();
+
+            tbBrackets.Text = listPrices.ContainsKey("Brackets") ? setText(listPrices["Brackets"]) : "R0.00";
+            calc_tbBrackets();
+
+            tbLoadPlateSecu.Text = listPrices.ContainsKey("LoadPlateSecu") ? setText(listPrices["LoadPlateSecu"]) : "R0.00";
+            calc_tbLoadPlateSecu();
+
+            tbFootPlateSecu.Text = listPrices.ContainsKey("FootPlateSecu") ? setText(listPrices["FootPlateSecu"]) : "R0.00";
+            calc_tbFootPlateSecu();
+
+            tbSingleLoadCell.Text = listPrices.ContainsKey("SingleLoadCell") ? setText(listPrices["SingleLoadCell"]) : "R0.00";
+            calc_tbSingleLoadCell();
+
+            tbCable100A.Text = listPrices.ContainsKey("Cable100A") ? setText(listPrices["Cable100A"]) : "R0.00";
+            calc_tbCable100A();
+
+            tbSpring.Text = listPrices.ContainsKey("Spring") ? setText(listPrices["Spring"]) : "R0.00";
+            calc_tbSpring();
+
+            tbAmphenolPlugs.Text = listPrices.ContainsKey("AmphenolPlugs") ? setText(listPrices["AmphenolPlugs"]) : "R0.00";
+            calc_tbAmphenolPlugs();
+
+            tbAmphenolCaps.Text = listPrices.ContainsKey("AmphenolCaps") ? setText(listPrices["AmphenolCaps"]) : "R0.00";
+            calc_tbAmphenolCaps();
+
+            tbCellQBooks.Text = listPrices.ContainsKey("CellQBooks") ? setText(listPrices["CellQBooks"]) : "R0.00";
+            calc_tbCellQBooks();
+
+            tbCableQBooks.Text = listPrices.ContainsKey("CableQBooks") ? setText(listPrices["CableQBooks"]) : "R0.00";
+            calc_tbCableQBooks();
+
+            tbSpringQBooks.Text = listPrices.ContainsKey("SpringQBooks") ? setText(listPrices["SpringQBooks"]) : "R0.00";
+            calc_tbSpringQBooks();
+
+            tbPlugsQBooks.Text = listPrices.ContainsKey("PlugsQBooks") ? setText(listPrices["PlugsQBooks"]) : "R0.00";
+            calc_tbPlugsQBooks();
+
+            tbCapsQBooks.Text = listPrices.ContainsKey("CapsQBooks") ? setText(listPrices["CapsQBooks"]) : "R0.00";
+            calc_tbCapsQBooks();
+
+            tbFlatA.Text = listPrices.ContainsKey("FlatA") ? setText(listPrices["FlatA"]) : "R0.00";
+            calc_tbFlatA();
+
+            tbFlatB.Text = listPrices.ContainsKey("FlatB") ? setText(listPrices["FlatB"]) : "R0.00";
+            calc_tbFlatB();
+
+            tbFlatC.Text = listPrices.ContainsKey("FlatC") ? setText(listPrices["FlatC"]) : "R0.00";
+            calc_tbFlatC();
+
+            tbFlatD.Text = listPrices.ContainsKey("FlatD") ? setText(listPrices["FlatD"]) : "R0.00";
+            calc_tbFlatD();
+
+            tbCuttingDiscs.Text = listPrices.ContainsKey("cuttingDiscs") ? setText(listPrices["cuttingDiscs"]) : "R0.00";
+            calc_tbCuttingDiscs();
+
+            tbSanding.Text = listPrices.ContainsKey("Sanding") ? setText(listPrices["Sanding"]) : "R0.00";
+            calc_tbSanding();
+
+            tbDrill.Text = listPrices.ContainsKey("Drill") ? setText(listPrices["Drill"]) : "R0.00";
+            calc_tbDrill();
+
+            tbTap.Text = listPrices.ContainsKey("Tap") ? setText(listPrices["Tap"]) : "R0.00";
+            calc_tbTap();
+
+            tbGlue.Text = listPrices.ContainsKey("Glue") ? setText(listPrices["Glue"]) : "R0.00";
+            calc_tbGlue();
+
+            tbPottingBox.Text = listPrices.ContainsKey("PottingBox") ? setText(listPrices["PottingBox"]) : "R0.00";
+            calc_tbPottingBox();
+
+            tbPottingQBooks.Text = listPrices.ContainsKey("PottingQBooks") ? setText(listPrices["PottingQBooks"]) : "R0.00";
+            calc_tbPottingQBooks();
+
+            tbWireLead.Text = listPrices.ContainsKey("WireLead") ? setText(listPrices["WireLead"]) : "R0.00";
+            calc_tbWireLead();
+
+            tbTapmatic.Text = listPrices.ContainsKey("Tapmatic") ? setText(listPrices["Tapmatic"]) : "R0.00";
+            calc_tbTapmatic();
 
         }
 
@@ -51,12 +216,16 @@ namespace Rudd
             {
                 rtbNotes.LoadFile(@"RuddNotes.rtf");
             }
-            catch (System.IO.FileNotFoundException fnfe)
+            catch (System.IO.FileNotFoundException)
             {
-
+                
             }
         }
 
+
+        //===================================================================================================================================================
+        //  BRACES 600mm
+        //===================================================================================================================================================
         private void tbBraces_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
@@ -64,8 +233,13 @@ namespace Rudd
 
         private void tbBraces_Leave_1(object sender, EventArgs e)
         {
+            calc_tbBraces();
+        }
+
+        private void calc_tbBraces()
+        {
             removeR(tbBraces);
-            
+
             try
             {
                 if (pBraces == null)
@@ -81,7 +255,6 @@ namespace Rudd
                     populateFields(pBraces, tbBracesQty.Text, tbBraces.Text, "brace", tbBraces, tbBracesUnitCost, tbBracesSetCost);
                     addSubtotal(pBraces.getSetPrice());
                 }
-
             }
             catch (FormatException)
             {
@@ -92,14 +265,25 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["braces600"] = tbBraces.Text;
         }
 
+        //===================================================================================================================================================
+        //  BRACES 1000mm
+        //===================================================================================================================================================
         private void tbBraces1000_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbBraces1000_Leave(object sender, EventArgs e)
+        {
+            calc_tbBraces1000();
+        }
+
+        private void calc_tbBraces1000()
         {
             removeR(tbBraces1000);
 
@@ -129,14 +313,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["braces1000"] = tbBraces1000.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  FEET BAR
+        //===================================================================================================================================================
         private void tbFeetBar_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFeetBar_Leave(object sender, EventArgs e)
+        {
+            calc_tbFeetBar();
+        }
+
+        private void calc_tbFeetBar()
         {
             removeR(tbFeetBar);
 
@@ -158,7 +354,7 @@ namespace Rudd
                     addSubtotal(pFeetBar.getSetPrice());
                     addSubtotal1000(pFeetBar.getSetPrice());
                 }
-                
+
             }
             catch (FormatException)
             {
@@ -169,8 +365,15 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["feetbar"] = tbFeetBar.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  LOAD CELL
+        //===================================================================================================================================================
         private void tbLoadcell_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
@@ -178,11 +381,16 @@ namespace Rudd
 
         private void tbLoadcell_Leave(object sender, EventArgs e)
         {
+            calc_tbLoadcell();
+        }
+
+        private void calc_tbLoadcell()
+        {
             removeR(tbLoadcell);
 
             try
             {
-                
+
                 if (pLoadcell == null)
                 {
                     pLoadcell = new Parts(tbLoadcellQty.Text, tbLoadcell.Text, "loadcell");
@@ -209,15 +417,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["loadcell"] = tbLoadcell.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  POTTING
+        //===================================================================================================================================================
         private void tbPotting_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbPotting_Leave(object sender, EventArgs e)
+        {
+            calc_tbPotting();
+        }
+
+        private void calc_tbPotting()
         {
             removeR(tbPotting);
 
@@ -250,14 +469,25 @@ namespace Rudd
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Potting"] = tbPotting.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CABLE
+        //===================================================================================================================================================
         private void tbCable_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCable_Leave(object sender, EventArgs e)
+        {
+            calc_tbCable();
+        }
+
+        private void calc_tbCable()
         {
             removeR(tbCable);
 
@@ -289,15 +519,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Cable"] = tbCable.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CUTTING
+        //===================================================================================================================================================
         private void tbCutting_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
-        private void textBox1_Leave(object sender, EventArgs e)
+        private void tbCutting_Leave(object sender, EventArgs e)
+        {
+            calc_tbCutting();
+        }
+
+        private void calc_tbCutting()
         {
             removeR(tbCutting);
 
@@ -328,15 +569,27 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Cutting"] = tbCutting.Text;
+
         }
 
 
+        //===================================================================================================================================================
+        //  FEET
+        //===================================================================================================================================================
         private void tbFeet_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFeet_Leave(object sender, EventArgs e)
+        {
+            calc_tbFeet();
+        }
+
+        private void calc_tbFeet()
         {
             removeR(tbFeet);
 
@@ -367,15 +620,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Feet"] = tbFeet.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  SCREWS
+        //===================================================================================================================================================
         private void tbScrews_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbScrews_Leave(object sender, EventArgs e)
+        {
+            calc_tbScrews();
+        }
+
+        private void calc_tbScrews()
         {
             removeR(tbScrews);
 
@@ -406,15 +670,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Screws"] = tbScrews.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  HD SCREWS
+        //===================================================================================================================================================
         private void tbHDScrews_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbHDScrews_Leave(object sender, EventArgs e)
+        {
+            calc_tbHDScrews();
+        }
+
+        private void calc_tbHDScrews()
         {
             removeR(tbHDScrews);
 
@@ -442,14 +717,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["HDScrews"] = tbHDScrews.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  WELDING GAS
+        //===================================================================================================================================================
         private void tbWieldingGas_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbWeildingGas_Leave(object sender, EventArgs e)
+        {
+            calc_tbWeildingGas();
+        }
+
+        private void calc_tbWeildingGas()
         {
             removeR(tbWeildingGas);
 
@@ -484,15 +771,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["WeldingGas"] = tbWeildingGas.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  WELDING WIRE
+        //===================================================================================================================================================
         private void tbWildingWire_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbWeildingWire_Leave(object sender, EventArgs e)
+        {
+            calc_tbWeildingWire();
+        }
+
+        private void calc_tbWeildingWire()
         {
             removeR(tbWeildingWire);
 
@@ -526,15 +824,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["WeldingWire"] = tbWeildingWire.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  GALVANISING
+        //===================================================================================================================================================
         private void tbGalvanising_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbGalvanising_Leave(object sender, EventArgs e)
+        {
+            calc_tbGalvanising();
+        }
+
+        private void calc_tbGalvanising()
         {
             removeR(tbGalvanising);
 
@@ -568,14 +877,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Galvanising"] = tbGalvanising.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  PETROL
+        //===================================================================================================================================================
         private void tbPetrol_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbPetrol_Leave(object sender, EventArgs e)
+        {
+            calc_tbPetrol();
+        }
+        
+        private void calc_tbPetrol() 
         {
             removeR(tbPetrol);
 
@@ -609,14 +930,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
 
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Petrol"] = tbPetrol.Text;
+
+        } 
+
+        //===================================================================================================================================================
+        //  ELECTRICITY, GLOVES and GOGGLES
+        //===================================================================================================================================================
         private void tbElecGlovGog_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbElecGlovGog_Leave(object sender, EventArgs e)
+        {
+            calc_tbElecGlovGog();
+        }
+
+        private void calc_tbElecGlovGog()
         {
             removeR(tbElecGlovGog);
 
@@ -650,14 +983,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["GlovGog"] = tbElecGlovGog.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  STICKERS
+        //===================================================================================================================================================
         private void tbStickers_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbStickers_Leave(object sender, EventArgs e)
+        {
+            calc_tbStickers();
+        }
+
+        private void calc_tbStickers()
         {
             removeR(tbStickers);
 
@@ -685,14 +1030,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Stickers600"] = tbStickers.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  STICKERS 1000
+        //===================================================================================================================================================
         private void tbStickers1000_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbStickers1000_Leave(object sender, EventArgs e)
+        {
+            calc_tbStickers1000();
+        }
+
+        private void calc_tbStickers1000()
         {
             removeR(tbStickers1000);
 
@@ -720,14 +1077,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Stickers1000"] = tbStickers1000.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  HEAVY DUTY - STICKERS
+        //===================================================================================================================================================
         private void tbHDStickers_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbHDStickers_Leave(object sender, EventArgs e)
+        {
+            calc_tbHDStickers();
+        }
+
+        private void calc_tbHDStickers()
         {
             removeR(tbHDStickers);
 
@@ -755,14 +1124,25 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["HDStickers"] = tbHDStickers.Text;
         }
 
+        //===================================================================================================================================================
+        //  LABOUR
+        //===================================================================================================================================================
         private void tbLabour_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbLabour_Leave(object sender, EventArgs e)
+        {
+            calc_tbLabour();
+        }
+
+        private void calc_tbLabour()
         {
             removeR(tbLabour);
 
@@ -796,14 +1176,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Labour"] = tbLabour.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  LOAD PLATE
+        //===================================================================================================================================================
         private void tbLoadPlate_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbLoadPlate_Leave(object sender, EventArgs e)
+        {
+            calc_tbLoadPlate();
+        }
+
+        private void calc_tbLoadPlate()
         {
             removeR(tbLoadPlate);
 
@@ -831,14 +1223,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["LoadPlate"] = tbLoadPlate.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  FOOT PLATE
+        //===================================================================================================================================================
         private void tbFootPlate_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFootPlate_Leave(object sender, EventArgs e)
+        {
+            calc_tbFootPlate();
+        }
+
+        private void calc_tbFootPlate()
         {
             removeR(tbFootPlate);
 
@@ -866,14 +1270,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["FootPlate"] = tbFootPlate.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CELL HOUSING
+        //===================================================================================================================================================
         private void tbCellHousing_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCellHousing_Leave(object sender, EventArgs e)
+        {
+            calc_tbCellHousing();
+        }
+
+        private void calc_tbCellHousing()
         {
             removeR(tbCellHousing);
 
@@ -901,14 +1317,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["CellHousing"] = tbCellHousing.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  LOAD BAR
+        //===================================================================================================================================================
         private void tbLoadBar_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbLoadBar_Leave(object sender, EventArgs e)
+        {
+            calc_tbLoadBar();
+        }
+
+        private void calc_tbLoadBar()
         {
             removeR(tbLoadBar);
 
@@ -936,14 +1364,25 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["LoadBar"] = tbLoadBar.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CABLE COVER
+        //===================================================================================================================================================
         private void tbCableCover_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCableCover_Leave(object sender, EventArgs e)
+        {
+            calc_tbCableCover();
+        }
+        private void calc_tbCableCover()
         {
             removeR(tbCableCover);
 
@@ -971,14 +1410,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["CableCover"] = tbCableCover.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  BRACKETS
+        //===================================================================================================================================================
         private void tbBrackets_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbBrackets_Leave(object sender, EventArgs e)
+        {
+            calc_tbBrackets();
+        }
+
+        private void calc_tbBrackets()
         {
             removeR(tbBrackets);
 
@@ -1006,14 +1457,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Brackets"] = tbBrackets.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  LOAD PLATE SECURER
+        //===================================================================================================================================================
         private void tbLoadPlateSecu_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbLoadPlateSecu_Leave(object sender, EventArgs e)
+        {
+            calc_tbLoadPlateSecu();
+        }
+
+        private void calc_tbLoadPlateSecu()
         {
             removeR(tbLoadPlateSecu);
 
@@ -1041,34 +1504,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["LoadPlateSecu"] = tbLoadPlateSecu.Text;
+
         }
 
-        private void tbPottingQBooks_KeyDown(Object sender, KeyEventArgs e)
-        {
-            sendTabWhenEnter(e);
-        }
-
-        private void tbPottingQBooks_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                tbPottingQBooks.Text = setText(tbPottingQBooks.Text.Replace(".", ","));
-            }
-            catch (FormatException)
-            {
-                tbPottingQBooks.Text = "";
-                tbPottingQBooks.Focus();
-                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
+        //===================================================================================================================================================
+        //  FOOT PLATE SECURER
+        //===================================================================================================================================================
         private void tbFootPlateSecu_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFootPlateSecu_Leave(object sender, EventArgs e)
+        {
+            calc_tbFootPlateSecu();
+        }
+
+        private void calc_tbFootPlateSecu()
         {
             removeR(tbFootPlateSecu);
 
@@ -1096,14 +1551,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["FootPlateSecu"] = tbFootPlateSecu.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  SINGLE LOAD CELL
+        //===================================================================================================================================================
         private void tbSingleLoadCell_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbSingleLoadCell_Leave(object sender, EventArgs e)
+        {
+            calc_tbSingleLoadCell();
+        }
+
+        private void calc_tbSingleLoadCell()
         {
             removeR(tbSingleLoadCell);
 
@@ -1134,14 +1601,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["SingleLoadCell"] = tbSingleLoadCell.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CABLE 100A
+        //===================================================================================================================================================
         private void tbCable100A_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCable100A_Leave(object sender, EventArgs e)
+        {
+            calc_tbCable100A();
+        }
+
+        private void calc_tbCable100A()
         {
             removeR(tbCable100A);
 
@@ -1172,14 +1651,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Cable100A"] = tbCable100A.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  SPRING
+        //===================================================================================================================================================
         private void tbSpring_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbSpring_Leave(object sender, EventArgs e)
+        {
+            calc_tbSpring();
+        }
+
+        private void calc_tbSpring()
         {
             removeR(tbSpring);
 
@@ -1210,14 +1701,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Spring"] = tbSpring.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  AMPHENOL PLAUGS
+        //===================================================================================================================================================
         private void tbAmphenolPlugs_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbAmphenolPlugs_Leave(object sender, EventArgs e)
+        {
+            calc_tbAmphenolPlugs();
+        }
+
+        private void calc_tbAmphenolPlugs()
         {
             removeR(tbAmphenolPlugs);
 
@@ -1248,14 +1751,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["AmphenolPlugs"] = tbAmphenolPlugs.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  AMPHENOL CAPS
+        //===================================================================================================================================================
         private void tbAmphenolCaps_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbAmphenolCaps_Leave(object sender, EventArgs e)
+        {
+            calc_tbAmphenolCaps();
+        }
+
+        private void calc_tbAmphenolCaps()
         {
             removeR(tbAmphenolCaps);
 
@@ -1286,14 +1801,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["AmphenolCaps"] = tbAmphenolCaps.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CELL QUICK BOOKS
+        //===================================================================================================================================================
         private void tbCellQBooks_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCellQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbCellQBooks();
+        }
+
+        private void calc_tbCellQBooks()
         {
             try
             {
@@ -1306,14 +1833,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["CellQBooks"] = tbCellQBooks.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CABEL QUICK BOOKS
+        //===================================================================================================================================================
         private void tbCableQBooks_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCableQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbCableQBooks();
+        }
+
+        private void calc_tbCableQBooks()
         {
             try
             {
@@ -1326,14 +1865,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["CableQBooks"] = tbCableQBooks.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  SPRING QUICK BOOKS
+        //===================================================================================================================================================
         private void tbSpringQBooks_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbSpringQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbSpringQBooks();
+        }
+
+        private void calc_tbSpringQBooks()
         {
             try
             {
@@ -1346,14 +1897,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["SpringQBooks"] = tbSpringQBooks.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  PLUG QUICK BOOKS
+        //===================================================================================================================================================
         private void tbPlugsQBooks_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbPlugsQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbPlugsQBooks();
+        }
+
+        private void calc_tbPlugsQBooks()
         {
             try
             {
@@ -1366,14 +1929,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["PlugsQBooks"] = tbPlugsQBooks.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CAPS QUICK BOOKS
+        //===================================================================================================================================================
         private void tbCapsQBooks_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbCapsQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbCapsQBooks();
+        }
+
+        private void calc_tbCapsQBooks()
         {
             try
             {
@@ -1386,14 +1961,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["CapsQBooks"] = tbCapsQBooks.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  FLAT A
+        //===================================================================================================================================================
         private void tbFlatA_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFlatA_Leave(object sender, EventArgs e)
+        {
+            calc_tbFlatA();
+        }
+
+        private void calc_tbFlatA()
         {
             removeR(tbFlatA);
 
@@ -1423,14 +2010,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["FlatA"] = tbFlatA.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  FLAT B
+        //===================================================================================================================================================
         private void tbFlatB_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFlatB_Leave(object sender, EventArgs e)
+        {
+            calc_tbFlatB();
+        }
+
+        private void calc_tbFlatB()
         {
             removeR(tbFlatB);
 
@@ -1460,14 +2059,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["FlatB"] = tbFlatB.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  FLAT C
+        //===================================================================================================================================================
         private void tbFlatC_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFlatC_Leave(object sender, EventArgs e)
+        {
+            calc_tbFlatC();
+        }
+
+        private void calc_tbFlatC()
         {
             removeR(tbFlatC);
 
@@ -1497,14 +2108,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["FlatC"] = tbFlatC.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  FLAT D
+        //===================================================================================================================================================
         private void tbFlatD_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbFlatD_Leave(object sender, EventArgs e)
+        {
+            calc_tbFlatD();
+        }
+
+        private void calc_tbFlatD()
         {
             removeR(tbFlatD);
 
@@ -1534,8 +2157,15 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["FlatD"] = tbFlatD.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  CUTTING DISKS
+        //===================================================================================================================================================
         private void tbCuttingDiscs_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
@@ -1543,8 +2173,13 @@ namespace Rudd
 
         private void tbCuttingDiscs_Leave(object sender, EventArgs e)
         {
+            calc_tbCuttingDiscs();
+        }
+
+        private void calc_tbCuttingDiscs()
+        {
             removeR(tbCuttingDiscs);
-            
+
             try
             {
                 if (pCuttingDiscs == null)
@@ -1570,14 +2205,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["cuttingDiscs"] = tbCuttingDiscs.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  SANDING
+        //===================================================================================================================================================
         private void tbSanding_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbSanding_Leave(object sender, EventArgs e)
+        {
+            calc_tbSanding();
+        }
+
+        private void calc_tbSanding()
         {
             removeR(tbSanding);
 
@@ -1606,14 +2253,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Sanding"] = tbSanding.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  DRILL
+        //===================================================================================================================================================
         private void tbDrill_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbDrill_Leave(object sender, EventArgs e)
+        {
+            calc_tbDrill();
+        }
+
+        private void calc_tbDrill()
         {
             removeR(tbDrill);
 
@@ -1643,14 +2302,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Drill"] = tbDrill.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  TAP
+        //===================================================================================================================================================
         private void tbTap_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbTap_Leave(object sender, EventArgs e)
+        {
+            calc_tbTap();
+        }
+
+        private void calc_tbTap()
         {
             removeR(tbTap);
 
@@ -1679,8 +2350,15 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Tap"] = tbTap.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  GLUE
+        //===================================================================================================================================================
         private void tbGlue_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
@@ -1688,8 +2366,12 @@ namespace Rudd
 
         private void tbGlue_Leave(object sender, EventArgs e)
         {
-            removeR(tbGlue);
+            calc_tbGlue();
+        }
 
+        private void calc_tbGlue()
+        {
+            removeR(tbGlue);
 
             try
             {
@@ -1716,14 +2398,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Glue"] = tbGlue.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  POTTING BOX
+        //===================================================================================================================================================
         private void tbPottingBox_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbPottingBox_Leave(object sender, EventArgs e)
+        {
+            calc_tbPottingBox();
+        }
+
+        private void calc_tbPottingBox()
         {
             removeR(tbPottingBox);
 
@@ -1752,14 +2446,58 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["PottingBox"] = tbPottingBox.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  POTTING QUICK BOOKS
+        //===================================================================================================================================================
+        private void tbPottingQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
+        private void tbPottingQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbPottingQBooks();
+        }
+
+        private void calc_tbPottingQBooks()
+        {
+            try
+            {
+                tbPottingQBooks.Text = setText(tbPottingQBooks.Text.Replace(".", ","));
+            }
+            catch (FormatException)
+            {
+                tbPottingQBooks.Text = "";
+                tbPottingQBooks.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["PottingQBooks"] = tbPottingQBooks.Text;
+
+        }
+
+        //===================================================================================================================================================
+        //  WIRE LEAD
+        //===================================================================================================================================================
         private void tbWireLead_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbWireLead_Leave(object sender, EventArgs e)
+        {
+            calc_tbWireLead();
+        }
+        
+        private void calc_tbWireLead()
         {
             removeR(tbWireLead);
 
@@ -1788,14 +2526,26 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["WireLead"] = tbWireLead.Text;
+
         }
 
+        //===================================================================================================================================================
+        //  TAPMATIC
+        //===================================================================================================================================================
         private void tbTapmatic_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
         }
 
         private void tbTapmatic_Leave(object sender, EventArgs e)
+        {
+            calc_tbTapmatic();
+        }
+
+        private void calc_tbTapmatic()
         {
             removeR(tbTapmatic);
 
@@ -1824,12 +2574,20 @@ namespace Rudd
                 MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["Tapmatic"] = tbTapmatic.Text;
         }
+
+
 
         private void bRetry_Click(object sender, EventArgs e)
         {
+
+            listPrices.Clear();
+
             //Standard Steelworking
-            
+
             if (pBraces != null)
             {
                 pBraces = null;
@@ -2812,7 +3570,7 @@ namespace Rudd
             {
                 rtbNotes.LoadFile(@"RuddNotes.rtf");
             }
-            catch (System.IO.FileNotFoundException fnfe)
+            catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("There is nothing to load at this time. Try adding some Notes and saving them first.", "No File to Load", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -2830,6 +3588,12 @@ namespace Rudd
         private String setText(String tb)
         {
             string amt = "R0,00";
+
+            //Substitue and "." with a ","
+            if (tb.Contains("."))
+            {
+                tb = tb.Replace(".", ",");
+            }
 
             double amount = 0.0d;
             if (Double.TryParse(tb, NumberStyles.Currency, null, out amount))
@@ -2925,11 +3689,18 @@ namespace Rudd
             tbTotalCost.Text = setText(dTotal.ToString());
         }
 
+        //Removes the "R" in case the person added the currency to the value of the item
         private void removeR(TextBox tb)
         {
             if (tb.Text.StartsWith("R"))
             {
                 tb.Text = tb.Text.Replace("R", "");
+            }
+
+            //Substitue and "." with a ","
+            if (tb.Text.Contains("."))
+            {
+                tb.Text = tb.Text.Replace(".", ",");
             }
         }
 
@@ -2941,5 +3712,61 @@ namespace Rudd
                 e.SuppressKeyPress = true;
             }
         }
+
+        //Read in the resources/prices file to set the default values
+        private void InitializePrices()
+        {
+            try
+            {
+                String line;
+                StreamReader srPrices = new StreamReader("resources\\prices");
+                while ((line = srPrices.ReadLine()) != null)
+                {
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        String[] eachLine = line.Split('=');
+
+                        listPrices[eachLine[0]] = eachLine[1];
+                    }
+                }
+                srPrices.Close();
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("Could not find the last used prices file. We will start with R0.00 as a default for each item.", "No Last prices File to Load", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+        }
+
+        //This will save the current textbox.text areas into the resources/prices file
+        private void bSaveDefaultPrices_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StreamWriter swPrices = new StreamWriter("resources\\prices");
+                foreach(KeyValuePair<string, string> entry in listPrices)
+                {
+                    swPrices.WriteLine(entry.Key + "=" + entry.Value);
+                }
+                swPrices.Close();
+                MessageBox.Show("Prices have been saved.", "Default Prices", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(System.IO.IOException)
+            {
+                MessageBox.Show("Could not save the new prices to the prices file.", "No Last prices File to Load", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //This will delete the listPrices Dictionary and rebuilt it and reset all the text boxes with the valkues in the files
+        private void bReloadDefaults_Click(object sender, EventArgs e)
+        {
+            listPrices.Clear();
+
+            //Read in last values from prices data file
+            InitializePrices();
+
+            ImportDefaultPrices();
+        }
+
     }
 }
