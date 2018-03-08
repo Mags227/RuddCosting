@@ -515,7 +515,6 @@ namespace Rudd
                 {
                     pPetrol = new Parts("1", tbPetrol.Text, "petrol");
                     populateFields(pPetrol, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
-                    tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
                     addSubtotal(pPetrol.getSetPrice());
                     addSubtotal1000(pPetrol.getSetPrice());
                     addHDSubtotal(pPetrol.getSetPrice());
@@ -525,8 +524,8 @@ namespace Rudd
                     subtractSubTotal(pPetrol.getSetPrice());
                     subtractSubTotal1000(pPetrol.getSetPrice());
                     subtractHDSubTotal(pPetrol.getSetPrice());
+                    pPetrol.setPrice(tbPetrol.Text);
                     populateFields(pPetrol, "1", tbPetrol.Text, "petrol", tbPetrol, tbPetrolCost, tbPetrolCost);
-                    tbPetrolCost.Text = setText(pPetrol.getFuelPrice().ToString());
                     addSubtotal(pPetrol.getSetPrice());
                     addSubtotal1000(pPetrol.getSetPrice());
                     addHDSubtotal(pPetrol.getSetPrice());
