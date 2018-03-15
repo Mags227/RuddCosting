@@ -2897,7 +2897,7 @@ namespace Rudd
 
             Document doc = new Document(iTextSharp.text.PageSize.A4, 30, 30, 30, 30);
 
-            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Rudd Costing - " + dateTime.ToString("dd-MM-yyyy") + ".pdf", FileMode.Create));
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Rudd Costing - " + dateTime.ToString("dd-MM-yyyy") + " " + DateTime.Now.ToString("h-mm-ss tt") + ".pdf", FileMode.Create));
             doc.Open();
 
             iTextSharp.text.Image Rudd = iTextSharp.text.Image.GetInstance("resources\\Rudd.jpg");
