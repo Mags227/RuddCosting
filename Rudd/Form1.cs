@@ -20,9 +20,9 @@ namespace Rudd
 {
     public partial class Rudd : Form
     {
-        private Double dHDSubtotal, dSubtotal,dSubtotal1000, dTotal, dMarkUp, dLoadCellSubTotal, dSundriesTotal, dFlatBarMSTotal;
+        private Double dHDSubtotal, dSubtotal,dSubtotal1000, dTotal, dMarkUp, dLoadCellSubTotal, dLoadCellBSubTotal, dSundriesTotal, dFlatBarMSTotal;
         private Parts pLoadPlate, pFootPlate, pCellHousing, pLoadBar, pCableCover, pBrackets, pLoadPlateSecu, pFootPlateSecu, pStickers1000,
-                      pSingleLoadCell, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers, pHDStickers, pLabour,
+                      pSingleLoadCell, pSingleLoadCellB, pCable100A, pSpring, pAmphenolPlugs, pAmphenolCaps, pFeetBar, pPetrol, pElecGlovGog, pStickers, pHDStickers, pLabour,
                       pBraces, pBraces1000, pLoadcell, pPotting, pCable, pCutting, pFeet, pScrews, pHDScrews, pWeildingGas, pWeildingWire, pGalvanising = null;
         private FlatBar pFlatA, pFlatB, pFlatC, pFlatD = null;
         private Sundries pCuttingDiscs, pSanding, pDrill, pTap, pGlue, pPottingBox, pWireLead, pTapmatic = null;
@@ -33,7 +33,6 @@ namespace Rudd
         {
             //Build form to display
             InitializeComponent();
-            cbxLoadCellKit.SelectedIndex = 0;
 
             //Read in last values from prices data file
             InitializePrices();
@@ -131,6 +130,9 @@ namespace Rudd
             tbSingleLoadCell.Text = listPrices.ContainsKey("SingleLoadCell") ? setText(listPrices["SingleLoadCell"]) : "R0.00";
             calc_tbSingleLoadCell();
 
+            tbSingleLoadCellB.Text = listPrices.ContainsKey("SingleLoadCellB") ? setText(listPrices["SingleLoadCellB"]) : "R0.00";
+            calc_tbSingleLoadCellB();
+
             tbCable100A.Text = listPrices.ContainsKey("Cable100A") ? setText(listPrices["Cable100A"]) : "R0.00";
             calc_tbCable100A();
 
@@ -145,6 +147,9 @@ namespace Rudd
 
             tbCellQBooks.Text = listPrices.ContainsKey("CellQBooks") ? setText(listPrices["CellQBooks"]) : "R0.00";
             calc_tbCellQBooks();
+
+            tbCellBQBooks.Text = listPrices.ContainsKey("CellBQBooks") ? setText(listPrices["CellBQBooks"]) : "R0.00";
+            calc_tbCellBQBooks();
 
             tbCableQBooks.Text = listPrices.ContainsKey("CableQBooks") ? setText(listPrices["CableQBooks"]) : "R0.00";
             calc_tbCableQBooks();
@@ -1560,6 +1565,7 @@ namespace Rudd
         //===================================================================================================================================================
         //  SINGLE LOAD CELL
         //===================================================================================================================================================
+
         private void tbSingleLoadCell_KeyDown(Object sender, KeyEventArgs e)
         {
             sendTabWhenEnter(e);
@@ -1608,6 +1614,58 @@ namespace Rudd
         }
 
         //===================================================================================================================================================
+        //  SINGLE LOAD CELL 1500kg
+        //===================================================================================================================================================
+
+        private void tbSingleLoadCellB_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
+        private void tbSingleLoadCellB_Leave(object sender, EventArgs e)
+        {
+            calc_tbSingleLoadCellB();
+        }
+
+        private void calc_tbSingleLoadCellB()
+        {
+            removeR(tbSingleLoadCellB);
+
+            try
+            {
+                if (pSingleLoadCellB == null)
+                {
+                    pSingleLoadCellB = new Parts(tbSingleLoadCellBQty.Text, tbSingleLoadCellB.Text, "single");
+                    populateFields(pSingleLoadCellB, tbSingleLoadCellBQty.Text, tbSingleLoadCellB.Text,
+                                    "single", tbSingleLoadCellB, tbSingleLoadCellBUnitCost, tbSingleLoadCellBCost);
+                    addLoadCellKitBTotal(pSingleLoadCellB.getSetPrice());
+                }
+                else
+                {
+                    subtractLoadCellKitBTotal(pSingleLoadCellB.getSetPrice());
+                    pSingleLoadCellB.setPrice(tbSingleLoadCellB.Text);
+                    populateFields(pSingleLoadCellB, tbSingleLoadCellBQty.Text, tbSingleLoadCellB.Text,
+                                    "single", tbSingleLoadCellB, tbSingleLoadCellBUnitCost, tbSingleLoadCellBCost);
+                    addLoadCellKitBTotal(pSingleLoadCellB.getSetPrice());
+                }
+            }
+            catch (FormatException)
+            {
+                tbSingleLoadCellB.Text = "";
+                tbSingleLoadCellBUnitCost.Text = "";
+                tbSingleLoadCellBCost.Text = "";
+                tbSingleLoadCellB.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["SingleLoadCellB"] = tbSingleLoadCellB.Text;
+
+        }
+
+
+        //===================================================================================================================================================
         //  CABLE 100A
         //===================================================================================================================================================
         private void tbCable100A_KeyDown(Object sender, KeyEventArgs e)
@@ -1632,14 +1690,17 @@ namespace Rudd
                     populateFields(pCable100A, tbCable100AQty.Text, tbCable100A.Text,
                                     "single", tbCable100A, tbCable100AUnitCost, tbCable100ACost);
                     addLoadCellKitTotal(pCable100A.getSetPrice());
+                    addLoadCellKitBTotal(pCable100A.getSetPrice());
                 }
                 else
                 {
                     subtractLoadCellKitTotal(pCable100A.getSetPrice());
+                    subtractLoadCellKitBTotal(pCable100A.getSetPrice());
                     pCable100A.setPrice(tbCable100A.Text);
                     populateFields(pCable100A, tbCable100AQty.Text, tbCable100A.Text,
                                     "single", tbCable100A, tbCable100AUnitCost, tbCable100ACost);
                     addLoadCellKitTotal(pCable100A.getSetPrice());
+                    addLoadCellKitBTotal(pCable100A.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -1682,14 +1743,17 @@ namespace Rudd
                     populateFields(pSpring, tbSpringQty.Text, tbSpring.Text,
                                     "single", tbSpring, tbSpringUnitCost, tbSpringCost);
                     addLoadCellKitTotal(pSpring.getSetPrice());
+                    addLoadCellKitBTotal(pSpring.getSetPrice());
                 }
                 else
                 {
                     subtractLoadCellKitTotal(pSpring.getSetPrice());
+                    subtractLoadCellKitBTotal(pSpring.getSetPrice());
                     pSpring.setPrice(tbSpring.Text);
                     populateFields(pSpring, tbSpringQty.Text, tbSpring.Text,
                                     "single", tbSpring, tbSpringUnitCost, tbSpringCost);
                     addLoadCellKitTotal(pSpring.getSetPrice());
+                    addLoadCellKitBTotal(pSpring.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -1732,14 +1796,17 @@ namespace Rudd
                     populateFields(pAmphenolPlugs, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text,
                                     "single", tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
                     addLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                    addLoadCellKitBTotal(pAmphenolPlugs.getSetPrice());
                 }
                 else
                 {
                     subtractLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                    subtractLoadCellKitBTotal(pAmphenolPlugs.getSetPrice());
                     pAmphenolPlugs.setPrice(tbAmphenolPlugs.Text);
                     populateFields(pAmphenolPlugs, tbAmphenolPlugsQty.Text, tbAmphenolPlugs.Text,
                                    "single", tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
                     addLoadCellKitTotal(pAmphenolPlugs.getSetPrice());
+                    addLoadCellKitBTotal(pAmphenolPlugs.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -1782,14 +1849,17 @@ namespace Rudd
                     populateFields(pAmphenolCaps, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text,
                                     "single", tbAmphenolCaps, tbAmphenolCapsUnitCost, tbAmphenolCapsCost);
                     addLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                    addLoadCellKitBTotal(pAmphenolCaps.getSetPrice());
                 }
                 else
                 {
                     subtractLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                    subtractLoadCellKitBTotal(pAmphenolCaps.getSetPrice());
                     pAmphenolCaps.setPrice(tbAmphenolCaps.Text);
                     populateFields(pAmphenolCaps, tbAmphenolCapsQty.Text, tbAmphenolCaps.Text,
                                     "single", tbAmphenolCaps, tbAmphenolCapsUnitCost, tbAmphenolCapsCost);
                     addLoadCellKitTotal(pAmphenolCaps.getSetPrice());
+                    addLoadCellKitBTotal(pAmphenolCaps.getSetPrice());
                 }
             }
             catch (FormatException)
@@ -1836,6 +1906,39 @@ namespace Rudd
 
             //Update the Dictionary Collection with the new value so we can save the defaults into the file 
             listPrices["CellQBooks"] = tbCellQBooks.Text;
+
+        }
+
+        //===================================================================================================================================================
+        //  CELL 1500kg QUICK BOOKS
+        //===================================================================================================================================================
+
+        private void tbCellBQBooks_KeyDown(Object sender, KeyEventArgs e)
+        {
+            sendTabWhenEnter(e);
+        }
+
+        private void tbCellBQBooks_Leave(object sender, EventArgs e)
+        {
+            calc_tbCellBQBooks();
+        }
+
+        private void calc_tbCellBQBooks()
+        {
+            try
+            {
+                tbCellBQBooks.Text = setText(tbCellBQBooks.Text.Replace(".", ","));
+            }
+            catch (FormatException)
+            {
+                tbCellBQBooks.Text = "";
+                tbCellBQBooks.Focus();
+                MessageBox.Show("\tYou entered an incorrect value. \n\tPlease enter a number seperated by \".\" or \",\"", "Invalid Value Supplied",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Update the Dictionary Collection with the new value so we can save the defaults into the file 
+            listPrices["CellBQBooks"] = tbCellBQBooks.Text;
 
         }
 
@@ -2762,6 +2865,11 @@ namespace Rudd
                 pSingleLoadCell = null;
             }
 
+            if (pSingleLoadCellB != null)
+            {
+                pSingleLoadCellB = null;
+            }
+
             if (pCable100A != null)
             {
                 pCable100A = null;
@@ -2783,6 +2891,7 @@ namespace Rudd
             }
 
             clearTextbox(tbSingleLoadCell, tbSingleLoadCellUnitCost, tbSingleLoadCellCost);
+            clearTextbox(tbSingleLoadCellB, tbSingleLoadCellBUnitCost, tbSingleLoadCellBCost);
             clearTextbox(tbCable100A, tbCable100AUnitCost, tbCable100ACost);
             clearTextbox(tbSpring, tbSpringUnitCost, tbSpringCost);
             clearTextbox(tbAmphenolPlugs, tbAmphenolPlugsUnitCost, tbAmphenolPlugsCost);
@@ -2790,6 +2899,7 @@ namespace Rudd
 
             //QBooks
             clearTextbox(tbCellQBooks, tbCellQBooks, tbCellQBooks);
+            clearTextbox(tbCellBQBooks, tbCellBQBooks, tbCellBQBooks);
             clearTextbox(tbCableQBooks, tbCableQBooks, tbCableQBooks);
             clearTextbox(tbSpringQBooks, tbSpringQBooks, tbSpringQBooks);
             clearTextbox(tbPlugsQBooks, tbPlugsQBooks, tbPlugsQBooks);
@@ -2876,7 +2986,9 @@ namespace Rudd
             dSundriesTotal = 0;
 
             tbLoadCellSubtotal.Text = "";
+            tbLoadCellBSubtotal.Text = "";
             dLoadCellSubTotal = 0;
+            dLoadCellBSubTotal = 0;
 
             tbHDSubtotal.Text = "";
             tbSubtotal.Text = "";
@@ -3458,7 +3570,7 @@ namespace Rudd
             PdfPTable table3 = new PdfPTable(6);
             table3.WidthPercentage = 100f;
 
-            PdfPCell cell3 = new PdfPCell(new Phrase("Loadcell Kit", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            PdfPCell cell3 = new PdfPCell(new Phrase("Loadcell Kit 750kg", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
             cell3.Colspan = 6;
             cell3.HorizontalAlignment = Element.ALIGN_CENTER;
             table3.AddCell(cell3);
@@ -3513,6 +3625,71 @@ namespace Rudd
             LoadcellKit.Alignment = Element.ALIGN_RIGHT;
             LoadcellKit.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
             doc.Add(LoadcellKit);
+
+            doc.NewPage();
+
+            doc.Add(Rudd);
+
+            doc.Add(Space);
+
+            PdfPTable table4 = new PdfPTable(6);
+            table4.WidthPercentage = 100f;
+
+            PdfPCell cell4 = new PdfPCell(new Phrase("Loadcell Kit 1500kg", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell4.Colspan = 6;
+            cell4.HorizontalAlignment = Element.ALIGN_CENTER;
+            table4.AddCell(cell4);
+
+            table4.AddCell(" ");
+            table4.AddCell("Price");
+            table4.AddCell("QTY");
+            table4.AddCell("Price per Unit");
+            table4.AddCell("QBooks");
+            table4.AddCell("Price per Set");
+
+            table4.AddCell("Single Load Cell");
+            table4.AddCell(tbSingleLoadCellB.Text);
+            table4.AddCell(tbSingleLoadCellBQty.Text);
+            table4.AddCell(tbSingleLoadCellBUnitCost.Text);
+            table4.AddCell(tbCellBQBooks.Text);
+            table4.AddCell(tbSingleLoadCellBCost.Text);
+
+            table4.AddCell("Cable (100m)");
+            table4.AddCell(tbCable100A.Text);
+            table4.AddCell(tbCable100AQty.Text);
+            table4.AddCell(tbCable100AUnitCost.Text);
+            table4.AddCell(tbCableQBooks.Text);
+            table4.AddCell(tbCable100ACost.Text);
+
+            table4.AddCell("Spring Protector");
+            table4.AddCell(tbSpring.Text);
+            table4.AddCell(tbSpringQty.Text);
+            table4.AddCell(tbSpringUnitCost.Text);
+            table4.AddCell(tbSpringQBooks.Text);
+            table4.AddCell(tbSpringCost.Text);
+
+            table4.AddCell("Amphenol Plugs");
+            table4.AddCell(tbAmphenolPlugs.Text);
+            table4.AddCell(tbAmphenolPlugsQty.Text);
+            table4.AddCell(tbAmphenolPlugsUnitCost.Text);
+            table4.AddCell(tbPlugsQBooks.Text);
+            table4.AddCell(tbAmphenolPlugsCost.Text);
+
+            table4.AddCell("Amphenol Caps");
+            table4.AddCell(tbAmphenolCaps.Text);
+            table4.AddCell(tbAmphenolCapsQty.Text);
+            table4.AddCell(tbAmphenolCapsUnitCost.Text);
+            table4.AddCell(tbCapsQBooks.Text);
+            table4.AddCell(tbAmphenolCapsCost.Text);
+
+            doc.Add(table4);
+
+            Paragraph LoadcellKitB = new Paragraph("Loadcell Kit 1500kg total: " + tbLoadCellBSubtotal.Text);
+            LoadcellKitB.SpacingBefore = 10;
+            LoadcellKitB.SpacingAfter = 10;
+            LoadcellKitB.Alignment = Element.ALIGN_RIGHT;
+            LoadcellKitB.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
+            doc.Add(LoadcellKitB);
 
             doc.Add(Space);
 
@@ -3655,6 +3832,19 @@ namespace Rudd
             tbLoadCellSubtotal.Text = setText(dLoadCellSubTotal.ToString());
         }
 
+        private void addLoadCellKitBTotal(Double price)
+        {
+            dLoadCellBSubTotal = dLoadCellBSubTotal + price;
+            tbLoadCellBSubtotal.Text = setText(dLoadCellBSubTotal.ToString());
+            addTotalCost(dLoadCellBSubTotal);
+        }
+
+        private void subtractLoadCellKitBTotal(Double price)
+        {
+            dLoadCellBSubTotal = dLoadCellBSubTotal - price;
+            tbLoadCellBSubtotal.Text = setText(dLoadCellBSubTotal.ToString());
+        }
+
         private void addFlatBarMSTotal(Double price)
         {
             dFlatBarMSTotal = dFlatBarMSTotal + price;
@@ -3683,8 +3873,8 @@ namespace Rudd
 
         private void addTotalCost(Double price)
         {
-            dMarkUp = (dSubtotal+ dSubtotal1000 +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
-            dTotal = (dSubtotal+ dSubtotal1000 +dHDSubtotal + dLoadCellSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
+            dMarkUp = (dSubtotal+ dSubtotal1000 +dHDSubtotal + dLoadCellSubTotal + dLoadCellBSubTotal + dSundriesTotal + dFlatBarMSTotal) * (Convert.ToDouble(tbMarkupAmount.Text) / 100);
+            dTotal  = (dSubtotal+ dSubtotal1000 +dHDSubtotal + dLoadCellSubTotal + dLoadCellBSubTotal + dSundriesTotal + dFlatBarMSTotal) + dMarkUp;
             tbMarkUpTotal.Text = setText(dMarkUp.ToString());
             tbTotalCost.Text = setText(dTotal.ToString());
         }
