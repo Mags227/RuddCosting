@@ -3005,6 +3005,8 @@ namespace Rudd
             dTotal2 = 0;
             dMarkUp3 = 0;
             dTotal3 = 0;
+            dSundMarkUp = 0;
+            dFlatMarkUp = 0; 
 
         }
 
@@ -3696,7 +3698,15 @@ namespace Rudd
             LoadcellKitB.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f);
             doc.Add(LoadcellKitB);
 
+            doc.NewPage();
+            doc.Add(Rudd);
             doc.Add(Space);
+
+            Paragraph paragraph1 = new Paragraph("Beams Costing Per Set - " + DateTime.Today.ToString("MMMM") + " "+dateTime.Year, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15f));
+            paragraph1.SpacingBefore = 10;
+            paragraph1.SpacingAfter = 10;
+            paragraph1.Alignment = Element.ALIGN_CENTER;
+            doc.Add(paragraph1);
 
             doc.Close();
             MessageBox.Show("File has been saved as PDF.", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
