@@ -3700,13 +3700,117 @@ namespace Rudd
 
             doc.NewPage();
             doc.Add(Rudd);
-            doc.Add(Space);
 
-            Paragraph paragraph1 = new Paragraph("Beams Costing Per Set - " + DateTime.Today.ToString("MMMM") + " "+dateTime.Year, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15f));
+            Chunk ChuckSum = new Chunk("Beams Costing Per Set - " + DateTime.Today.ToString("MMMM") + " " + dateTime.Year, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15f));
+            ChuckSum.SetUnderline(0.5f, -1.5f);
+
+            Paragraph paragraph1 = new Paragraph(ChuckSum);
             paragraph1.SpacingBefore = 10;
             paragraph1.SpacingAfter = 10;
             paragraph1.Alignment = Element.ALIGN_CENTER;
             doc.Add(paragraph1);
+
+            doc.Add(Space);
+
+            PdfPTable table5 = new PdfPTable(2);
+            table5.WidthPercentage = 100f;
+
+            PdfPCell cell5 = new PdfPCell(new Phrase("600mm Beam", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell5.Colspan = 2;
+            cell5.HorizontalAlignment = Element.ALIGN_CENTER;
+            table5.AddCell(cell5);
+
+            table5.AddCell("600mm Subtotal: ");
+            table5.AddCell(tb600BeamCost.Text);
+
+            table5.AddCell("Loadcell Kit 760kg: ");
+            table5.AddCell(tb750kgBeamCost.Text);
+
+            table5.AddCell("Sundries: ");
+            table5.AddCell(tbSund600.Text);
+
+            table5.AddCell("Total Excluding Mark Up: ");
+            table5.AddCell(tb600Total.Text);
+
+            table5.AddCell(" ");
+            table5.AddCell(" ");
+
+            table5.AddCell("Mark Up%: ");
+            table5.AddCell(tb600mm85.Text);
+
+            table5.AddCell("Total Selling Price: ");
+            table5.AddCell(tb600SP.Text);
+
+
+            doc.Add(table5);
+
+            doc.Add(Space);
+
+            PdfPTable table6 = new PdfPTable(2);
+            table6.WidthPercentage = 100f;
+
+            PdfPCell cell6 = new PdfPCell(new Phrase("1000mm Beam", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell6.Colspan = 2;
+            cell6.HorizontalAlignment = Element.ALIGN_CENTER;
+            table6.AddCell(cell6);
+
+            table6.AddCell("1000mm Subtotal: ");
+            table6.AddCell(tb1000BeamCost.Text);
+
+            table6.AddCell("Loadcell Kit 760kg: ");
+            table6.AddCell(tb750kgBBeamCost.Text);
+
+            table6.AddCell("Sundries: ");
+            table6.AddCell(tbSund1000.Text);
+
+            table6.AddCell("Total Excluding Mark Up: ");
+            table6.AddCell(tb1000Total.Text);
+
+            table6.AddCell(" ");
+            table6.AddCell(" ");
+
+            table6.AddCell("Mark Up%: ");
+            table6.AddCell(tb1000mm85.Text);
+
+            table6.AddCell("Total Selling Price: ");
+            table6.AddCell(tb1000SP.Text);
+
+
+            doc.Add(table6);
+
+            doc.Add(Space);
+
+            PdfPTable table7 = new PdfPTable(2);
+            table7.WidthPercentage = 100f;
+
+            PdfPCell cell7 = new PdfPCell(new Phrase("Heavy Duty Beam", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15)));
+            cell7.Colspan = 2;
+            cell7.HorizontalAlignment = Element.ALIGN_CENTER;
+            table7.AddCell(cell7);
+
+            table7.AddCell("Heavy Duty Subtotal: ");
+            table7.AddCell(tbHDBeamCost.Text);
+
+            table7.AddCell("Loadcell Kit 1500kg: ");
+            table7.AddCell(tb1500kgBeamCost.Text);
+
+            table7.AddCell("Sundries: ");
+            table7.AddCell(tbSundHD.Text);
+
+            table7.AddCell("Total Excluding Mark Up: ");
+            table7.AddCell(tbHDTotal.Text);
+
+            table7.AddCell(" ");
+            table7.AddCell(" ");
+
+            table7.AddCell("Mark Up%: ");
+            table7.AddCell(tbHD85.Text);
+
+            table7.AddCell("Total Selling Price: ");
+            table7.AddCell(tbHDSP.Text);
+
+
+            doc.Add(table7);
 
             doc.Close();
             MessageBox.Show("File has been saved as PDF.", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
